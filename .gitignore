@@ -1,0 +1,14 @@
+*.css
+*.css.map
+.sass-cache/
+bower_components
+*.rtf
+*.pptx
+
+
+
+#____server stuff____
+node_modules/
+scripts/
+
+Secret.js	
