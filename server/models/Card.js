@@ -8,7 +8,7 @@ var	CardSchema = Schema ({
 	    text: { type: String, required: true },
 	    correctAnswer: { type: Boolean, required: true }
 	}],
-	tags: [{ type: String, enum: TopicSchema.tags }], // Array of Strings, Enum
+	tags: [{ type: String, enum: TopicSchema.tags }], // Array of Strings, Enum.
 	QuestionType: { type: String, default: 'MultipleAnswer'},
 	numReviews: { type: Number },
 	numWrong: { type: Number }
