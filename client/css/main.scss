@@ -1,0 +1,36 @@
+// loading bootstrap, bourbon, reset.scss
+@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "../bower_components/bourbon/app/assets/stylesheets/bourbon";
+@import "../bower_components/reset-css/_reset.scss";
+
+//___________________Variables____________________
+
+$jade: #00B16A;
+$darkJade: darken($jade, 5);
+$lightJade: lighten($jade, 5);
+
+
+
+
+///////////////////////////////////////////////////
+//  Components
+///////////////////////////////////////////////////
+
+//_____________________Mixins______________________
+@import "mixins/widgetMixins";
+@import "mixins/mediaQuery";
+
+
+@import "baseStyles";
+
+
+//____________________Sass Files for Different Features_____________________
+
+// for example,
+@import "../features/featureTest/feature";
+
+
+
+
+
+
