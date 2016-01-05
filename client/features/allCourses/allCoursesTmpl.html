@@ -1,13 +1,32 @@
-<div class="course-block">          <!-- Make this an ng-repeat over all courses in database -->
-                                    <!-- Make this show/hide topics with an ng-click -->
-                                
-    <!--Course Title-->
-    TESTING HERE.
+<div class="container allCoursesContainer" ng-controller="allCoursesCtrl">
+    <div class="course-block" ng-click="topicsShowing=!topicsShowing">
+
+        <h2>Course Name</h2>
+        
+    
+
+    </div>
+    
+    <div class="course-topic" ng-show="topicsShowing">
+        <h3>Topic Name</h3>
+    </div>
     
     
-    <div class="course-topic">      <!-- Make this ng-repeat over all topics in a given course -->
-                                    <!-- This will be shown/hidden with an ng-show (boolean) -->
     
     
+    
+    
+    <div class="course-block" ng-click="topicsShowing2=!topicsShowing2">
+
+        <h2>Course Name 2</h2>
+
+    </div>
+    
+    <div class="course-topic" ng-show="topicsShowing2">
+        <h3>Topic Name 1</h3>
+    </div>
+    
+    <div class="course-topic" ng-show="topicsShowing2">
+        <h3>Topic Name 2</h3>
     </div>
 </div>

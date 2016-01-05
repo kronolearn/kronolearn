@@ -1,0 +1,33 @@
+.allCoursesContainer {
+    
+}
+
+.course-block h2 {
+    text-align: center;
+    
+}
+
+.course-topic h3 {
+    text-align: center;
+}
+
+.course-block {
+    width: 75%;
+    height: 100px;
+    border: 2px solid #000;
+    background-color: seagreen;
+    margin: 25px auto 0 auto;
+}
+
+.course-topic {
+    width: 60%;
+    height: 50px;
+    border: 2px solid #000;
+    background-color: lawngreen;
+    margin: 0 auto;
+}
+
+.course-block:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
