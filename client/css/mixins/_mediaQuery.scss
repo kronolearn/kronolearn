@@ -1,0 +1,65 @@
+//_________________________Media Query Stuff__________________________
+
+
+
+
+$smallphone: "(min-width: 0px) and (max-width: 460px)";
+$phone: "(min-width: 461px) and (max-width: 767px)";
+$tablet: "(min-width: 768px) and (max-width: 991px)";
+$desktop: "(min-width: 992px) and (max-width: 1199px)";
+$largedesktop: "(min-width: 1200px)";
+
+$phoneOrLess: "(max-width: 767px)";
+$tabletOrLess: "(max-width: 991px)";
+$desktopOrLess: "(max-width: 1199px)";
+
+
+
+@mixin smallphone {
+	@media #{$smallphone} {
+		@content;
+	}
+}
+
+@mixin phone {
+	@media #{$phone} {
+		@content;
+	}
+}
+
+@mixin tablet {
+	@media #{$tablet} {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@media #{$desktop} {
+		@content;
+	}
+}
+
+@mixin largedesktop {
+	@media #{$largedesktop} {
+		@content; 
+	}
+}
+
+//________"something Or less media Queries"__________
+@mixin phoneOrLess {
+	@media #{$phoneOrLess} {
+		@content; 
+	}
+}
+
+@mixin tabletOrLess {
+	@media #{$tabletOrLess} {
+		@content; 
+	}
+}
+
+@mixin desktopOrLess {
+	@media #{$desktopOrLess} {
+		@content; 
+	}
+}
