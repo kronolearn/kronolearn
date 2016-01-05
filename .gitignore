@@ -9,6 +9,6 @@ bower_components
 
 #____server stuff____
 node_modules/
-scripts/
+client/scripts/all.js
 
-Secret.js	
+server/config/Secret.js
