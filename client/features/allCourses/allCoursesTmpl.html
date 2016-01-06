@@ -1,37 +1,24 @@
-<div class="container allCoursesContainer" ng-controller="allCoursesCtrl">
+<div class="container allCoursesContainer">
     
-    <input class="search-bar" placeholder="Search Courses...">
+    <input class="search-bar" placeholder="Search Courses..." ng-model="coursesearch">
     
     
     
-    <div class="course-block" ng-click="topicsShowing=!topicsShowing">
+    <div class="full-block" ng-repeat="course in allCoursesArray |    filter: {name:coursesearch}">   
+        <div class="course-block" ng-click="topicsShowing=!topicsShowing">
 
-        <h2>Course Name</h2>
+            <div>
+                <img src="{{course.picture}}" id="course-pic">
+            </div>
+            
+            <h2>{{course.name}}</h2>
+
+        </div>
+    
+        <div class="course-topic" ng-show="topicsShowing" ng-repeat="topic in course.topics">
+            <h3>{{topic}}</h3>
+        </div>
         
-    
+    </div>
 
-    </div>
-    
-    <div class="course-topic" ng-show="topicsShowing">
-        <h3>Topic Name</h3>
-    </div>
-    
-    
-    
-    
-    
-    
-    <div class="course-block" ng-click="topicsShowing2=!topicsShowing2">
-
-        <h2>Course Name 2</h2>
-
-    </div>
-    
-    <div class="course-topic" ng-show="topicsShowing2">
-        <h3>Topic Name 1</h3>
-    </div>
-    
-    <div class="course-topic" ng-show="topicsShowing2">
-        <h3>Topic Name 2</h3>
-    </div>
 </div>

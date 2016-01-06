@@ -5,6 +5,8 @@
 .search-bar {
     margin: 50px auto 0 auto;
     text-align: center;
+    height: 50px;
+    font-size: 36px;
     width: 500px;
     border: 1px solid #000;
 }
@@ -37,4 +39,10 @@
 .course-block:hover {
     cursor: pointer;
     opacity: 0.8;
+}
+
+#course-pic {
+    height: 75px;
+    width: 75px;
+    float:left;
 }
