@@ -1,7 +1,10 @@
 *.css
 *.css.map
 .sass-cache/
-bower_components
+
+# bower components ignored, so that editing bootstrap file can be shown
+# bower_components
+
 *.rtf
 *.pptx
 

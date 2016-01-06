@@ -1,0 +1,84 @@
+div.navbar-wrapper{
+	font-size: 1rem;
+	$navbarHeight: 50px;
+
+	div.navbar-container{
+		padding-top: 10px;
+		width: 100%;
+		max-width: 1500px;
+	}
+
+	// 	// navbar spacer, just to make sure navbar appears
+	div.navbar-spacer{
+		height: 20px;
+		// background: yellow;
+		z-index: 0;
+		width: 100%;
+		font-size: 1px;
+		opacity: 0;
+		position: static;
+		padding-top: $navbarHeight;
+	}
+
+	///////////////////////////////////////////////////
+	//  Main navbar
+	///////////////////////////////////////////////////
+	div.navbar{
+		z-index: 1000;
+		width: 100%;
+		margin-bottom: 40px;
+		position: fixed;
+		@include jadeGradient();
+		height: $navbarHeight;
+		border-bottom: 2px solid black;
+	}
+
+	div.navbar-logo{
+		// background: blue;
+		a{
+			color: white;
+			font-size: 1.5em;
+			cursor: pointer;
+			@include transition(.4s ease);
+			&:hover{
+				color: $gold;
+			}
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+} // end of navbar-wrapper div, nothing below this
+
+

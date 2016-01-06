@@ -1,6 +1,9 @@
-var app = angular.module('kronolearn');
+angular.module('kronolearn')
+.controller('courseCtrl', function($scope) {
 
-
-app.controller('courseCtrl', function($scope) {
+	$scope.message = 'hello';
     
+
+
+
 });
