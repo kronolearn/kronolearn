@@ -82,7 +82,10 @@ db.once('open', function(){
 
 
 
-
+app.get('/api/blah', function(req, res){
+    console.log('hello');
+    res.send('hello');
+})
 
 // User EndPoints
 app.get('/api/users', userCtrl.getUsers);
@@ -125,10 +128,17 @@ app.post('/api/login', passport.authenticate('local-login', { failure: '/#/authT
 
 
 app.get('/api/logout', function (req, res) {
+
+    console.log('logout server js');
     req.logout();
 	req.session.destroy();
-    // console.log(req.user);
+    console.log(req.user);
+    res.send('hello');
+    console.log('getting here now!!');
+    // res.redirect('/#/');
     });
+
+
 
 
 

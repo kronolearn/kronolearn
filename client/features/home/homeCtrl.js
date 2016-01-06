@@ -25,7 +25,7 @@ app.controller('homeCtrl', function($scope, $http, $state, homeService) {
                 if (user) {
                     $scope.user = user.data;
                     homeService.saveUser($scope.user);
-                    $state.go('home');
+                    $state.go('dashboard');
                 }
             });
     };    

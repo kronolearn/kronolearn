@@ -6,7 +6,7 @@
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <input type="text" placeholder="E-Mail" ng-model="user.email" name="email">
-            <input type="text" placeholder="Password" ng-model="user.password" name="password">
+            <input type="password" placeholder="Password" ng-model="user.password" name="password">
             <button ng-click="login()" type="button" class="btn btn-lg btn-primary">Log In</button>
         </div>
       </div>
@@ -19,8 +19,8 @@
         <div class="modal-content">
             <input ng-model="user.name"type="text" placeholder="Name" name="name">
             <input ng-model="user.email" type="text" placeholder="E-Mail" name="email">
-            <input ng-model="user.password" type="text" placeholder="Password" name="password">
-            <input ng-model="user.password" type="text" placeholder="Password" name="password">
+            <input ng-model="user.password" type="password" placeholder="Password" name="password">
+            <input ng-model="passwordcheck" type="password" placeholder="Password" name="password">
             <button ng-click="signup()" type="button" class="btn btn-lg btn-primary">Sign Up</button>
         </div>
       </div>
