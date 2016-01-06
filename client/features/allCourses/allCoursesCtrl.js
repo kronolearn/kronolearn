@@ -6,7 +6,7 @@ app.controller('allCoursesCtrl', function($scope) {
     $scope.topicsShowing = false;
     
     $scope.coursesearch = undefined;
-        
+    
     $scope.allCoursesArray = [
         
         {
@@ -17,6 +17,7 @@ app.controller('allCoursesCtrl', function($scope) {
             admins: "Kyle",
             students: [83049, 20493],
             picture: "https://s3-us-west-2.amazonaws.com/kronolearn/coursePics/logo_JavaScript.png"
+
         },
         
         {
@@ -27,6 +28,7 @@ app.controller('allCoursesCtrl', function($scope) {
             admins: "Kyle",
             students: [83049, 20493],
             picture: "https://s3-us-west-2.amazonaws.com/kronolearn/coursePics/addthis-react-flux-javascript-scaling.png"
+
         },
         
         {
@@ -37,6 +39,17 @@ app.controller('allCoursesCtrl', function($scope) {
             admins: "Kyle",
             students: [83049, 20493],
             picture: "https://s3-us-west-2.amazonaws.com/kronolearn/coursePics/htmlimage.jpeg"
+            
+        },
+        
+        {
+            name: "Spanish Basics",
+            description: "Ever wanted to learn Spanish, but just didn't have the time? With this course, you're guaranteed to learn!",
+            subjects: ["Spanish, Espanol, Hola"],
+            topics: ["Grammar 1", "Grammar 2", "Grammar 3", "Vocabulary 1", "Vocabulary 2", "Culture"],
+            admins: "Kyle",
+            students: [83049, 20493],
+            picture: "https://s3-us-west-2.amazonaws.com/kronolearn/coursePics/Flag_of_Spain.svg.png"
         }
     ];
     

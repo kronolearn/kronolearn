@@ -1,5 +1,6 @@
 .allCoursesFull {
-    height: 900px;
+    height: 100%;
+    min-height: 960px;
     width: 100%;
     background: url(http://www.pageresource.com/wallpapers/wallpaper/antique-clock_543456.jpg) no-repeat center center fixed;
     background-size: cover;
@@ -7,7 +8,6 @@
 
 .allCoursesContainer {
     text-align: center;
-    
 }
 
 .search-bar {
@@ -17,10 +17,13 @@
     font-size: 36px;
     width: 500px;
     border: 1px solid #000;
+    color: #00a86b;
+    background-color: #eaeaea;
 }
 
 .course-block h2 {
-    margin: 0 auto;
+    width: 90%;
+    min-width: 340px;
 }
 
 .course-topic h3 {
@@ -28,12 +31,20 @@
     text-align: center;
 }
 
+.course-block h5 {
+    width: 90%;
+    text-overflow: clip;
+    text-overflow: ellipsis;
+
+}
+
 .course-block {
     width: 75%;
     height: 100px;
     border: 2px solid #000;
-    background-color: #00a86b;
+    background-color: #00a865;
     margin: 25px auto 0 auto;
+    border-radius: 1em;
 }
 
 .course-topic {
@@ -53,4 +64,21 @@
     height: 75px;
     width: 75px;
     float:left;
+    border-radius: 1em;
+}
+
+.launch-course {
+    height: 50px;
+    font-size: 24px;
+}
+
+//-------MEDIA QUERIES---------------
+
+@media screen and (max-width:768px) {
+    
+    .search-bar {
+        width: 70%;
+        min-width: 340px;
+        font-size: 18px;
+    }
 }
