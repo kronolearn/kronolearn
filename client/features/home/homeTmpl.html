@@ -1,4 +1,31 @@
 <div class="home">
+
+ <!---------------Log In modal---------------------------->
+    
+    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <input type="text" placeholder="E-Mail">
+            <input type="text" placeholder="Password">
+            <button type="button" class="btn btn-lg btn-primary">Log In</button>
+        </div>
+      </div>
+    </div>
+    
+<!------------------------Sign Up modal------------------------->
+    
+     <div class="modal fade bs-example-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <input type="text" placeholder="E-Mail">
+            <input type="text" placeholder="Username">
+            <input type="text" placeholder="Password">
+            <input type="text" placeholder="Password">
+            <button type="button" class="btn btn-lg btn-primary">Sign Up</button>
+        </div>
+      </div>
+    </div>   
+    
     <div class="background-image"></div>
 
     <div class="holder">
@@ -6,8 +33,8 @@
             <h1>Kronolearn</h1>
             <p>Learn and retain for the rest of your life by using the principles of spaced repetition.</p>
             <div>
-                <button type="button" class="btn btn-lg btn-primary">Log In</button>
-                <button type="button" class="btn btn-lg btn-primary">Sign Up</button>
+                <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Log In</button>
+                <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target=".bs-example-sm">Sign Up</button>
             </div>
         </div>
     </div>
