@@ -4,6 +4,8 @@ var app = angular.module('kronolearn');
 app.controller('allCoursesCtrl', function($scope) {
     
     $scope.topicsShowing = false;
+    
+    $scope.coursesearch = undefined;
         
     $scope.allCoursesArray = [
         
