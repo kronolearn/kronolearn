@@ -25,7 +25,7 @@ gulp.task('javascript', function() {
 	gulp.src([
 		'./client/bower_components/jquery/dist/jquery.js',
 		'./client/bower_components/lodash/lodash.js',
-
+        //'./client/bower_components/typeahead.js/dist/typeahead.bundle.js',
 		// moment JS, used for time manipulations (35kb compressed.. seems worth it though)
 		// './client/bower_components/moment/moment.js',
 
