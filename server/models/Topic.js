@@ -8,7 +8,9 @@ var	TopicSchema = Schema ({
 	picture: { type: String },
 	reviewMaterials: [{
 	    material: { type: String },
-        reviewTags: [{ type: String, enum: TopicSchema.tags }],
+        reviewTags: [{ type: Schema.Types.ObjectId, ref: 'Topic' }]
+        // reviewTags: [{ type: String, enum: TopicSchema.tags }], this line gives this error. "reviewTags: [{ type: String, enum: TopicSchema.tags }], TypeError: Cannot read property 'tags' of undefined" We are going to use Ref until Peter gets back tomorrow!
+                                                      
 		// Array of Strings, enum to tags of topic (dropdown)
 }],
 	cards: [{ type: Schema.Types.ObjectId, ref: 'Card' }],

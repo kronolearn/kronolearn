@@ -11,6 +11,8 @@ var request = require('request');
 
 var keys = require('./server/config/Secret');
 var userCtrl = require('./server/controllers/userCtrl');
+var courseCtrl = require('./server/controllers/courseCtrl');
+var topicCtrl = require('./server/controllers/topicCtrl');
 require('./server/config/passport')(passport);
 
 //____________________My dependencies__________________________
@@ -89,27 +91,44 @@ app.post('/api/user', userCtrl.addUser);
 app.delete('/api/user/:id', userCtrl.removeUser);
 app.put('/api/user/:id', userCtrl.updateUser);
 
+// Course EndPoints
+app.get('/api/courses', courseCtrl.getCourse);
+app.get('/api/course/:id', courseCtrl.getById);
+app.post('/api/course', courseCtrl.addCourse);
+app.delete('/api/course/:id', courseCtrl.removeCourse);
+app.put('/api/course/:id', courseCtrl.updateCourse);
+
+
+// Topic EndPoints
+app.get('/api/topics', topicCtrl.getTopic);
+app.get('/api/topic/:id', topicCtrl.getById);
+app.post('/api/topic', topicCtrl.addTopic);
+app.delete('/api/topic/:id', topicCtrl.removeTopic);
+app.put('/api/topic/:id', topicCtrl.updateTopic);
+
 
 
 // LocalAuth
-
-app.post('/api/signup', passport.authenticate('local-signup', { failure: '/#/login' }),
-	function (req, res) {
-		res.send(req.user);
-	});
-
-app.post('/api/login', passport.authenticate('local-login', { failure: '/#/login' }),
-	function (req, res) {
-		res.send(req.user);
-	});
-
 app.get('/api/auth', userCtrl.isAuth, userCtrl.auth);
+
+app.post('/api/authTest', passport.authenticate('local-signup', { failure: '/#/authTest' }),
+	function (req, res) {
+		res.send(req.user);
+	});
+
+app.post('/api/login', passport.authenticate('local-login', { failure: '/#/authTest' }),
+	function (req, res) {
+		res.send(req.user);
+        // console.log(req.user);
+	});
+
+
 
 app.get('/api/logout', function (req, res) {
     req.logout();
 	req.session.destroy();
-    res.redirect('/#/admin');
-});
+    // console.log(req.user);
+    });
 
 
 

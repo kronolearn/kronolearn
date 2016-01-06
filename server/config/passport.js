@@ -15,21 +15,21 @@ module.exports = function (passport) {
 	
 	// Local Signup
 	passport.use('local-signup', new LocalStrategy({
-		userName: 'name',
 		usernameField: 'email',
 		passwordField: 'password',
 		passReqToCallback: true
 	},
-		function (req, name, email, password, done) {
+		function (req, email, password, done) {
 
 			User.findOne({ 'email': email }, function (err, user) {
 				if (err)
 					return done(err);
 				if (user) {
+                    console.log(done);
 					return done(null, false);
 				} else {
 					var newUser = new User();
-					newUser.name = name;
+					newUser.name = req.body.name;
 					newUser.email = email;
 					newUser.password = newUser.generateHash(password);
 					console.log(newUser);
@@ -60,7 +60,8 @@ module.exports = function (passport) {
 					return done(null, false);
 				return done(null, user);
 			});
-
+                // console.log(req.body);
+                console.log(req.user);
 		}));
 
 };	
