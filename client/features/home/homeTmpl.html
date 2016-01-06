@@ -1,13 +1,13 @@
-<div class="home">
+<div ng-controller="homeCtrl" class="home">
 
  <!---------------Log In modal---------------------------->
     
     <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
-            <input type="text" placeholder="E-Mail">
-            <input type="text" placeholder="Password">
-            <button type="button" class="btn btn-lg btn-primary">Log In</button>
+            <input type="text" placeholder="E-Mail" ng-model="user.email" name="email">
+            <input type="password" placeholder="Password" ng-model="user.password" name="password">
+            <button ng-click="login()" type="button" class="btn btn-lg btn-primary">Log In</button>
         </div>
       </div>
     </div>
@@ -17,11 +17,11 @@
      <div class="modal fade bs-example-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
-            <input type="text" placeholder="E-Mail">
-            <input type="text" placeholder="Username">
-            <input type="text" placeholder="Password">
-            <input type="text" placeholder="Password">
-            <button type="button" class="btn btn-lg btn-primary">Sign Up</button>
+            <input ng-model="user.name"type="text" placeholder="Name" name="name">
+            <input ng-model="user.email" type="text" placeholder="E-Mail" name="email">
+            <input ng-model="user.password" type="password" placeholder="Password" name="password">
+            <input ng-model="passwordcheck" type="password" placeholder="Password" name="password">
+            <button ng-click="signup()" type="button" class="btn btn-lg btn-primary">Sign Up</button>
         </div>
       </div>
     </div>   
@@ -38,4 +38,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>

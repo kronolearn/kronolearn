@@ -29,6 +29,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
         controller: 'courseCtrl'
     })
     
+    .state('authTest', {
+        url: '/authTest',
+        templateUrl: './features/authTest/authTestTmpl.html',
+        controller: 'authTestCtrl'
+    })
+    
     .state('allCourses', {
         url: '/allCourses',
         templateUrl: './features/allCourses/allCoursesTmpl.html',
