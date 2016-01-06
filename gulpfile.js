@@ -9,7 +9,11 @@ var ngAnnotate = require('gulp-ng-annotate');
 
 //___________________Watcher________________________
 
-var watcher = gulp.watch(['./client/js/**/*.js', './client/css/**/*.scss'], ['default']);
+var watcher = gulp.watch(['./client/js/**/*.js', 
+	                        './client/css/**/*.scss', 
+	                        './client/features/**/*.scss',
+	                        './client/features/**/*.js'], 
+	                        ['default']);
 
 watcher.on('change', function(event){
 	console.log('File ' + event.path + ' was ' + event.type + ' at ' + new Date() + ' , running tasks...');

@@ -4,11 +4,24 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kronolearn</title>
-    <link rel="stylesheet" href="css/main.scss">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
     <h1>Kronolearn</h1>
     <p>Our technology helps you to never forget stuff.</p>
-    <script src="scripts/all.js"></script>
+    
+    
+    
+    
+    <div ui-view></div>
+    
+    
+    <div class="bottom-buttons" style="position:fixed; bottom: 0; left: 0">
+        <a ui-sref="topic"><button>Topic View</button></a>
+        <a ui-sref="dashboard"><button>Dashboard View</button></a>
+        <a ui-sref="course"><button>Course View</button></a>
+        <a ui-sref="allCourses"><button>AllCourses View</button></a>
+        <script src="scripts/all.js"></script>
+    </div>
 </body>
 </html>
