@@ -15,8 +15,8 @@ var UserSchema = Schema({
 			card: { type: Schema.Types.ObjectId, ref: 'Card' },
 			reviews: [{
 				date: { type: Date },
-				qResponse: { type: Number, required: true },
-				ef: { type: Number, required: true }
+				qResponse: { type: Number, default: 0, required: true },
+				ef: { type: Number, default: 0, required: true }
 			}],
 		ef: { type: Number },
 		dateNextReview: { type: Date },

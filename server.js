@@ -3,11 +3,15 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var session = require('express-session');
-
+var bcryptNodejs = require('bcrypt-nodejs');
 var cors = require('cors');
-
+var cookieParser = require('cookie-parser');
 var request = require('request');
 
+
+var keys = require('./server/config/Secret');
+var userCtrl = require('./server/controllers/userCtrl');
+require('./server/config/passport')(passport);
 
 //____________________My dependencies__________________________
 // var usersCtrl = require('./server/controllers/usersCtrl');
@@ -28,18 +32,21 @@ var mongoUri = 'mongodb://127.0.0.1/kronolearn';
 
 var app = express();
 
+app.use(bodyParser.json());
 app.use(cors());
+app.use(cookieParser());
+
+
 
 
 //_____________Passport middleware________________
-app.use(session({secret: 'blahblah'}));
+app.use(session({ secret: keys.secret }));
 
 
 // if we use passport later
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 //___________________________________________________
-
 
 
 
@@ -75,7 +82,34 @@ db.once('open', function(){
 
 
 
+// User EndPoints
+app.get('/api/users', userCtrl.getUsers);
+app.get('/api/user/:id', userCtrl.getById);
+app.post('/api/user', userCtrl.addUser);
+app.delete('/api/user/:id', userCtrl.removeUser);
+app.put('/api/user/:id', userCtrl.updateUser);
 
+
+
+// LocalAuth
+
+app.post('/api/signup', passport.authenticate('local-signup', { failure: '/#/login' }),
+	function (req, res) {
+		res.send(req.user);
+	});
+
+app.post('/api/login', passport.authenticate('local-login', { failure: '/#/login' }),
+	function (req, res) {
+		res.send(req.user);
+	});
+
+app.get('/api/auth', userCtrl.isAuth, userCtrl.auth);
+
+app.get('/api/logout', function (req, res) {
+    req.logout();
+	req.session.destroy();
+    res.redirect('/#/admin');
+});
 
 
 
@@ -86,4 +120,4 @@ var port = process.env.PORT || 3000;
 
 app.listen(port, function(){
 	console.log('listening to port ', port);
-})
+});
