@@ -1,3 +1,4 @@
+<div navbar></div>
 <div class="allCoursesFull">
     <div class="container allCoursesContainer">
     
@@ -15,9 +16,9 @@
               <h2>{{course.name}}</h2>
                 </br>
               <h5>{{course.description}}</h5>
-            
+        <!--    <button class="btn btn-primary launch-course" ng-show="topicsShowing">Launch Course</button> -->
+
          </div>
-    
          <div class="course-topic" ng-show="topicsShowing" ng-repeat="topic in course.topics">
                <h3>{{topic}}</h3>
          </div>
