@@ -1,0 +1,8 @@
+@mixin jadeGradient(){
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#00a865+0,00b16a+52,00b16a+52,00b86e+100 */
+background: #00a865; /* Old browsers */
+background: -moz-linear-gradient(left,  #00a865 0%, #00b16a 52%, #00b16a 52%, #00b86e 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left,  #00a865 0%,#00b16a 52%,#00b16a 52%,#00b86e 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right,  #00a865 0%,#00b16a 52%,#00b16a 52%,#00b86e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00a865', endColorstr='#00b86e',GradientType=1 ); /* IE6-9 */
+}

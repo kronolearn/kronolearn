@@ -3,11 +3,11 @@
 
 
 
-$smallphone: "(min-width: 0px) and (max-width: 460px)";
+$smallPhone: "(min-width: 0px) and (max-width: 460px)";
 $phone: "(min-width: 461px) and (max-width: 767px)";
 $tablet: "(min-width: 768px) and (max-width: 991px)";
 $desktop: "(min-width: 992px) and (max-width: 1199px)";
-$largedesktop: "(min-width: 1200px)";
+$largeDesktop: "(min-width: 1200px)";
 
 $phoneOrLess: "(max-width: 767px)";
 $tabletOrLess: "(max-width: 991px)";
@@ -15,8 +15,8 @@ $desktopOrLess: "(max-width: 1199px)";
 
 
 
-@mixin smallphone {
-	@media #{$smallphone} {
+@mixin smallPhone {
+	@media #{$smallPhone} {
 		@content;
 	}
 }
@@ -39,8 +39,8 @@ $desktopOrLess: "(max-width: 1199px)";
 	}
 }
 
-@mixin largedesktop {
-	@media #{$largedesktop} {
+@mixin largeDesktop {
+	@media #{$largeDesktop} {
 		@content; 
 	}
 }
