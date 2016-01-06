@@ -1,5 +1,13 @@
+.allCoursesFull {
+    height: 900px;
+    width: 100%;
+    background: url(http://www.pageresource.com/wallpapers/wallpaper/antique-clock_543456.jpg) no-repeat center center fixed;
+    background-size: cover;
+}
+
 .allCoursesContainer {
     text-align: center;
+    
 }
 
 .search-bar {
@@ -13,10 +21,11 @@
 
 .course-block h2 {
     text-align: center;
-    
+    margin-left: -300px;
 }
 
 .course-topic h3 {
+
     text-align: center;
 }
 
