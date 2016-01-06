@@ -1,16 +1,15 @@
 var app = angular.module('kronolearn');
 
 
-app.service('homeService', function($http, $state) {
-    
-    this.logout = function () {
-		$http.get('/api/logout',
-			this.user).then(function (res, err) {
-				if (err) {
-					// console.log(err);
-					return;
-				} $state.go('authTest');
-			});
-	};
-    
+app.service('homeService', function ($http) {
+
+    var user;
+    this.saveUser = function (userInfo) {
+        user = userInfo;
+    };
+
+    this.returnUser = function () {
+        return user;
+    };
+
 });

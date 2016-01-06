@@ -9,6 +9,8 @@ $jade: #00B16A;
 $darkJade: darken($jade, 5);
 $lightJade: lighten($jade, 5);
 
+$gold: #ffe766;
+
 
 
 
@@ -23,12 +25,21 @@ $lightJade: lighten($jade, 5);
 
 @import "baseStyles";
 
+//____________________Reusable components_____________________
+// navbar
+@import "../features/navbar/navbar";
+
 
 //____________________Sass Files for Different Features_____________________
 
 // for example,
 @import "../features/featureTest/feature";
 
+@import "../features/course/course";
+
+@import "../features/allCourses/allCourses";
+
+@import "../features/home/_home";
 
 
 

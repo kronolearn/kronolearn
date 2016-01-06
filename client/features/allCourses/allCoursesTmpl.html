@@ -1,13 +1,28 @@
-<div class="course-block">          <!-- Make this an ng-repeat over all courses in database -->
-                                    <!-- Make this show/hide topics with an ng-click -->
-                                
-    <!--Course Title-->
-    TESTING HERE.
+<div class="allCoursesFull">
+    <div class="container allCoursesContainer">
+    
+        <input name="coursesInput" id="coursesInput" type="text" class="search-bar" placeholder="Search Courses..." ng-model="coursesearch" typeahead="course.name for course in allCoursesArray | filter:$viewValue | limitTo:8">
     
     
-    <div class="course-topic">      <!-- Make this ng-repeat over all topics in a given course -->
-                                    <!-- This will be shown/hidden with an ng-show (boolean) -->
     
+     <div class="full-block" ng-repeat="course in allCoursesArray |    filter: {name:coursesearch}">   
+            <div class="course-block" ng-click="topicsShowing=!topicsShowing">
+
+              <div>
+                 <img src="{{course.picture}}" id="course-pic">
+              </div>
+            
+              <h2>{{course.name}}</h2>
+                </br>
+              <h5>{{course.description}}</h5>
+
+         </div>
     
+         <div class="course-topic" ng-show="topicsShowing" ng-repeat="topic in course.topics">
+               <h3>{{topic}}</h3>
+         </div>
+        
+       </div>
+
     </div>
 </div>

@@ -111,7 +111,7 @@ app.put('/api/topic/:id', topicCtrl.updateTopic);
 // LocalAuth
 app.get('/api/auth', userCtrl.isAuth, userCtrl.auth);
 
-app.post('/api/authTest', passport.authenticate('local-signup', { failure: '/#/authTest' }),
+app.post('/api/signup', passport.authenticate('local-signup', { failure: '/#/authTest' }),
 	function (req, res) {
 		res.send(req.user);
 	});

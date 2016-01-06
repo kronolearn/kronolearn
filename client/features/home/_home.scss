@@ -1,0 +1,68 @@
+.home {
+
+    h1 {
+        padding: 2% 0 0 0;
+        font-size: 5em;
+    }
+
+    p {
+
+        font-size: 1.5em;
+        padding: 2%;
+    }
+
+    .background-image {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: -1;
+        background-image: url(http://www.pageresource.com/wallpapers/wallpaper/antique-clock_543456.jpg);
+        -webkit-filter: opacity(.5);
+        filter: opacity(.5);
+        background-size: cover;
+    }
+
+    .holder {
+        margin-top: 7%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .not-background {
+        background-color: rgba(203, 214, 242, .5);
+        padding-bottom: 2%;
+        text-align: center;
+        border-radius: 1em;
+    }
+
+    div {
+        button {
+            margin: 0 3%;
+            margin-top: 2%;
+        }
+    }
+    
+    .modal-content {
+        font-size: 1.5em;
+        padding: 2%;
+        padding-top: 4%;
+        padding-bottom: 4%;
+        text-align: center;
+        background-color: #d8d7d2;
+        .btn-lg {
+            padding: 5px 10px;
+        }
+    }
+    
+    input {
+        margin: 2%;
+        padding: 1%;
+        border-radius: .1em;
+        border: 0;
+    }
+
+}
+
+
