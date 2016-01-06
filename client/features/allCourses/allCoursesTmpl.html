@@ -8,14 +8,14 @@
      <div class="full-block" ng-repeat="course in allCoursesArray |    filter: {name:coursesearch}">   
             <div class="course-block" ng-click="topicsShowing=!topicsShowing">
 
-              <div>
+              
                  <img src="{{course.picture}}" id="course-pic">
-              </div>
+              
             
               <h2>{{course.name}}</h2>
                 </br>
               <h5>{{course.description}}</h5>
-
+            
          </div>
     
          <div class="course-topic" ng-show="topicsShowing" ng-repeat="topic in course.topics">
