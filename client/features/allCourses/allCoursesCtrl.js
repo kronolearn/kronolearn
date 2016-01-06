@@ -1,11 +1,21 @@
 var app = angular.module('kronolearn');
 
 
-app.controller('allCoursesCtrl', function($scope) {
+app.controller('allCoursesCtrl', function($scope, allCoursesService) {
     
     $scope.topicsShowing = false;
     
     $scope.coursesearch = undefined;
+    
+    $scope.getAllCourses = function() {
+        allCoursesService.getAllCourses().then(function(response) {
+            console.log("This is back-end response", response);
+        });
+    };
+    
+    
+    //runs every time allCoursesCtrl is loaded.
+    $scope.getAllCourses();
     
     $scope.allCoursesArray = [
         
