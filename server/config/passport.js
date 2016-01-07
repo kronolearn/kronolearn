@@ -26,7 +26,9 @@ module.exports = function (passport) {
 					return done(err);
 				if (user) {
                     console.log(done);
-					return done(null, false);
+					return done(null, false, 
+             req.flash('message','User Already Exists'));
+                    
 				} else {
 					var newUser = new User();
 					newUser.name = req.body.name;
@@ -55,9 +57,9 @@ module.exports = function (passport) {
 				if (err)
 					return done(err);
 				if (!user)
-					return done(null, false);
+					return done(null, false, req.flash('message', 'User Not found.'));
 				if (!user.validPassword(password))
-					return done(null, false);
+					return done(null, false, req.flash('message', 'Invalid Password'));
 				return done(null, user);
 			});
                 // console.log(req.body);
