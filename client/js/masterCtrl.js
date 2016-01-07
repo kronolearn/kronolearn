@@ -8,10 +8,10 @@ app.controller('masterCtrl', function($scope, masterService, $state) {
         $scope.masterCoursesArray = [];
     
         $scope.goToCourse = function(item, model, label) {
-            console.log('getting here!');
-            console.log("this is $item id: ", item._id);
-            masterService.goToCourse(item._id);
-            $state.go('course');
+           // console.log('getting here!');
+           // console.log("this is $item id: ", item._id);
+           // masterService.goToCourse(item._id);
+            $state.go('course', {courseId: item._id});
         };
     
     

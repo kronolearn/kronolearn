@@ -1,11 +1,11 @@
 angular.module('kronolearn')
-.controller('courseCtrl', function($scope, masterService, courseService) {
+.controller('courseCtrl', function($scope, masterService, courseService, $stateParams) {
 
 	$scope.message = 'hello';
 
 	// practice hooking up front end to angular, will make call to server eventually
 
-    $scope.currentCourseId = masterService.currentCourseId;
+    $scope.currentCourseId = $stateParams.courseId;
     
     $scope.getCurrentCourse = function() {
         masterService.getCurrentCourse($scope.currentCourseId).then(function(response) {
