@@ -1,8 +1,13 @@
+# ignore all css files, because we're using sass
 *.css
+#except for Bower component css, which sometimes components we need to load are in css
+!bower_components/**/*.css
+
+
 *.css.map
 .sass-cache/
 
-# bower components ignored, so that editing bootstrap file can be shown
+# bower components were ignored, but changed so that editing bootstrap file can be shown
 # bower_components
 
 *.rtf

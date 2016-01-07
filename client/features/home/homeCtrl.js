@@ -6,7 +6,7 @@ app.controller('homeCtrl', function ($scope, $http, $state, homeService) {
     // Auth signup
     $scope.signup = function () {
         if ($scope.user.password !== $scope.passwordcheck) {
-            swal("Passwordos No Se Macham");
+            swal("Your Passwords Don't Match!");
         } else {
             $http.post('/api/signup', $scope.user).then(function (user) {
                 if (user) {
