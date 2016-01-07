@@ -8,6 +8,7 @@ div.course-page-wrapper{
 	}
 
 	div.course-header{
+		padding-top: 10px;
 		margin-bottom: 50px;
 		div.row{
 			height: 100%;
@@ -21,7 +22,7 @@ div.course-page-wrapper{
 			height: 100%;
 			// background: lightblue;
 			img{
-				max-width: 220px;
+				max-width: 200px;
 				width: 100%;
 				border-radius: 5px;
 				border: 1px solid #111;
@@ -31,6 +32,9 @@ div.course-page-wrapper{
 			padding-top: 20px;
 			// background: lightgreen;
 			height: 100%;
+			h1.course-name{
+				text-decoration: underline;
+			}
 			h5{
 				margin-top: 20px;
 			}
@@ -44,6 +48,9 @@ div.course-page-wrapper{
 			text-align: center;
 			// background: gold;
 			height: 100%;
+			h3.admin-header{
+				text-decoration: underline;
+			}
 			ul.admin-images{
 				margin-top: 20px;
 				// background: gray;
@@ -62,6 +69,10 @@ div.course-page-wrapper{
 		}
 	} // course header
 
+	///////////////////////////////////////////////////
+	//  Topic container, below the header
+	///////////////////////////////////////////////////
+
 	div.topic-container{
 		// background: goldenrod;
 		div.topic{
@@ -70,14 +81,46 @@ div.course-page-wrapper{
 			text-align: center;
 			margin-bottom: 20px;
 			// background: steelblue;
-			height: 200px;
-			border: 2px solid #ddd;
+			// border: 2px solid #ddd;
 			&:hover{
 				@include transform(scale(1.05));
 			}
 
+			div.topic-header{
+				background: $jade;
+				height: 25px;
+				padding-top: 5px;
+				padding-right: 2px;
+				padding-left: 2px;
+				border-bottom: 2px solid black;
+			}
+
 			h5.topic-name{
-				margin-top: 5px;
+				color: white;
+				display: inline-block;
+			}
+			div.num-to-review{
+				margin-right: 5px;
+				float: right;
+				// position: absolute;
+				display: inline-block;
+				right: 20px;
+				top: 4px;
+				background: white;
+				width: auto;
+				padding: 0 5px 0;
+				height: 16px;
+				border-radius: 8px;
+				li{
+					color: $jade;
+				}
+			}
+
+			div.topic-body{
+				padding-top: 20px;
+				border: 2px solid #ddd;
+				border-top: none;
+				height: 200px;
 			}
 
 			img.topic-picture{
