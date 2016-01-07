@@ -10,10 +10,10 @@ var ngAnnotate = require('gulp-ng-annotate');
 //___________________Watcher________________________
 
 var watcher = gulp.watch(['./client/js/**/*.js', 
-	                        './client/css/**/*.scss', 
-	                        './client/features/**/*.scss',
-	                        './client/features/**/*.js'], 
-	                        ['default']);
+                    './client/css/**/*.scss', 
+                    './client/features/**/*.scss',
+                    './client/features/**/*.js'], 
+                    ['default']);
 
 watcher.on('change', function(event){
 	console.log('File ' + event.path + ' was ' + event.type + ' at ' + new Date() + ' , running tasks...');
@@ -24,6 +24,7 @@ watcher.on('change', function(event){
 gulp.task('javascript', function() {
 	gulp.src([
 		'./client/bower_components/jquery/dist/jquery.js',
+        './client/bower_components/sweetalert/dist/sweetalert.min.js',
 		'./client/bower_components/lodash/lodash.js',
 		// moment JS, used for time manipulations (35kb compressed.. seems worth it though)
 		// './client/bower_components/moment/moment.js',
