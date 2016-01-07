@@ -117,12 +117,23 @@ app.put('/api/card/:id', cardCtrl.updateCard);
 // LocalAuth
 app.get('/api/auth', userCtrl.isAuth, userCtrl.auth);
 
-app.post('/api/signup', passport.authenticate('local-signup', { failure: '/#/authTest' }),
+app.post('/api/signup', passport.authenticate('local-signup', { failure: '/#/' }),
 	function (req, res) {
 		res.send(req.user);
 	});
 
-app.post('/api/login', passport.authenticate('local-login', { failure: '/#/authTest' }),
+// app.post('/api/signup', function(req, res) {
+//   User.register(new User({ username: req.body.username }), req.body.password, function(err, account) {
+//     if (err) {
+//       return res.status(500).json({err: err});
+//     }
+//     passport.authenticate('local')(req, res, function () {
+//       return res.status(200).json({status: 'Registration successful!'});
+//     });
+//   });
+// });
+
+app.post('/api/login', passport.authenticate('local-login', { failure: '/#/' }),
 	function (req, res) {
 		res.send(req.user);
 	});
