@@ -13,6 +13,7 @@ var keys = require('./server/config/Secret');
 var userCtrl = require('./server/controllers/userCtrl');
 var courseCtrl = require('./server/controllers/courseCtrl');
 var topicCtrl = require('./server/controllers/topicCtrl');
+var cardCtrl = require('./server/controllers/cardCtrl');
 require('./server/config/passport')(passport);
 
 //____________________My dependencies__________________________
@@ -105,6 +106,12 @@ app.post('/api/topic', topicCtrl.addTopic);
 app.delete('/api/topic/:id', topicCtrl.removeTopic);
 app.put('/api/topic/:id', topicCtrl.updateTopic);
 
+// Card EndPionts
+app.get('/api/cards', cardCtrl.getCard);
+app.get('/api/card/:id', cardCtrl.getById);
+app.post('/api/card', cardCtrl.addCard);
+app.delete('/api/card/:id', cardCtrl.removeCard);
+app.put('/api/card/:id', cardCtrl.updateCard);
 
 
 // LocalAuth

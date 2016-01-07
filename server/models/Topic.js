@@ -1,5 +1,5 @@
 var mongoose = require('mongoose'),
-	Schema = mongoose.Schema;
+    Schema = mongoose.Schema;
     
 // var tags = ['tag1', 'tag2'];
 
@@ -7,21 +7,16 @@ var mongoose = require('mongoose'),
 
 
 	
-var	TopicSchema = Schema ({
-	name: { type: String },
-	tags: [{ type: String, default: 'tag' }],
-	description: { type: String },
-	picture: { type: String },
-	reviewMaterials: [{
-	    material: { type: String },
-        // reviewTags: [{ type: Schema.Types.ObjectId, ref: 'Topic' }]
+var TopicSchema = Schema({
+    name: { type: String, required: true },
+    tags: [{ type: String, default: 'tag', required: true }],
+    description: { type: String, required: true },
+    picture: { type: String, required: true, default: "http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=28592329" },
+    reviewMaterials: [{
+        material: { type: String },
         reviewTags: [{ type: String }]
-        //, this line gives this error. "reviewTags: [{ type: String, enum: TopicSchema.tags }], TypeError: Cannot read property 'tags' of undefined" We are going to use Ref until Peter gets back tomorrow!
-                                                      
-		// Array of Strings, enum to tags of topic (dropdown)
-}],
-	cards: [{ type: Schema.Types.ObjectId, ref: 'Card' }],
-	// Array of objectIds, referencing cards
-	});
-	
+    }],
+    cards: [{ type: Schema.Types.ObjectId, ref: 'Card' }]
+});
+
 module.exports = mongoose.model('Topic', TopicSchema);

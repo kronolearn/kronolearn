@@ -8,7 +8,7 @@ var	CourseSchema = Schema ({
 	topics: [{ type: Schema.Types.ObjectId, ref: 'Topics' }],
 	admins: [{ type: Schema.Types.ObjectId, ref: 'User' }],
 	students: [{ type: Schema.Types.ObjectId, ref: 'User' }],
-	picture: { type: String, default: 'http://img.wikinut.com/img/gycf69_-6rv_5fol/jpeg/0/Best-Friends-Img-Src%3AImage%3A-FreeDigitalPhotos.net.jpeg' }
+	picture: { type: String, default: 'http://ak2.polyvoreimg.com/cgi/img-thing/size/l/tid/41166716.jpg' }
 	});
 	
 	module.exports = mongoose.model('Course', CourseSchema);
