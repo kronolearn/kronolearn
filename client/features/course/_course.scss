@@ -47,10 +47,15 @@ div.course-page-wrapper{
 			ul.admin-images{
 				margin-top: 20px;
 				// background: gray;
-				li{
+				li.admin{
+					margin-bottom: 5px;
+					&:not(:last-of-type){
+						margin-right: 5px;
+					}
 					display: inline-block;
 				}
 				img{
+					border-radius: 50%;
 					width: 50px;
 				}
 			}
@@ -60,10 +65,27 @@ div.course-page-wrapper{
 	div.topic-container{
 		// background: goldenrod;
 		div.topic{
+			cursor: pointer;
+			@include transition(.4s ease);
+			text-align: center;
 			margin-bottom: 20px;
-			background: steelblue;
+			// background: steelblue;
 			height: 200px;
-			border: 2px solid tomato;
+			border: 2px solid #ddd;
+			&:hover{
+				@include transform(scale(1.05));
+			}
+
+			h5.topic-name{
+				margin-top: 5px;
+			}
+
+			img.topic-picture{
+				width: 100px;
+			}
+
+
+
 		}
 
 

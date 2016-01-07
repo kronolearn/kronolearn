@@ -4,51 +4,43 @@
 		<div class="course-header container">
 			<div class="row">
 				<div class="img-wrapper col-md-3 col-sm-4 col-xs-5">
-					<img src="http://lorempixel.com/400/400" alt="">
+					<img ng-src="{{course.picture}}" alt="Course Picture">
 				</div>
 				<div class="info-wrapper col-md-6 col-sm-5 col-xs-7">
-					<h1 class="course-name">Course Name</h1>
-					<h5 class="course-description">Info about course!  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis sapiente, facilis, delectus quam non, eaque ipsum saepe dolor corporis accusamus error nesciunt maiores sit aut blanditiis. Dolore amet culpa tempora!</h5>
+					<h1 class="course-name">{{course.name}}</h1>
+					<h5 class="course-description">{{course.description}}</h5>
 				</div>
 				<div class="admin-wrapper col-md-3 col-sm-3 col-xs-0">
 					<h3 class="admin-header">Admins</h3>
 					<!-- Will eventually have ng repeat here for imgs of admins -->
 					<ul class="admin-images">
-						<li class="admin"><img src="https://randomuser.me/api/portraits/men/96.jpg" alt="admin image"></li>
-						<li class="admin"><img src="https://randomuser.me/api/portraits/med/women/38.jpg" alt="admin image"></li>
-						<li class="admin"><img src="https://randomuser.me/api/portraits/med/women/80.jpg" alt="admin image"></li>
-						<li class="admin"><img src="https://randomuser.me/api/portraits/med/men/80.jpg" alt="admin image"></li>
+						<li class="admin" ng-repeat="admin in course.admins">
+							<!-- {{admin.name}} -->
+							<img ng-src="{{admin.avatar}}" alt="">
+						</li>
+
+
+
 					</ul>
 				</div>
 			</div>
 		</div><!-- container, course header-->
 
+
+
 		<div class="topic-container container">
 			<div class="row">
-				<div class="topic-wrapper col-md-3 col-sm-4 col-xs-6">
-					<div class="topic"></div>
+				<div class="topic-wrapper col-md-3 col-sm-4 col-xs-6" ng-repeat="topic in course.topics">
+					<div class="topic">
+						<h5 class="topic-name">{{topic.name}}</h5>
+
+						<hr>
+
+						<img ng-src="{{topic.picture}}" alt="" class="topic-picture">
+						
+					</div>
 				</div>
-				<div class="topic-wrapper col-md-3 col-sm-4 col-xs-6">
-					<div class="topic"></div>
-				</div>
-				<div class="topic-wrapper col-md-3 col-sm-4 col-xs-6">
-					<div class="topic"></div>
-				</div>
-				<div class="topic-wrapper col-md-3 col-sm-4 col-xs-6">
-					<div class="topic"></div>
-				</div>
-				<div class="topic-wrapper col-md-3 col-sm-4 col-xs-6">
-					<div class="topic"></div>
-				</div>
-				<div class="topic-wrapper col-md-3 col-sm-4 col-xs-6">
-					<div class="topic"></div>
-				</div>
-				<div class="topic-wrapper col-md-3 col-sm-4 col-xs-6">
-					<div class="topic"></div>
-				</div>
-				<div class="topic-wrapper col-md-3 col-sm-4 col-xs-6">
-					<div class="topic"></div>
-				</div>
+				
 			</div>
 			
 
