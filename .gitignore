@@ -1,8 +1,11 @@
-*.css
+# ignore main css compiled gulp file, because we're using sass
+client/css/main.css
+
+
 *.css.map
 .sass-cache/
 
-# bower components ignored, so that editing bootstrap file can be shown
+# bower components were ignored, but changed so that editing bootstrap file can be shown
 # bower_components
 
 *.rtf
