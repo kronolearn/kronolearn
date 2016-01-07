@@ -4,21 +4,24 @@ angular.module('kronolearn')
 	$scope.message = 'hello';
 
 	// practice hooking up front end to angular, will make call to server eventually
-    if (masterService.currentCourseId === undefined) {
-        $scope.currentCourse = $scope.course;
-    }
+
     $scope.currentCourseId = masterService.currentCourseId;
     
     $scope.getCurrentCourse = function() {
-        courseService.getCurrentCourse($scope.currentCourseId).then(function(response) {
+        masterService.getCurrentCourse($scope.currentCourseId).then(function(response) {
             
-            console.log(response);
+            console.log("ULTIMATE RESPONSE:", response);
+            $scope.currentCourse = response;
       });
-        
     }
                                                                 
     
-    $scope.getCurrentCourse();
+   //runs every time this controller loads, in order to grab the currentCourse info from the back-end
+        $scope.currentCourse = $scope.course;
+        $scope.getCurrentCourse();
+    
+    
+
     
 	$scope.course = {
 		name: 'Anatomy',

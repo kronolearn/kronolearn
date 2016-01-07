@@ -8,9 +8,20 @@ app.service('masterService', function($http) {
            // console.log("Here is response in MASTERservice:", response);
             return response.data;
         });
+    };
+    
+
+    
+        this.getCurrentCourse = function(currentCourseId) {
+            return $http.get('/api/course/' + currentCourseId).then(function(response) {
+                console.log("courseServiceRETURN", response.data);
+                return response.data;
+            });
+        }
         
         this.goToCourse = function(idNumIn) {
             this.currentCourseId = idNumIn;
+            this.getCurrentCourse(this.currentCourseId);
+            
         };
-    };
 });
