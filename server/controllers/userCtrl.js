@@ -51,8 +51,8 @@ module.exports = {
 	
 	
 	isAuth: function(req, res, next) {
-		if(req.user) {
-			next(); 
+		if(req.session.passport.user) {
+			res.send(req.session.passport.user);
 		} else {
 			res.status(403).send('Not Allowed');
 		}

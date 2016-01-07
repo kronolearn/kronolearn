@@ -20,7 +20,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
     .state('dashboard', {
         url: '/dashboard/:dashboardId',
         templateUrl: './features/dashboard/dashboardTmpl.html',
-        controller: 'dashboardCtrl'
+        controller: 'dashboardCtrl',
+        resolve:  {
+        	user: function(dashboardService){
+        	return dashboardService.checkUserLogin();
+        }
+      }
     })
     
     .state('course', {
