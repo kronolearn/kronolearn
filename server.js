@@ -13,6 +13,7 @@ var keys = require('./server/config/Secret');
 var userCtrl = require('./server/controllers/userCtrl');
 var courseCtrl = require('./server/controllers/courseCtrl');
 var topicCtrl = require('./server/controllers/topicCtrl');
+var cardCtrl = require('./server/controllers/cardCtrl');
 require('./server/config/passport')(passport);
 
 //____________________My dependencies__________________________
@@ -82,10 +83,6 @@ db.once('open', function(){
 
 
 
-app.get('/api/blah', function(req, res){
-    console.log('hello');
-    res.send('hello');
-})
 
 // User EndPoints
 app.get('/api/users', userCtrl.getUsers);
@@ -109,6 +106,12 @@ app.post('/api/topic', topicCtrl.addTopic);
 app.delete('/api/topic/:id', topicCtrl.removeTopic);
 app.put('/api/topic/:id', topicCtrl.updateTopic);
 
+// Card EndPionts
+app.get('/api/cards', cardCtrl.getCard);
+app.get('/api/card/:id', cardCtrl.getById);
+app.post('/api/card', cardCtrl.addCard);
+app.delete('/api/card/:id', cardCtrl.removeCard);
+app.put('/api/card/:id', cardCtrl.updateCard);
 
 
 // LocalAuth
@@ -122,20 +125,13 @@ app.post('/api/signup', passport.authenticate('local-signup', { failure: '/#/aut
 app.post('/api/login', passport.authenticate('local-login', { failure: '/#/authTest' }),
 	function (req, res) {
 		res.send(req.user);
-        // console.log(req.user);
 	});
-
-
 
 app.get('/api/logout', function (req, res) {
 
-    console.log('logout server js');
     req.logout();
 	req.session.destroy();
-    console.log(req.user);
     res.send('hello');
-    console.log('getting here now!!');
-    // res.redirect('/#/');
     });
 
 
