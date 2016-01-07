@@ -1,9 +1,10 @@
 var app = angular.module('kronolearn');
 
 
-app.controller('homeCtrl', function($scope, $http, $state, homeService) {
+app.controller('homeCtrl', function ($scope, $http, $state, homeService) {
 
-   $scope.signup = function () {
+    // Auth signup
+    $scope.signup = function () {
         $http.post('/api/signup', $scope.user).then(function (user) {
             if (user) {
                 $scope.user = user.data;
@@ -13,12 +14,13 @@ app.controller('homeCtrl', function($scope, $http, $state, homeService) {
         });
     };
     
-    $scope.userInfo = function(userinfo) {
+    // How the user info is getting stored
+    $scope.userInfo = function (userinfo) {
         $scope.user = homeService.returnUser();
-        };
-                    
-    $scope.userInfo();                
+    };
+    $scope.userInfo();
 
+// Auth Login
     $scope.login = function () {
         $http.post('/api/login',
             $scope.user).then(function (user) {
@@ -28,6 +30,14 @@ app.controller('homeCtrl', function($scope, $http, $state, homeService) {
                     $state.go('dashboard');
                 }
             });
-    };    
-    
+    };
+
+// Auth Logout
+    $scope.out = function () {
+        homeService.logout();
+
+    };
+
+
+
 });

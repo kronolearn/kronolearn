@@ -15,10 +15,10 @@ var UserSchema = Schema({
 			card: { type: Schema.Types.ObjectId, ref: 'Card' },
 			reviews: [{
 				date: { type: Date },
-				qResponse: { type: Number, default: 0, required: true },
-				ef: { type: Number, default: 0, required: true }
+				qResponse: { type: Number, default: 3, required: true },
+				ef: { type: Number, default: 2.5, required: true }
 			}],
-		ef: { type: Number },
+		ef: { type: Number, default: 2.5 },
 		dateNextReview: { type: Date },
 		}]
 });

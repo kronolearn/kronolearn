@@ -1,5 +1,5 @@
 var mongoose = require('mongoose'),
-	TopicSchema = require('./topic'),
+	TopicSchema = require('./Topic'),
 	Schema = mongoose.Schema;
 	
 var	CardSchema = Schema ({
@@ -8,10 +8,10 @@ var	CardSchema = Schema ({
 	    text: { type: String, required: true },
 	    correctAnswer: { type: Boolean, required: true }
 	}],
-	tags: [{ type: String, enum: TopicSchema.tags }], // Array of Strings, Enum.
+	tags: [{ type: String }],
 	QuestionType: { type: String, default: 'MultipleAnswer'},
-	numReviews: { type: Number },
-	numWrong: { type: Number }
+	numReviews: { type: Number, default: 0, required: true },
+	numWrong: { type: Number, default: 0, required: true }
 	});
 	
 module.exports = mongoose.model('Card', CardSchema);
