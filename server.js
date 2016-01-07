@@ -114,8 +114,12 @@ app.delete('/api/card/:id', cardCtrl.removeCard);
 app.put('/api/card/:id', cardCtrl.updateCard);
 
 
-// LocalAuth
-app.get('/api/auth', userCtrl.isAuth, userCtrl.auth);
+// LocalAuth, check if user is logged in (if on req.session.passport.user)
+app.get('/api/auth', userCtrl.isAuth);
+
+
+
+
 
 app.post('/api/signup', passport.authenticate('local-signup', { failure: '/#/authTest' }),
 	function (req, res) {
@@ -129,10 +133,14 @@ app.post('/api/login', passport.authenticate('local-login', { failure: '/#/authT
 
 app.get('/api/logout', function (req, res) {
 
-    req.logout();
-	req.session.destroy();
-    res.send('hello');
-    });
+  req.logout();
+	// req.session.destroy();
+	res.redirect('/');
+    // res.send('hello');
+});
+
+// app.get('/api/checkUserLogin', function(req, res){});
+
 
 
 
