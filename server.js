@@ -125,20 +125,13 @@ app.post('/api/signup', passport.authenticate('local-signup', { failure: '/#/aut
 app.post('/api/login', passport.authenticate('local-login', { failure: '/#/authTest' }),
 	function (req, res) {
 		res.send(req.user);
-        // console.log(req.user);
 	});
-
-
 
 app.get('/api/logout', function (req, res) {
 
-    // console.log('logout server js');
     req.logout();
 	req.session.destroy();
-    // console.log(req.user);
     res.send('hello');
-    // console.log('getting here now!!');
-    // res.redirect('/#/');
     });
 
 

@@ -5,7 +5,7 @@ var	CourseSchema = Schema ({
 	name: { type: String },
 	description: { type: String },
 	subjects: [{ type: String }],
-	topics: [{ type: Schema.Types.ObjectId, ref: 'Topics' }],
+	topics: [{ type: Schema.Types.ObjectId, ref: 'Topic' }],
 	admins: [{ type: Schema.Types.ObjectId, ref: 'User' }],
 	students: [{ type: Schema.Types.ObjectId, ref: 'User' }],
 	picture: { type: String, default: 'http://ak2.polyvoreimg.com/cgi/img-thing/size/l/tid/41166716.jpg' }
