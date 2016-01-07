@@ -3,7 +3,7 @@ var app = angular.module('kronolearn');
 
 app.controller('homeCtrl', function ($scope, $http, $state, homeService) {
 
-
+    // Auth signup
     $scope.signup = function () {
         $http.post('/api/signup', $scope.user).then(function (user) {
             if (user) {
@@ -13,13 +13,14 @@ app.controller('homeCtrl', function ($scope, $http, $state, homeService) {
             }
         });
     };
-
+    
+    // How the user info is getting stored
     $scope.userInfo = function (userinfo) {
         $scope.user = homeService.returnUser();
     };
-
     $scope.userInfo();
 
+// Auth Login
     $scope.login = function () {
         $http.post('/api/login',
             $scope.user).then(function (user) {
@@ -31,6 +32,7 @@ app.controller('homeCtrl', function ($scope, $http, $state, homeService) {
             });
     };
 
+// Auth Logout
     $scope.out = function () {
         homeService.logout();
 
