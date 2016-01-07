@@ -1,9 +1,29 @@
 <div class="navbar-wrapper">
 	<div class="navbar">
 		<div class="container navbar-container">
-			<div class="navbar-logo">
-				<a ui-sref="home">KronoScore</a>
-			</div>
+			
+			<div class="row">
+				<div class="navbar-search-container col-md-8">
+					<div class="navbar-logo">
+						<a ui-sref="home">KronoScore</a>
+					</div>
+
+					<div class="search-wrapper" searchbar-expand>
+						<i class="fa fa-search"></i>
+						<input class="search-bar-peter" type="text" placeholder='Search for Courses ' ng-model="myFilter.name">
+					</div>
+				</div>
+				<div class="menu-items-container col-md-4">
+
+					
+
+				</div>
+
+			</div><!-- row -->
+
+
+
+
 		</div>
 	</div>
 	
