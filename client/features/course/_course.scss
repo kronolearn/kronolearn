@@ -1,10 +1,14 @@
 div.course-page-wrapper{
 	div.container-wrapper{
+		// @include jadeGradient();
 		background: #eee;
-		height: 250px;
+		&.course-header-wrapper{
+			height: 250px;
+		}
 	}
 
 	div.course-header{
+		margin-bottom: 50px;
 		div.row{
 			height: 100%;
 		}
@@ -15,28 +19,55 @@ div.course-page-wrapper{
 			padding-top: 15px;
 			text-align: center;
 			height: 100%;
-			background: lightblue;
+			// background: lightblue;
 			img{
-				width: 220px;
+				max-width: 220px;
+				width: 100%;
 				border-radius: 5px;
 				border: 1px solid #111;
 			}
 		} // img wrapper
 		div.info-wrapper{
 			padding-top: 20px;
-			background: lightgreen;
+			// background: lightgreen;
 			height: 100%;
-			h4{
+			h5{
 				margin-top: 20px;
 			}
 		}
 
-
-
 		div.admin-wrapper{
-			background: gold;
+			@include phoneOrLess {
+				display: none;
+			}
+			padding-top: 20px;
+			text-align: center;
+			// background: gold;
 			height: 100%;
+			ul.admin-images{
+				margin-top: 20px;
+				// background: gray;
+				li{
+					display: inline-block;
+				}
+				img{
+					width: 50px;
+				}
+			}
 		}
+	} // course header
+
+	div.topic-container{
+		// background: goldenrod;
+		div.topic{
+			margin-bottom: 20px;
+			background: steelblue;
+			height: 200px;
+			border: 2px solid tomato;
+		}
+
+
+
 	}
 
 
