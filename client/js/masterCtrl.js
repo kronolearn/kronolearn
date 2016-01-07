@@ -10,6 +10,7 @@ app.controller('masterCtrl', function($scope, masterService, $state) {
         $scope.goToCourse = function(item, model, label) {
             console.log('getting here!');
             console.log("this is $item id: ", item._id);
+            masterService.goToCourse(item._id);
             $state.go('course');
         };
     

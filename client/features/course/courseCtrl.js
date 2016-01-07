@@ -1,16 +1,25 @@
 angular.module('kronolearn')
-.controller('courseCtrl', function($scope) {
+.controller('courseCtrl', function($scope, masterService, courseService) {
 
 	$scope.message = 'hello';
 
-
-
-
-
-
-
 	// practice hooking up front end to angular, will make call to server eventually
-
+    if (masterService.currentCourseId === undefined) {
+        $scope.currentCourse = $scope.course;
+    }
+    $scope.currentCourseId = masterService.currentCourseId;
+    
+    $scope.getCurrentCourse = function() {
+        courseService.getCurrentCourse($scope.currentCourseId).then(function(response) {
+            
+            console.log(response);
+      });
+        
+    }
+                                                                
+    
+    $scope.getCurrentCourse();
+    
 	$scope.course = {
 		name: 'Anatomy',
 		description: 'This is a course about human anatomy.  The course covers skeletal structure, muscles, blood vessels, and more!',

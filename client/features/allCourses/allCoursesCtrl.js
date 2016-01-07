@@ -1,7 +1,7 @@
 var app = angular.module('kronolearn');
 
 
-app.controller('allCoursesCtrl', function($scope, allCoursesService, $state) {
+app.controller('allCoursesCtrl', function($scope, allCoursesService) {
     
     $scope.topicsShowing = false;
     
