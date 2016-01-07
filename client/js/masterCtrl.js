@@ -7,7 +7,7 @@ app.controller('masterCtrl', function($scope, masterService, $state) {
     
         $scope.masterCoursesArray = [];
     
-        $scope.goToCourse = function(item, $model, $label) {
+        $scope.goToCourse = function(item, model, label) {
             console.log('getting here!');
             console.log("this is $item id: ", item._id);
             $state.go('course');
