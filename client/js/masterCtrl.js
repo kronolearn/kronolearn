@@ -1,11 +1,19 @@
 var app = angular.module('kronolearn');
 
 
-app.controller('masterCtrl', function($scope, masterService) {
+app.controller('masterCtrl', function($scope, masterService, $state) {
     
         $scope.mastercoursesearch = undefined;
     
         $scope.masterCoursesArray = [];
+    
+        $scope.goToCourse = function(item, model, label) {
+            console.log('getting here!');
+            console.log("this is $item id: ", item._id);
+            masterService.goToCourse(item._id);
+            $state.go('course');
+        };
+    
     
         $scope.getAllCourses = function() {
         masterService.getAllCourses().then(function(response) {

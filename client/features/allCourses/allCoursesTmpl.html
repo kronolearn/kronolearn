@@ -2,6 +2,7 @@
 <div class="allCoursesFull">
     <div class="container allCoursesContainer">
     
+        
         <input name="coursesInput" id="coursesInput" type="text" class="search-bar" placeholder="Search Courses..." ng-model="coursesearch" typeahead="course.name for course in allCoursesArray | filter:{name: $viewValue} | limitTo:8">
     
     
@@ -10,7 +11,7 @@
             <div class="course-block" ng-click="topicsShowing=!topicsShowing">
 
               
-                 <img src="{{course.picture}}" id="course-pic">
+                 <img ng-src="{{course.picture}}" id="course-pic">
               
             
               <h2>{{course.name}}</h2>
