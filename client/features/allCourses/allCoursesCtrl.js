@@ -10,6 +10,9 @@ app.controller('allCoursesCtrl', function($scope, allCoursesService) {
     $scope.getAllCourses = function() {
         allCoursesService.getAllCourses().then(function(response) {
             console.log("This is back-end response", response);
+            for (var i = 0; i < response.length; i++) {
+                $scope.allCoursesArray.push(response[i]);
+            }
         });
     };
     
