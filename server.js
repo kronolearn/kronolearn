@@ -129,7 +129,7 @@ app.get('/api/logout', function (req, res) {
     req.logout();
 	req.session.destroy();
     // console.log(req.user);
-    // res.send('hello');
+    res.send('hello');
     // console.log('getting here now!!');
     // res.redirect('/#/');
     });
