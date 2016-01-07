@@ -1,7 +1,5 @@
-# ignore all css files, because we're using sass
-*.css
-#except for Bower component css, which sometimes components we need to load are in css
-!bower_components/**/*.css
+# ignore main css compiled gulp file, because we're using sass
+client/css/main.css
 
 
 *.css.map
