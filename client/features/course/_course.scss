@@ -1,9 +1,44 @@
-div.course{
-	p{
-		width: 20%;
-		margin: auto;
-		font-size: 2em;
+div.course-page-wrapper{
+	div.container-wrapper{
+		background: #eee;
+		height: 250px;
 	}
+
+	div.course-header{
+		div.row{
+			height: 100%;
+		}
+		height: 100%;
+		// background: red;
+		// padding: 13px;
+		div.img-wrapper{
+			padding-top: 15px;
+			text-align: center;
+			height: 100%;
+			background: lightblue;
+			img{
+				width: 220px;
+				border-radius: 5px;
+				border: 1px solid #111;
+			}
+		} // img wrapper
+		div.info-wrapper{
+			padding-top: 20px;
+			background: lightgreen;
+			height: 100%;
+			h4{
+				margin-top: 20px;
+			}
+		}
+
+
+
+		div.admin-wrapper{
+			background: gold;
+			height: 100%;
+		}
+	}
+
 
 
 
