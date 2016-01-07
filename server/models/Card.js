@@ -1,5 +1,5 @@
 var mongoose = require('mongoose'),
-	TopicSchema = require('./topic'),
+	TopicSchema = require('./Topic'),
 	Schema = mongoose.Schema;
 	
 var	CardSchema = Schema ({

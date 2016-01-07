@@ -1,7 +1,7 @@
 var app = angular.module('kronolearn');
 
 
-app.service('homeService', function ($http) {
+app.service('homeService', function ($http, $state) {
 
     var user;
     this.saveUser = function (userInfo) {
@@ -11,5 +11,12 @@ app.service('homeService', function ($http) {
     this.returnUser = function () {
         return user;
     };
+    
+     this.logout = function () {
+		$http.get('/api/logout').then(function (response) {
+            user = {};
+            $state.go('home');
+			});
+	};
 
 });
