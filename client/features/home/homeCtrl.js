@@ -5,13 +5,17 @@ app.controller('homeCtrl', function ($scope, $http, $state, homeService) {
 
     // Auth signup
     $scope.signup = function () {
-        $http.post('/api/signup', $scope.user).then(function (user) {
-            if (user) {
-                $scope.user = user.data;
-                homeService.saveUser($scope.user);
-                $state.go('dashboard');
-            }
-        });
+        if ($scope.user.password !== $scope.passwordcheck) {
+            swal("Your Passwords Don't Match!");
+        } else {
+            $http.post('/api/signup', $scope.user).then(function (user) {
+                if (user) {
+                    $scope.user = user.data;
+                    homeService.saveUser($scope.user);
+                    $state.go('dashboard');
+                }
+            });
+        }
     };
     
     // How the user info is getting stored

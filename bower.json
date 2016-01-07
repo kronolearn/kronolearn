@@ -29,6 +29,7 @@
     "reset-css": "~2.0.2011012602",
     "wow": "~1.1.2",
     "bourbon": "~4.2.6",
-    "angular-bootstrap": "~0.14.3"
+    "angular-bootstrap": "~0.14.3",
+    "sweetalert": "~1.1.3"
   }
 }

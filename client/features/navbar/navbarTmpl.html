@@ -1,4 +1,4 @@
-<div class="navbar-wrapper">
+<div class="navbar-wrapper" ng-controller="masterCtrl">
 	<div class="navbar">
 		<div class="container navbar-container">
 			
@@ -10,7 +10,7 @@
 
 					<div class="search-wrapper" searchbar-expand>
 						<i class="fa fa-search"></i>
-						<input class="search-bar-peter" type="text" placeholder='Search for Courses ' ng-model="myFilter.name">
+						<input class="search-bar-peter" type="text" placeholder='Search for Courses ' name="masterCoursesInput" id="masterCoursesInput" class="search-bar-peter" ng-model="mastercoursesearch" typeahead="course.name for course in masterCoursesArray | filter:{name: $viewValue} | limitTo:8">
 					</div>
 				</div>
 				<div class="menu-items-container col-md-4">

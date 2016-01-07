@@ -33,6 +33,7 @@
     "mongoose": "^4.3.4",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "request": "^2.67.0"
+    "request": "^2.67.0",
+    "sweetalert": "^1.1.3"
   }
 }
