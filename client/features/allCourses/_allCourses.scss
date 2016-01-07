@@ -2,7 +2,7 @@
     height: 100%;
     min-height: 960px;
     width: 100%;
-    background: url(http://www.pageresource.com/wallpapers/wallpaper/antique-clock_543456.jpg) no-repeat center center fixed;
+    background: url(http://7-themes.com/data_images/out/67/7002557-clock-wood-focus.jpg) no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -18,7 +18,7 @@
     width: 500px;
     border: 1px solid #000;
     color: #00a86b;
-    background-color: #eaeaea;
+    background-color: #fff;
     border-radius: 1em;
 }
 
@@ -44,7 +44,7 @@
     width: 75%;
     height: 100px;
     border: 2px solid #000;
-    background-color: #00a865;
+    background-color: /*#00a865*/ rgba(203, 214, 242, .95);
     margin: 25px auto 0 auto;
     border-radius: 1em;
     &:hover{
