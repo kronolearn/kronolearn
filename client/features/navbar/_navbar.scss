@@ -8,6 +8,15 @@ div.navbar-wrapper{
 		max-width: 1500px;
 	}
 
+	// container for logo and search bar, just so that search bar contained
+	div.navbar-search-container{
+		position: relative;
+		width: 60%;
+	}
+
+
+
+
 	// 	// navbar spacer, just to make sure navbar appears
 	div.navbar-spacer{
 		height: 20px;
@@ -34,6 +43,8 @@ div.navbar-wrapper{
 	}
 
 	div.navbar-logo{
+		display: inline-block;
+		margin-right: 200px;
 		// background: blue;
 		a{
 			color: white;

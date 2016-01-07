@@ -1,0 +1,49 @@
+div.search-wrapper{
+	display: inline-block;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	font-size: 1.7rem;
+	margin-right: 20px;
+	width: 270px;
+	// max-width: 270px;
+	padding-left: 30px;
+	padding-right: 5px;
+	border-radius: 17px;
+	height: 34px;
+	border: 2px solid #ddd; 
+	@include transition(.5s ease);
+	background: #fafafa;
+	
+
+	&.expand{
+		width: 330px;
+	}
+	// float: right;
+	// z-index: 10;
+	input.search-bar-peter{
+		// height: 100%;
+		width: 100%;
+		// display: table;
+		padding-left: 2px;
+		position: relative;
+		bottom: 2px;
+		border-radius: 3px;
+		font-size: .5em;
+		width: 95%;
+		border: none;
+		background: #fafafa;
+		&:focus{
+			outline: none;
+			border: none;
+		}
+	}
+	// search fontawesome icon
+	i.fa-search{
+		color: #ddd;
+		font-size: .65em;
+		position: absolute;
+		left: 7px;
+		top: 6px;
+	}
+}
