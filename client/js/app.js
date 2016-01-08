@@ -12,7 +12,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     })
     
     .state('topic', {
-        url: '/topic/:topicId',
+        url: '/course/:courseId/topic/:topicId',
         templateUrl: './features/topic/topicTmpl.html',
         controller: 'topicCtrl'
     })
@@ -33,7 +33,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
         templateUrl: './features/course/courseTmpl.html',
         controller: 'courseCtrl'
     })
-    
+
     .state('authTest', {
         url: '/authTest',
         templateUrl: './features/authTest/authTestTmpl.html',

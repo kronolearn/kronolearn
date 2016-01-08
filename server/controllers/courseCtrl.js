@@ -21,11 +21,14 @@ module.exports = {
 	},
 	
 	getById: function(req, res) {
-		Course.findById(req.params.id)
+
+        console.log(req.params.id);
+		Course.findOne({ courseNumber: Number(req.params.id )})
 		.populate('admins')
 		.populate('topics')
 
 		.exec(function(err, data) {
+
 			if (err) {
 				res.status(500).send(err);
 			} else {
