@@ -2,7 +2,7 @@ var Topic = require('../models/Topic');
 
 module.exports = {
     
-    getTopic: function(req, res) {
+    getTopics: function(req, res) {
 		Topic.find().then(function (response) {
 			res.send(response);
 		});
