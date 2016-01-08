@@ -19,7 +19,8 @@ module.exports = {
 	},
 	
 	getById: function(req, res) {
-		Course.findById(req.params.id, req.body, function(err, data) {
+        console.log(req.params.id);
+		Course.findOne({ courseNumber: Number(req.params.id)}, function(err, data) {
 			if (err) {
 				res.status(500).send(err);
 			} else {

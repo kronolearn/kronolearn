@@ -5,10 +5,10 @@ angular.module('kronolearn')
 
 	// practice hooking up front end to angular, will make call to server eventually
 
-    $scope.currentCourseId = $stateParams.courseId;
-    
+    $scope.currentCourseNumber = $stateParams;
     $scope.getCurrentCourse = function() {
-        masterService.getCurrentCourse($scope.currentCourseId).then(function(response) {
+        console.log("===test 1: ", $scope.currentCourseNumber);
+        masterService.getCurrentCourse($scope.currentCourseNumber).then(function(response) {
             
             console.log("ULTIMATE RESPONSE:", response);
             $scope.currentCourse = response;
