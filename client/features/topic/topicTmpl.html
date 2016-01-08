@@ -1,0 +1,22 @@
+
+<navbar></navbar>
+<div class="topic">
+    <div class="heading">
+        <img src="{{topic.picture}}">
+        <h1>{{topic.name}}</h1>
+
+    </div>
+    <p class="description">{{topic.description}}</p>
+    
+    <h2 class="review">Review Materials:</h2>
+    
+    <div class="review list">
+        <div ng-repeat="reviewMaterial in reviewMaterials">{{reviewMaterial.material}}</div>
+        
+    </div>
+    
+    <div class="learn">
+        <button class="btn btn-lg btn-primary">Kronolearn</button>
+    </div>
+        
+</div>
