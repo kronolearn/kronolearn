@@ -14,7 +14,8 @@ var TopicSchema = Schema({
     picture: { type: String, required: true, default: "http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=28592329" },
     reviewMaterials: [{
         material: { type: String },
-        reviewTags: [{ type: String }]
+        reviewTags: [{ type: String }],
+        materialUrl: { type: String }
     }],
     cards: [{ type: Schema.Types.ObjectId, ref: 'Card' }]
 });
