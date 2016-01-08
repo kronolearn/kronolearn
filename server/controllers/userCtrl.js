@@ -1,6 +1,38 @@
 var User = require('../models/User');
 
 module.exports = {
+
+	getUserAndCourses: function(req, res){
+		console.log('getting to get user andc ourses back end');
+		if(req.session.passport.user){
+			var userId = req.session.passport.user._id;
+			User.findById(userId)
+			.populate('coursesEnrolledIn')
+			.populate('coursesAdminFor')
+			// populate all cards-- array of card objects, and object ID is nested object card proprety
+			.populate('cards.card')
+
+
+			.exec(function(err, data){
+				var options = {
+					path: 'cards.card',
+					model: 'Card'
+				};
+				if(err){
+					console.log(err);
+					res.status(500).send(err);
+				}
+				else{
+					res.send(data);
+				}
+			})
+		}
+
+
+	},
+
+
+
 	
 	
 	getUsers: function(req, res) {
@@ -40,13 +72,13 @@ module.exports = {
 	},
 	
 	updateUser: function (req, res) {
-        User.findByIdAndUpdate(req.params.id, req.body, function (err, data) {
-            if (err) {
-                res.status(500).send(err);
-            } else {
-                res.send(data);
-            }
-        });
+		User.findByIdAndUpdate(req.params.id, req.body, function (err, data) {
+			if (err) {
+				res.status(500).send(err);
+			} else {
+				res.send(data);
+			}
+		});
 	},
 	
 	

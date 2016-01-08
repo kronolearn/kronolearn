@@ -23,7 +23,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
         controller: 'dashboardCtrl',
         resolve:  {
         	user: function(dashboardService){
-        	return dashboardService.checkUserLogin();
+        	return dashboardService.getUserAndCourses();
         }
       }
     })

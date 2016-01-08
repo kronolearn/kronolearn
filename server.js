@@ -91,6 +91,11 @@ app.post('/api/user', userCtrl.addUser);
 app.delete('/api/user/:id', userCtrl.removeUser);
 app.put('/api/user/:id', userCtrl.updateUser);
 
+app.get('/api/userAndCourses', userCtrl.getUserAndCourses);
+
+
+
+
 // Course EndPoints
 app.get('/api/courses', courseCtrl.getCourses);
 app.get('/api/course/:id', courseCtrl.getById);
