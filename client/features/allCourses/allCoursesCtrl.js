@@ -7,6 +7,23 @@ app.controller('allCoursesCtrl', function($scope, allCoursesService, $state) {
     
     $scope.coursesearch = undefined;
     
+    $scope.allSubjects = [];
+    
+    $scope.allCoursesArray = [];
+    
+    $scope.getSubjects = function() {
+        console.log("HERE");
+
+        for (var i = 0; i < $scope.allCoursesArray.length; i++) {
+            console.log("how many subjects?", $scope.allCoursesArray[i].subjects);
+            for (var j = 0; j < $scope.allCoursesArray[i].subjects.length; j++) {
+                if ($scope.allSubjects.indexOf($scope.allCoursesArray[i].subjects[j] === -1)) {
+                    $scope.allSubjects.push($scope.allCoursesArray[i].subjects[j]);
+                }
+            }
+        }
+    };
+    
     $scope.getAllCourses = function() {
         allCoursesService.getAllCourses().then(function(response) {
             console.log("This is back-end response", response);
@@ -14,6 +31,9 @@ app.controller('allCoursesCtrl', function($scope, allCoursesService, $state) {
                 $scope.allCoursesArray.push(response[i]);
             }
         });
+        $scope.getSubjects();
+        console.log("all the subjects...");
+        console.log($scope.allSubjects);
     };
     
     
@@ -24,7 +44,5 @@ app.controller('allCoursesCtrl', function($scope, allCoursesService, $state) {
         console.log('tHiS iS iNdEx:', courseIn.courseNumber);
         $state.go('course', {courseId: courseIn.courseNumber});
     };
-    
-    $scope.allCoursesArray = [];
     
 });
