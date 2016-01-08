@@ -1,7 +1,7 @@
 var app = angular.module('kronolearn');
 
 
-app.controller('allCoursesCtrl', function($scope, allCoursesService) {
+app.controller('allCoursesCtrl', function($scope, allCoursesService, $state) {
     
     $scope.topicsShowing = false;
     
@@ -19,6 +19,11 @@ app.controller('allCoursesCtrl', function($scope, allCoursesService) {
     
     //runs every time allCoursesCtrl is loaded.
     $scope.getAllCourses();
+    
+    $scope.goToCoursePage = function(courseIn) {
+        console.log('tHiS iS iNdEx:', courseIn);
+        $state.go('course', {courseId: courseIn._id});
+    };
     
     $scope.allCoursesArray = [
         
