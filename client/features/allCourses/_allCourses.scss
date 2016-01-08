@@ -4,6 +4,7 @@
     width: 100%;
     background: url(http://7-themes.com/data_images/out/67/7002557-clock-wood-focus.jpg) no-repeat center center fixed;
     background-size: cover;
+    padding-bottom: 20px;
 }
 
 .allCoursesContainer {
@@ -34,22 +35,29 @@
 
 .allCoursesFull .course-block h5 {
     width: 90%;
+    /*padding-right: 200px; */
+  /*  width: 90%;
     text-overflow: clip;
-    text-overflow: ellipsis;
+    text-overflow: ellipsis; */
 
 }
 
 .allCoursesFull .course-block {
    @include transition(.4s ease);
     width: 75%;
-    height: 100px;
+    min-height: 100px;
     border: 2px solid #000;
     background-color: /*#00a865*/ rgba(203, 214, 242, .95);
     margin: 25px auto 0 auto;
     border-radius: 1em;
+    position:relative;
     &:hover{
         @include transform(scale(1.05));
     }
+}
+
+.allCoursesFull .info-contain {
+    padding: 0 100px;
 }
 
 /*
@@ -93,9 +101,15 @@
     border-radius: 1em;
 }
 
-.allCoursesFull .launch-course {
+/*.allCoursesFull .launch-course {
     height: 50px;
     font-size: 24px;
+}*/
+
+.allCoursesFull .go-course-button {
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
 }
 
 //-------MEDIA QUERIES---------------
