@@ -1,9 +1,8 @@
 angular.module('kronolearn')
 .controller('courseCtrl', function($scope, masterService, courseService, $stateParams, $state) {
-<<<<<<< HEAD
-=======
+
 	var courseId = $stateParams.courseId;
->>>>>>> master
+
 
 	$scope.message = 'hello';
 

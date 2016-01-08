@@ -1,10 +1,6 @@
 var app = angular.module("kronolearn");
 
-<<<<<<< HEAD
-app.controller('topicCtrl', function ($scope, topicService, $stateParams) {
 
-    $scope.num = "23";
-=======
 app.controller('topicCtrl', function($scope, topicService, $stateParams, courseService) {
 	var topicId = $stateParams.topicId;
 	var courseId = $stateParams.courseId;
@@ -16,7 +12,6 @@ app.controller('topicCtrl', function($scope, topicService, $stateParams, courseS
 		})
 	}
 
->>>>>>> master
     
     function progress(percent, element) {
         var progressBarWidth = percent * element.width() / 100;
@@ -41,21 +36,14 @@ app.controller('topicCtrl', function($scope, topicService, $stateParams, courseS
     });
 
     $scope.getTopic = function () {
-<<<<<<< HEAD
-        topicService.getTopic($stateParams.topicId).then(function (response) {
-=======
         topicService.getTopic(topicId).then(function(response) {
->>>>>>> master
+
             $scope.topic = response;
             $scope.reviewMaterials = response.reviewMaterials;
         })
     }
-<<<<<<< HEAD
 
-=======
-    
     $scope.getCourse();
->>>>>>> master
     $scope.getTopic();
 
 });
