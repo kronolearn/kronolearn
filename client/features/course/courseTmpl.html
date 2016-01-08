@@ -27,12 +27,16 @@
 			</div>
 		</div><!-- container, course header-->
 
+		<div ui-view></div>
+
 
 
 		<div class="topic-container container">
 			<div class="row">
 				<div class="topic-wrapper col-md-3 col-sm-4 col-xs-6" ng-repeat="topic in currentCourse.topics">
-					<div class="topic">
+
+					<div class="topic" ng-click="goToTopic(topic._id)">
+
 
 						<div class="topic-header">
 							<h5 class="topic-name">{{topic.name}}</h5>
