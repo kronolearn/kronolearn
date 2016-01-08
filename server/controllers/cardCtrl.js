@@ -1,8 +1,8 @@
 var Card = require('../models/Card');
 
 module.exports = {
-    
-    getCard: function(req, res) {
+	
+	getCards: function(req, res) {
 		Card.find().then(function (response) {
 			res.send(response);
 		});
@@ -39,13 +39,13 @@ module.exports = {
 	},
 	
 	updateCard: function (req, res) {
-        Card.findByIdAndUpdate(req.params.id, req.body, function (err, data) {
-            if (err) {
-                res.status(500).send(err);
-            } else {
-                res.send(data);
-            }
-        });
+		Card.findByIdAndUpdate(req.params.id, req.body, function (err, data) {
+			if (err) {
+				res.status(500).send(err);
+			} else {
+				res.send(data);
+			}
+		});
 	},
-    
+	
 };
