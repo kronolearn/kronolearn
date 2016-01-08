@@ -7,6 +7,26 @@
     padding-bottom: 20px;
 }
 
+.allCoursesFull .subject-filter-block {
+    background-color: /*#00a865*/ rgba(203, 214, 242, .95);
+    border-radius: 1em;
+    width: 200px;
+    height: 700px;
+    padding: 10px 10px 10px 20px;
+    position: absolute;
+    left: 0;
+    top: 15%;
+    //overflow-y: scroll;
+    line-height: 30px;
+    @include transition(.4s ease);
+}
+
+.allCoursesFull .subject-filter-block p:hover {
+    background-color: #028e5b;
+    cursor: pointer;
+     @include transform(scale(1.05));
+}
+
 .allCoursesContainer {
     text-align: center;
 }

@@ -22,7 +22,6 @@ module.exports = {
 	
 	getById: function(req, res) {
 
-        console.log(req.params.id);
 		Course.findOne({ courseNumber: Number(req.params.id )})
 		.populate('admins')
 		.populate('topics')
