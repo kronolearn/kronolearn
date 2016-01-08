@@ -2,7 +2,7 @@
 
 <div class="allCoursesFull">
   <div class="subject-filter-block">
-      <p ng-repeat="subject in allSubjects">{{subject}}</p>
+      <p ng-repeat="subject in allSubjects | orderBy: +subject" ng-click="changeFilterSubject(subject)">{{subject}}</p>
   </div>
     <div class="container allCoursesContainer">
     
@@ -11,7 +11,7 @@
     <!-- I commented out the TYPEAHEAD...can be put back into <input> if desired-->
     
     
-     <div class="full-block" ng-repeat="course in allCoursesArray |    filter: {name:coursesearch}">   
+     <div class="full-block" ng-repeat="course in allCoursesArray | filter: {name:coursesearch} | filter: {subjects:subjectFilter}">   
             <div class="course-block" ng-click="topicsShowing=!topicsShowing">
 
               
