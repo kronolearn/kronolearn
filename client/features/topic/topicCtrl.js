@@ -2,6 +2,7 @@ var app = angular.module("kronolearn");
 
 app.controller('topicCtrl', function ($scope, topicService, $stateParams) {
 
+    $scope.num = "23";
     
     function progress(percent, element) {
         var progressBarWidth = percent * element.width() / 100;
