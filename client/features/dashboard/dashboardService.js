@@ -9,6 +9,15 @@ app.service('dashboardService', function($http, $state) {
 			console.log(response);
 			return response.data;
 		})
+	};
+
+	this.getUserAndCourses = function(){
+		console.log('getting here in service');
+		return $http.get('/api/userAndCourses')
+		.then(function(response){
+			console.log('response in service is', response.data);
+			return response.data;
+		})
 	}
     
     

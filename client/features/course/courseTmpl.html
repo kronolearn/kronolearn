@@ -16,8 +16,9 @@
 					<ul class="admin-images">
 						<li class="admin" ng-repeat="admin in currentCourse.admins">
 							<!-- {{admin.name}} -->
-							<img ng-src="{{admin.avatar}}" alt=""
+							<img ng-if="admin.avatar"ng-src="{{admin.avatar}}" alt=""
 							data-toggle="tooltip" data-placement="bottom" title="hello">
+							<img ng-hide="admin.avatar" src="img/user.png" alt="">
 						</li>
 
 
