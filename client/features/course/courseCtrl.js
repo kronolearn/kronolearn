@@ -1,6 +1,8 @@
 angular.module('kronolearn')
 .controller('courseCtrl', function($scope, masterService, courseService, $stateParams, $state) {
+
 	var courseId = $stateParams.courseId;
+
 
 	$scope.message = 'hello';
 
@@ -14,6 +16,10 @@ angular.module('kronolearn')
             console.log("ULTIMATE RESPONSE:", response);
             $scope.currentCourse = response;
       });
+    }
+    
+    $scope.goToTopic = function (id) {
+        $state.go('topic', { topicId: id });
     }
                                                                 
     
