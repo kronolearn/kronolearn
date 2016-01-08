@@ -92,7 +92,7 @@ app.delete('/api/user/:id', userCtrl.removeUser);
 app.put('/api/user/:id', userCtrl.updateUser);
 
 // Course EndPoints
-app.get('/api/courses', courseCtrl.getCourse);
+app.get('/api/courses', courseCtrl.getCourses);
 app.get('/api/course/:id', courseCtrl.getById);
 app.post('/api/course', courseCtrl.addCourse);
 app.delete('/api/course/:id', courseCtrl.removeCourse);
@@ -100,14 +100,14 @@ app.put('/api/course/:id', courseCtrl.updateCourse);
 
 
 // Topic EndPoints
-app.get('/api/topics', topicCtrl.getTopic);
+app.get('/api/topics', topicCtrl.getTopics);
 app.get('/api/topic/:id', topicCtrl.getById);
 app.post('/api/topic', topicCtrl.addTopic);
 app.delete('/api/topic/:id', topicCtrl.removeTopic);
 app.put('/api/topic/:id', topicCtrl.updateTopic);
 
 // Card EndPionts
-app.get('/api/cards', cardCtrl.getCard);
+app.get('/api/cards', cardCtrl.getCards);
 app.get('/api/card/:id', cardCtrl.getById);
 app.post('/api/card', cardCtrl.addCard);
 app.delete('/api/card/:id', cardCtrl.removeCard);

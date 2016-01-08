@@ -2,8 +2,10 @@ var Course = require('../models/Course');
 
 module.exports = {
     
-    getCourse: function(req, res) {
-		Course.find().then(function (response) {
+    getCourses: function(req, res) {
+		Course.find()
+
+		.then(function (response) {
 			res.send(response);
 		});
 	},
@@ -19,7 +21,11 @@ module.exports = {
 	},
 	
 	getById: function(req, res) {
-		Course.findById(req.params.id, req.body, function(err, data) {
+		Course.findById(req.params.id)
+		.populate('admins')
+		.populate('topics')
+
+		.exec(function(err, data) {
 			if (err) {
 				res.status(500).send(err);
 			} else {
