@@ -44,6 +44,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
         url: '/allCourses',
         templateUrl: './features/allCourses/allCoursesTmpl.html',
         controller: 'allCoursesCtrl'
+    })
+    
+    .state('card', {
+        url: '/card',
+        templateUrl: './features/card/cardTmpl.html',
+        controller: 'cardCtrl'
     });
     
     $urlRouterProvider.otherwise('/');
