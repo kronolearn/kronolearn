@@ -11,12 +11,12 @@
     <h2 class="review">Review Materials:</h2>
     
     <div class="review list">
-        <div ng-repeat="reviewMaterial in reviewMaterials">{{reviewMaterial.material}}</div>
+        <div ng-repeat="reviewMaterial in reviewMaterials"><a href="{{reviewMaterial.materialUrl}}" target="_blank">{{reviewMaterial.material}}</a></div>
         
     </div>
     
     <div class="learn">
-        <button class="btn btn-lg btn-primary">Kronolearn</button>
+        <button class="btn btn-lg btn-primary" ng-click="goToQuiz(topic._id)">Start Quiz!</button>
     </div>
     
     <div class="progressBar" id="75"><div></div></div>

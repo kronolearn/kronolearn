@@ -1,7 +1,7 @@
 var app = angular.module("kronolearn");
 
 
-app.controller('topicCtrl', function($scope, topicService, $stateParams, courseService) {
+app.controller('topicCtrl', function($scope, topicService, $stateParams, courseService, $state) {
 	var topicId = $stateParams.topicId;
 	var courseId = $stateParams.courseId;
 
@@ -45,5 +45,9 @@ app.controller('topicCtrl', function($scope, topicService, $stateParams, courseS
 
     $scope.getCourse();
     $scope.getTopic();
+    
+    $scope.goToQuiz = function(topicId) {  
+        $state.go('card', {topicId: topicId});
+    };
 
 });
