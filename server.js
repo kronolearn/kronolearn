@@ -54,7 +54,7 @@ app.use(passport.session());
 
 
 // serving index.html file
-app.use(express.static(__dirname+'/client'));
+app.use(express.static(__dirname + '/client'));
 
 
 
@@ -66,18 +66,18 @@ app.use(express.static(__dirname+'/client'));
 
 //_________________________Mongoose Connecting__________________________
 
-mongoose.connect(mongoUri, function(err){
-	if(err) console.log(err);
+mongoose.connect(mongoUri, function (err) {
+    if (err) console.log(err);
 });
 
 var db = mongoose.connection;
 
-db.on('error', function(){
-	console.log('error');
+db.on('error', function () {
+    console.log('error');
 });
 
-db.once('open', function(){
-	console.log('MongoDB is running!');
+db.once('open', function () {
+    console.log('MongoDB is running!');
 });
 
 
@@ -127,20 +127,22 @@ app.get('/api/auth', userCtrl.isAuth);
 
 
 app.post('/api/signup', passport.authenticate('local-signup', { failure: '/#/authTest' }),
-	function (req, res) {
-		res.send(req.user);
-	});
+    function (req, res) {
+        res.send(req.user);
+    });
 
-app.post('/api/login', passport.authenticate('local-login', { failure: '/#/authTest' }),
+
+app.post('/api/login', passport.authenticate('local-login'),
 	function (req, res) {
+        // console.log("server.js" + message);
 		res.send(req.user);
 	});
 
 app.get('/api/logout', function (req, res) {
 
-  req.logout();
-	// req.session.destroy();
-	res.redirect('/');
+    req.logout();
+    // req.session.destroy();
+    res.redirect('/');
     // res.send('hello');
 });
 
@@ -156,6 +158,6 @@ app.get('/api/logout', function (req, res) {
 //_____________Connecting to Port_________________
 var port = process.env.PORT || 3000;
 
-app.listen(port, function(){
-	console.log('listening to port ', port);
+app.listen(port, function () {
+    console.log('listening to port ', port);
 });

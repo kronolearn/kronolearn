@@ -2,7 +2,7 @@ var app = angular.module('kronolearn');
 
 
 app.controller('homeCtrl', function ($scope, $http, $state, homeService) {
-
+$scope.loginMess = "";
     // Auth signup
     $scope.signup = function () {
         if ($scope.user.password !== $scope.passwordcheck) {
@@ -26,12 +26,18 @@ app.controller('homeCtrl', function ($scope, $http, $state, homeService) {
    
 // Auth Login
     $scope.login = function () {
+        $scope.loginMess = "";
         $http.post('/api/login',
             $scope.user).then(function (user) {
+                // console.log("hit one");
                 if (user) {
                     $state.go('dashboard');
                 }
+            }).catch(function(err) {
+                console.log(err);
+                $scope.loginMess = "That user doesnt exist";
             });
+            ;
     };
 
 

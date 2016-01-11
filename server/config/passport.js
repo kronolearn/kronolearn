@@ -52,16 +52,23 @@ module.exports = function (passport) {
 	},
 		function (req, email, password, done) {
 			User.findOne({ 'email': email }, function (err, user) {
-				if (err)
-					return done(err);
-				if (!user)
+            console.log("Our user!!!!!!!!" + err);
+				if (err){
+                console.log('hit1');
+					return done(err);};
+				if (user === null) {
+                console.log('hit2');
+                // user.message = "Incorrect";
+				// 	return done(null, user);
 					return done(null, false);
-				if (!user.validPassword(password))
+                };
+				if (!user.validPassword(password)){
+                console.log('hit3');
 					return done(null, false);
+                }
 				return done(null, user);
 			});
                 // console.log(req.body);
-                console.log(req.user);
 		}));
 
 };	
