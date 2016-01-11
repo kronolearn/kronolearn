@@ -10,6 +10,7 @@ div.navbar-wrapper{
 
 	// container for logo and search bar, just so that search bar contained
 	div.navbar-search-container{
+		display: inline-block;
 		position: relative;
 		width: 60%;
 	}
@@ -57,8 +58,134 @@ div.navbar-wrapper{
 		}
 	}
 
+	///////////////////////////////////////////////////
+	//  User profile, copied from mediascore project
+	///////////////////////////////////////////////////
 
 
+	div.user-profile{
+		position: relative;
+		top: -8px;
+		font-size: 1rem;
+		// background: red;
+		padding-right: 35px;
+		height: 44px;
+		float: right;
+		margin-right: 30px;
+		@include phoneOrLess {
+			margin-right: 5px;
+		}
+		&:hover{
+			cursor: pointer;
+		}
+	}
+	img.user-profile{
+		margin-right: 10px;
+		position: relative;
+		display: inline-block;
+		width: 44px;
+		border-radius: 5px;
+		// float: right;
+	}
+	li{
+		display: inline-block;
+		font-size: .9em;
+		color: white;
+		// background: blue;
+		position: relative;
+		bottom: 14px;
+		position: relative;
+		i.fa{
+			position: absolute;
+			right: -22px;
+			top: -6px;
+			font-size: 1.8em;
+			// @include transition(.3s ease);
+
+		}
+	}
+
+	// user menu part
+	div.user-menu{
+		z-index: 10000;
+		border: 2px solid black;
+		border-top: none;
+		width: 120px;
+		position: absolute;
+		top: 46px;
+		right: 10px;
+		@include phoneOrLess {
+			right: 10px;
+		}
+		background: #f5f5f5;
+
+		a.menu-item-wrapper:not(:last-of-type){
+			div.menu-item{
+				border-bottom: 1px solid black;
+			}
+		}
+
+		div.menu-item{
+			height: 45px;
+			@include transition(.5s ease);
+			// background: orange;
+			padding: 5px 0;
+			&:hover{
+				// make color match gradient at point of menut
+				background: #00B66D;
+				// slightly different for phones
+				@include phoneOrLess {
+					background: #00AC67;
+				}
+				li{
+					color: white;
+				}
+				i{
+					color: white;
+				}
+
+			}
+		}
+
+		li{
+			font-size: .9em;
+			margin-top: 12px;
+			float: left;
+			margin-left: 10px;
+			color: black;
+			display: inline-block;
+			position: relative;
+			top: -5px;
+			@include transition(.5s ease);
+		}
+		// logout, user profile icons
+		i.fa{
+			top: 7px;
+			font-size: 1.3em;
+			color: black;
+			float: right;
+			margin-right: 8px;
+			position: relative;
+			@include transition(.5s ease);
+		}
+		i.fa-sign-out{
+			color: black;
+			float: right;
+			top: 7px;
+			@include transition(.5s ease);
+		}
+	}
+
+	// when show menu class toggled, rotate caret
+	div.user-profile.show-menu{
+		i.fa-caret-down{
+			@include transform(rotate(180deg));
+		}
+	}
+
+	///////////////////////////////////////////////////
+	//  End copied navbar code
+	///////////////////////////////////////////////////
 
 
 

@@ -1,4 +1,5 @@
 angular.module('kronolearn')
+
 .directive('searchbarExpand', function(){
 	return {
 		link: function(scope, elem, attrs){
@@ -32,4 +33,39 @@ angular.module('kronolearn')
 		});
 		}
 	}
-})
+}) // end of search bar expand directive
+
+
+// user menu of results tab
+angular.module('kronolearn')
+.directive('userMenu', function(){
+	return {
+		link: function(scope, elem, attrs){
+			$(function(){
+				var $userProfile = $(elem);
+				var $userMenu = $userProfile.find('.user-menu');
+
+				// hides usermenu at first, to be sure
+				$userProfile.removeClass('show-menu');
+				$userMenu.hide();
+
+				// when clicked, toggle userMenu, and toggle class
+				// font awesome caret icon
+				$userProfile.click(function(e){
+					e.stopPropagation();
+					$userMenu.toggle();
+					$userProfile.toggleClass('show-menu');
+				});
+
+				// clicking anywhere else can close window as well
+				$('html').click(function(e){
+					if($userProfile.hasClass('show-menu')) {
+						$userProfile.removeClass('show-menu');
+						$userMenu.toggle();
+					}
+				}) // end of html click event
+
+			}) // jquery ready
+		}
+	}
+});
