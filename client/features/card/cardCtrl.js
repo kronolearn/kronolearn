@@ -1,6 +1,8 @@
 var app = angular.module('kronolearn');
 
 
-app.controller('cardCtrl', function($scope) {
+app.controller('cardCtrl', function($scope, $stateParams) {
+    
+
     
 });

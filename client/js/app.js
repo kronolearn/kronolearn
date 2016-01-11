@@ -47,7 +47,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     })
     
     .state('card', {
-        url: '/card',
+        url: '/topic/:topicId/card',
         templateUrl: './features/card/cardTmpl.html',
         controller: 'cardCtrl'
     });
