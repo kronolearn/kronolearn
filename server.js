@@ -128,9 +128,9 @@ app.post('/api/signup', passport.authenticate('local-signup', { failure: '/#/aut
 
 
 app.post('/api/login', passport.authenticate('local-login'),
-	function (message, req, res) {
-        console.log("server.js" + message);
-		res.send(req);
+	function (req, res) {
+        // console.log("server.js" + message);
+		res.send(req.user);
 	});
 
 app.get('/api/logout', function (req, res) {

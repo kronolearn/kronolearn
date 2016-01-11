@@ -60,12 +60,12 @@ module.exports = function (passport) {
                 console.log('hit2');
                 // user.message = "Incorrect";
 				// 	return done(null, user);
-					return done(null, false, {message: "That user does not exist."});
+					return done(null, false);
                 };
-				// if (!user.validPassword(password)){
-                // console.log('hit3');
-				// 	return done(null, false, {message: "Incorrect password."});};
-                // console.log("passport");
+				if (!user.validPassword(password)){
+                console.log('hit3');
+					return done(null, false);
+                }
 				return done(null, user);
 			});
                 // console.log(req.body);
