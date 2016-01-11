@@ -1,4 +1,4 @@
-<div class="course-page-wrapper">
+<div class="create-course-page-wrapper">
 	<div navbar></div>
 	<div class="container-wrapper course-header-wrapper">
 		<div class="course-header container">
@@ -31,36 +31,7 @@
 
 
 
-		<div class="topic-container container">
-			<div class="row">
-				<div class="topic-wrapper col-md-3 col-sm-4 col-xs-6" ng-repeat="topic in currentCourse.topics">
-
-					<div class="topic" ng-click="goToTopic(topic._id)">
-
-
-						<div class="topic-header">
-							<h5 class="topic-name">{{topic.name}}</h5>
-							<div class="num-to-review">
-								<li>{{topic.numToReview}}</li>
-							</div>
-						</div>
-
-						<div class="topic-body">
-							<img ng-src="{{topic.picture}}" alt="" class="topic-picture">
-						</div>
-
-
-
-						
-					</div>
-				</div>
-				
-			</div>
-			
-
-
-
-		</div>
+		
 
 		
 	</div><!-- container wrapper-->

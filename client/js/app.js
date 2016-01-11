@@ -50,7 +50,30 @@ app.config(function($stateProvider, $urlRouterProvider) {
         url: '/topic/:topicId/card',
         templateUrl: './features/card/cardTmpl.html',
         controller: 'cardCtrl'
-    });
+    })
+
+    ///////////////////////////////////////////////////
+    //  Creating course, topic, and card views
+    ///////////////////////////////////////////////////
+
+    .state('createCourse', {
+    	url: '/create-course',
+    	templateUrl: './features/createCourse/createCourseTmpl.html',
+    	controller: 'createCourseCtrl'
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+    ;
     
     $urlRouterProvider.otherwise('/');
     

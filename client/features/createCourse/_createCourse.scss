@@ -1,0 +1,163 @@
+div.create-course-page-wrapper{
+	div.container-wrapper{
+		border-bottom: 3px solid #ddd;
+		// @include jadeGradient();
+		// background: #eee;
+		background-color: #eeeeee;
+		background-image: url("http://www.transparenttextures.com/patterns/white-texture.png");
+		/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+		&.course-header-wrapper{
+			height: 250px;
+		}
+	}
+
+	///////////////////////////////////////////////////
+	//  Course Header
+	///////////////////////////////////////////////////
+
+	div.course-header{
+		padding-top: 10px;
+		margin-bottom: 50px;
+		div.row{
+			height: 100%;
+		}
+		height: 100%;
+		// background: red;
+		// padding: 13px;
+		div.img-wrapper{
+			padding-top: 15px;
+			text-align: center;
+			height: 100%;
+			// background: lightblue;
+			img{
+				max-width: 200px;
+				width: 100%;
+				border-radius: 5px;
+				border: 1px solid #111;
+			}
+		} // img wrapper
+		div.info-wrapper{
+			padding-top: 20px;
+			// background: lightgreen;
+			height: 100%;
+			h1.course-name{
+				text-transform: capitalize;
+				text-decoration: underline;
+			}
+			h5{
+				margin-top: 20px;
+			}
+		}
+
+		div.admin-wrapper{
+			@include phoneOrLess {
+				display: none;
+			}
+			padding-top: 20px;
+			text-align: center;
+			// background: gold;
+			height: 100%;
+			h3.admin-header{
+				text-decoration: underline;
+			}
+			ul.admin-images{
+				margin-top: 20px;
+				// background: gray;
+				li.admin{
+					margin-bottom: 5px;
+					&:not(:last-of-type){
+						margin-right: 5px;
+					}
+					display: inline-block;
+				}
+				img{
+					border-radius: 50%;
+					width: 50px;
+				}
+			}
+		}
+	} // course header
+
+	///////////////////////////////////////////////////
+	//  Topic container, below the header
+	///////////////////////////////////////////////////
+
+	div.topic-container{
+		// background: goldenrod;
+		div.topic{
+			cursor: pointer;
+			@include transition(.4s ease);
+			text-align: center;
+			margin-bottom: 20px;
+			// background: steelblue;
+			// border: 2px solid #ddd;
+			&:hover{
+				@include transform(scale(1.05));
+			}
+
+			div.topic-header{
+				background: $jade;
+				height: 25px;
+				padding-top: 5px;
+				padding-right: 2px;
+				padding-left: 2px;
+				border-bottom: 2px solid black;
+			}
+
+			h5.topic-name{
+				color: white;
+				display: inline-block;
+			}
+			div.num-to-review{
+				margin-right: 5px;
+				float: right;
+				// position: absolute;
+				display: inline-block;
+				right: 20px;
+				top: 4px;
+				background: white;
+				width: auto;
+				padding: 0 5px 0;
+				height: 16px;
+				border-radius: 8px;
+				li{
+					color: $jade;
+				}
+			}
+
+			div.topic-body{
+				padding-top: 20px;
+				border: 2px solid #ddd;
+				border-top: none;
+				height: 200px;
+			}
+
+			img.topic-picture{
+				width: 100px;
+			}
+
+
+
+		}
+
+
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+} // end of div course wrapper
