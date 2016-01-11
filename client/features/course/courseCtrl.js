@@ -1,10 +1,23 @@
 angular.module('kronolearn')
-.controller('courseCtrl', function($scope, masterService, courseService, $stateParams, $state) {
+.controller('courseCtrl', function($scope, userService, masterService, courseService, $stateParams, $state) {
 
 	var courseId = $stateParams.courseId;
 
 
 	$scope.message = 'hello';
+
+	userService.checkUserLogin()
+	.then(function(user){
+		console.log(user);
+		$scope.user = user;
+	})
+
+
+
+
+
+
+
 
 	// practice hooking up front end to angular, will make call to server eventually
 
