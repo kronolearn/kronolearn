@@ -1,7 +1,28 @@
+<div navbar></div>
+<div class="button">
+    <a href="/api/logout">Logout</a>
+</div>
 <div>
     <h1>Hello {{ user.name }} </h1>
-    <div class="button">
-    	<a href="/api/logout">Logout</a>
+</div>
+
+
+<div>
+    <div class="addCourse"></div>
+    <div class="CourseEnrolled">
+        <div ng-repeat="course in courses">
+            <div>
+                <h3>{{ course.name }}</h3></div>
+            <div>
+                <h3>{{ course.description }}</h3></div>
+        </div>
+
+
     </div>
 </div>
 
+
+
+<ul>
+    <li ng-repeat="item in list">{{item.name}}</li>
+</ul>
