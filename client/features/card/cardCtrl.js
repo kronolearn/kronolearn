@@ -13,6 +13,13 @@ app.controller('cardCtrl', function($scope, cardService, $stateParams) {
     };
     
     $scope.getCardInfo();
-
+    
+    $scope.nextCard = function() {
+        $scope.currentCard++;
+    };
+    
+    $scope.prevCard = function() {
+        $scope.currentCard--;
+    }
     
 });
