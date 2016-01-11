@@ -1,36 +1,41 @@
 <div ng-controller="homeCtrl" class="home">
 
- <!--  Log In modal  -->
-    
+    <!--  Log In modal  -->
+
     <div class="modal bs-login-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <input type="text" placeholder="E-Mail" ng-model="user.email" name="email">
-            <input type="password" placeholder="Password" ng-model="user.password" name="password">
-            <button data-toggle="modal" data-target=".bs-login-modal-sm" ng-click="login()" type="button" class="btn btn-lg btn-primary">Log In</button>
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <form>
+                    <input type="text" placeholder="E-Mail" ng-model="user.email" name="email">
+                    <input type="password" placeholder="Password" ng-model="user.password" name="password">
+                    <button data-toggle="modal" data-target=".bs-login-modal-sm" ng-click="login()" type="submit" class="btn btn-lg btn-primary">Log In</button>
+                </form>
+            </div>
         </div>
-      </div>
     </div>
-    
+
     <!-- Sign up Modal -->
-     <div class="modal bs-signup-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <input ng-model="user.name" type="text" placeholder="Name" name="name">
-            <input ng-model="user.email" type="text" placeholder="E-Mail" name="email">
-            <input ng-model="user.password" type="password" placeholder="Password" name="password">
-            <input ng-model="passwordcheck" type="password" placeholder="Password" name="password">
-            <button data-toggle="modal" data-target=".bs-signup-modal-sm" ng-click="signup()" type="button" class="btn btn-lg btn-primary">Sign Up</button>
+    <div class="modal bs-signup-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <form>
+                    <input ng-model="user.name" type="text" placeholder="Name" name="name">
+                    <input ng-model="user.email" type="text" placeholder="E-Mail" name="email">
+                    <input ng-model="user.password" type="password" placeholder="Password" name="password">
+                    <input ng-model="passwordcheck" type="password" placeholder="Password" name="password">
+                    <button data-toggle="modal" data-target=".bs-signup-modal-sm" ng-click="signup()" type="submit" class="btn btn-lg btn-primary">Sign Up</button>
+                </form>
+            </div>
         </div>
-      </div>
-    </div>   
-    
+    </div>
+
     <div class="background-image"></div>
 
     <div class="holder">
         <div class="not-background">
             <h1>Kronolearn</h1>
             <p>Learn and retain for the rest of your life by using the principles of spaced repetition.</p>
+            <p>{{ loginMess }}</p>
             <div>
                 <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target=".bs-login-modal-sm">Log In</button>
                 <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target=".bs-signup-modal-sm">Sign Up</button>
