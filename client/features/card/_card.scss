@@ -1,0 +1,38 @@
+.card-wrapper {
+    text-align: center;
+}
+
+.card-wrapper h1{
+    text-align: center;
+    width: 500px;
+    background-color: red;
+    margin: 10px auto;
+}
+
+.card-wrapper h2 {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.card-wrapper .card-answers {
+    margin: 0 auto;
+}
+
+.card-wrapper .answer-btn {
+    width: 500px;
+    margin: 5px auto;
+    text-align: center;
+}
+
+.card-wrapper .submit-button {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.card-wrapper #right-arrow {
+    float:right;
+}
+
+.card-wrapper #left-arrow {
+    float:left;
+}

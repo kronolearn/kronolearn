@@ -12,13 +12,6 @@ angular.module('kronolearn')
 		$scope.user = user;
 	})
 
-
-
-
-
-
-
-
 	// practice hooking up front end to angular, will make call to server eventually
 
     $scope.currentCourseNumber = $stateParams;
