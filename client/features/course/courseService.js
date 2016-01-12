@@ -7,7 +7,7 @@ app.service('courseService', function($http) {
 		return $http.get('/api/course/'+courseId)
 		.then(function(response){
 			return response.data;
-		})
+		});
 	};
 
 
@@ -16,13 +16,13 @@ app.service('courseService', function($http) {
 
 
     
-  /*  
+   
     this.getCurrentCourse = function(currentCourseId) {
         return $http.get('/api/course/' + currentCourseId).then(function(response) {
             console.log("courseServiceRETURN");
             return response.data;
         });
-    }
+    };
     
-  */
+  
 });
