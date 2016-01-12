@@ -51,20 +51,20 @@
     }
     
     .progressBar {
-        width: 400px;
-        height: 22px;
+        margin: 0 auto;
+        margin-top: 3%;
+        width: 65%;
+        height: 3em;
 		border: 1px solid #111;
-		background-color: #292929;
+		background-color: white;
+        border-radius: .5em;
     }
 			
     .progressBar div {
         height: 100%;
-		color: #fff;
-		text-align: right;
-		line-height: 22px; /* same as #progressBar height if we want text middle aligned */
-		width: 0;
-		background-color: #0099ff;
-	}
-    
+        width: 0;
+        background-color: $jade;
+        border-radius: .5em;
+    }
     
 }
