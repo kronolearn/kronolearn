@@ -33,7 +33,7 @@ angular.module('kronolearn')
 		});
 		}
 	}
-}) // end of search bar expand directive
+}); // end of search bar expand directive
 
 
 // user menu of results tab
@@ -69,3 +69,115 @@ angular.module('kronolearn')
 		}
 	}
 });
+
+
+///////////////////////////////////////////////////
+//  Directive for dropzone
+///////////////////////////////////////////////////
+angular.module('kronolearn')
+.directive('dropzone', function($http){
+	return {
+		link: function(scope, elem, attrs){
+			$(function(){
+				// elem.dropzone({url: '/file/post'});
+				// var $dropzone = $(elem);
+
+
+
+
+
+
+				var myDropzone = new Dropzone('div.add-image', {
+					url: '/api/course/addCourseImage',
+					// method: 'POST',
+					clickable: '.clickable',
+					acceptedFiles: 'image/*',
+
+					accept: function(file, done){
+						console.log(file);
+						var reader = new FileReader();
+						reader.onload = handleReaderLoad;
+						reader.readAsDataURL(file);
+						function handleReaderLoad(e){
+							$('div.add-image')[0].setAttribute('value', e.target.result);
+							var fileName = file.name;
+							var longString = e.target.result;
+							var imageExtArr = (longString.split(';')[0].split('/'))
+							var imageExt = imageExtArr[imageExtArr.length-1];
+							console.log(imageExt)
+
+
+							// console.log(e.target.result);
+							// console.log(typeof e.target.result);
+
+							var imageObj = {
+								name: fileName,
+								extension: imageExt,
+								value: longString
+							};
+
+							// console.log(objToSend);
+
+
+
+
+
+
+							// console.log(e.target.result.length);
+
+							$http.post('/api/course/addCourseImage', imageObj);
+							
+							// window.copy(e.target.result);
+							// alert(e.target.result);
+						}
+					}
+
+
+
+
+
+					// init: function(){
+					// 	this.on('addedfile', function(file){
+					// 		console.log(file);
+					// 		console.log(file.upload);
+					// 		$http.post('/api/course/addCourseImage', JSON.stringify(file));
+					// 	})
+					// }
+
+				});
+
+
+
+				// elem.click(function(){
+				// 	console.log('click');
+				// })
+
+
+
+				   
+			}); // jquery ready
+		}// link 
+	}; // return
+}); // whole directive
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
