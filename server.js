@@ -14,6 +14,7 @@ var userCtrl = require('./server/controllers/userCtrl');
 var courseCtrl = require('./server/controllers/courseCtrl');
 var topicCtrl = require('./server/controllers/topicCtrl');
 var cardCtrl = require('./server/controllers/cardCtrl');
+var imageCtrl = require('./server/controllers/imageCtrl');
 require('./server/config/passport')(passport);
 
 //____________________My dependencies__________________________
