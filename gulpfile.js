@@ -72,7 +72,7 @@ gulp.task('javascript', function() {
 		'./client/bower_components/angular/angular.js',
 		// './bower_components/ngSmoothScroll/lib/angular-smooth-scroll.js',
 		'./client/bower_components/angular-ui-router/release/angular-ui-router.js',
-        './client/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+    './client/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
 
 
 
