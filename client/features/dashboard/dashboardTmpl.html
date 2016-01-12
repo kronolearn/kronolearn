@@ -11,7 +11,7 @@
                 <div>
                     <h4>{{ course.description }}</h4></div>
                 <div><img class="course-picture" ng-src="{{course.picture}}" alt="coursePic"></div>
-            <div ng-show="topicShow" ng-repeat="topic in course.topics track by $index">
+            <div class="topicBox" ng-show="topicShow" ng-repeat="topic in course.topics track by $index">
                <h5>{{topic.name}}</h5>
          </div>
             </div>
