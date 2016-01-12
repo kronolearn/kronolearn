@@ -14,18 +14,21 @@ module.exports = {
 
 
 			.exec(function(err, data){
-				var options = {
-					path: 'cards.card',
-					model: 'Card'
-				};
 				if(err){
 					console.log(err);
 					res.status(500).send(err);
 				}
 				else{
-					res.send(data);
+                    User.populate(data, {
+                        path: 'coursesEnrolledIn.topics',
+                        model: 'Topic'
+                    }, function(){
+                        res.send(data);
+                    });
+                    
+
 				}
-			})
+			});
 		}
 
 
