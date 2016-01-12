@@ -3,18 +3,18 @@
     
   <div class="card-header">
         <h1>{{currentTopic.name}}</h1>
-        <h2>{{currentTopic.cards[currentCard].question}}</h2>
+        <h2>{{currentCard + 1}}. {{currentTopic.cards[currentCard].question}}</h2>
   </div>
 </br>
 </br>
   <div class="card-body">
      <li class="card-answers" ng-repeat="answer in currentTopic.cards[currentCard].answers">
-         <button class="answer-btn btn btn-primary">{{answer.text}}</button>
+         <button isolate class="answer-btn btn" ng-class="{'btn-primary': isSelected, 'btn-info': !isSelected}" ng-click="isSelected = !isSelected; changeUserAnswer(answer.text)">{{answer.text}}</button>
       </br>
      </li>
 </br>
 </br>
-    <button class="btn btn-warning submit-button">Submit Answer</button>
+    <button class="btn btn-warning submit-button" ng-click="answerCheck()">Submit Answer</button>
   </div>
 
     <img src="https://s3-us-west-2.amazonaws.com/kronolearn/Other/leftArrow.png" id="left-arrow" ng-click="prevCard()" ng-hide="(currentCard === 0)">
