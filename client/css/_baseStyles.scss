@@ -9,15 +9,18 @@ html{
 
 body{
 	background: #f5f5f5;
+	font-family: $textFont;
 }
 
-// h1,h2,h3,h4,h5,h6{
-// 	font-family: $header-font;
-// }
 
-// p, div, button, a, ul, li{
-// 	font-family: $text-font;
-// }
+
+h1,h2,h3,h4,h5,h6{
+	font-family: $headerFont;
+}
+
+p, div, button, a, ul, li, span{
+	font-family: $textFont;
+}
 
 a{
 	color: inherit;
