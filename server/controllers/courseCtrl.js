@@ -11,13 +11,19 @@ module.exports = {
 	},
 	
 	addCourse: function(req, res) {
-		new Course(req.body).save(function (err, data) {
-			if (err) {
-				res.status(500).send(err);
-			} else {
-				res.json(data);
-			}
-		});
+		var imageUrl = req.imageUrl;
+		req.body.picture = imageUrl;
+		// console.log(req.body);
+
+		// new Course(req.body).save(function (err, data) {
+		// 	if (err) {
+		// 		res.status(500).send(err);
+		// 	} else {
+		// 		res.json(data);
+		// 	}
+		// });
+
+
 	},
 	
 	getById: function(req, res) {

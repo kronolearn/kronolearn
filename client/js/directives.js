@@ -110,10 +110,10 @@ angular.module('kronolearn')
 							// console.log(e.target.result);
 							// console.log(typeof e.target.result);
 
-							var imageObj = {
-								name: fileName,
-								extension: imageExt,
-								value: longString
+							scope.$parent.imageObj = {
+								imageName: fileName,
+								imageExtension: imageExt,
+								imageValue: longString
 							};
 
 							// console.log(objToSend);
@@ -125,7 +125,7 @@ angular.module('kronolearn')
 
 							// console.log(e.target.result.length);
 
-							$http.post('/api/course/addCourseImage', imageObj);
+							// $http.post('/api/course', imageObj);
 							
 							// window.copy(e.target.result);
 							// alert(e.target.result);

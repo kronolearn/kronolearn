@@ -15,6 +15,8 @@ angular.module('kronolearn')
 	$scope.createCourse = function(newCourse){
 		console.log(newCourse);
 
+		console.log($scope.imageObj);
+
 		newCourse.admins = $scope.admins;
 		console.log(newCourse);
 	}
