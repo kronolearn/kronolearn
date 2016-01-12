@@ -1,17 +1,25 @@
 .card-wrapper {
     text-align: center;
+    background-color: #eeeeee;
+    background-image: url("http://www.transparenttextures.com/patterns/white-texture.png");
 }
 
 .card-wrapper h1{
     text-align: center;
     width: 500px;
-    background-color: red;
-    margin: 10px auto;
+    background-color: #eeeeee;
+    margin: 10px auto 10px auto;
+    text-decoration: underline;
 }
 
 .card-wrapper h2 {
     margin: 0 auto;
     text-align: center;
+    width: 700px;
+}
+
+.card-body {
+    position: relative;
 }
 
 .card-wrapper .card-answers {
@@ -29,10 +37,28 @@
     text-align: center;
 }
 
-.card-wrapper #right-arrow {
-    float:right;
+.card-body .arrow-left {
+
+    position: absolute;
+    left: 25px;
+    top: 100px;
+    font-size: 64px;
+    color: #00a86b;
+}
+
+.card-body .arrow-right {
+    position: absolute;
+    right: 25px;
+    top: 100px;
+    font-size: 64px;
+    color: #00a86b;
 }
 
 .card-wrapper #left-arrow {
     float:left;
+    position: absolute;
+    left: 25px;
+    top: 100px;
+    font-size: 48px;
+    color: 00a86b;
 }
