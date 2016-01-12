@@ -101,7 +101,8 @@ app.get('/api/userAndCourses', userCtrl.getUserAndCourses);
 // Course EndPoints
 app.get('/api/courses', courseCtrl.getCourses);
 app.get('/api/course/:id', courseCtrl.getById);
-app.post('/api/course', courseCtrl.addCourse);
+app.post('/api/course', imageCtrl.saveCourseImage, courseCtrl.addCourse);
+
 app.delete('/api/course/:id', courseCtrl.removeCourse);
 app.put('/api/course/:id', courseCtrl.updateCourse);
 
@@ -113,10 +114,12 @@ app.post('/api/topic', topicCtrl.addTopic);
 app.delete('/api/topic/:id', topicCtrl.removeTopic);
 app.put('/api/topic/:id', topicCtrl.updateTopic);
 
-app.post('/api/course/addCourseImage', function(req, res, next){
-	// console.log('\n req.body: ', req.body);
-	console.log('\n\n body length is: \n', req.body.value.length );
-})
+// app.post('/api/course/addCourseImage', function(req, res, next){
+// 	// console.log('\n req.body: ', req.body);
+// 	console.log('\n\n body length is: \n', req.body.value.length );
+// })
+
+
 
 
 

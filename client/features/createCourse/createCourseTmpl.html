@@ -8,67 +8,74 @@
 
 					<!-- <form dropzone action="/file-upload"class="dropzone" id="my-awesome-dropzone"> -->
 
-						<div ng-if="!course.image" class="image-placeholder clickable" 
-						dropzone action="/file-upload"
-						 >
-							<div class="add-image " >
-								<li class="">Add Course Image</li>
-								<li class="plus ">+</li>
-							</div>
-						</div>
-
-					<!-- </form> -->
-
-
+					<div ng-if="!course.image" class="image-placeholder clickable" 
+					dropzone action="/file-upload"
+					>
+					<div class="add-image " >
+						<li class="">Add Course Image</li>
+						<li class="plus ">+</li>
+					</div>
 				</div>
-				<div class="info-wrapper col-md-6 col-sm-5 col-xs-7">
-					<h1 class="course-name">{{currentCourse.name}}</h1>
-					<input class="course-name" type="text" placeholder="Enter Course Name" ng-model="course.name">
 
-					<h5 class="course-description">{{currentCourse.description}}</h5>
-					<textarea class="course-description" name=""   ng-model="course.description" placeholder="Enter Course Description"></textarea>
-				</div>
-				<div class="admin-wrapper col-md-3 col-sm-3 col-xs-0">
-					<h3 class="admin-header">Admins</h3>
-					<!-- Will eventually have ng repeat here for imgs of admins -->
-					<ul class="admin-images">
-						<li class="admin" ng-repeat="admin in admins">
-							<!-- {{admin.name}} -->
-							<img ng-if="admin.avatar"ng-src="{{admin.avatar}}" alt=""
-							uib-tooltip="{{admin.name}}" tooltip-placement="bottom">
-
-							<img uib-tooltip="{{admin.name}}" tooltip-placement="bottom" ng-hide="admin.avatar" src="img/user.png" alt="">
-						</li>
-
-						<li class="admin add-admin">
-							<img src="img/user.png" alt="" >
-							<div class="background" ></div>
-							<span >+</span>
-							<h6>Add Admin</h6>
-						</li>
+				<!-- </form> -->
 
 
-
-
-					</ul>
-				</div>
 			</div>
-		</div><!-- container, course header-->
+			<div class="info-wrapper col-md-6 col-sm-5 col-xs-7">
 
-		<div class="submit-course-container">
+				<!--________________Input for course Name________________-->
+				<form action="submit" class="course-form">
+					<input class="course-name" type="text" placeholder="Enter Course Name" 
+					ng-model="course.name"
+					ng-minlength="3"
+					ng-maxlength="8"
+					required
+					>
+
+					<textarea class="course-description" name=""   ng-model="course.description" placeholder="Enter Course Description"></textarea>
+				</form>
+			</div>
+			<div class="admin-wrapper col-md-3 col-sm-3 col-xs-0">
+				<h3 class="admin-header">Admins</h3>
+				<!-- Will eventually have ng repeat here for imgs of admins -->
+				<ul class="admin-images">
+					<li class="admin" ng-repeat="admin in admins">
+						<!-- {{admin.name}} -->
+						<img ng-if="admin.avatar"ng-src="{{admin.avatar}}" alt=""
+						uib-tooltip="{{admin.name}}" tooltip-placement="bottom">
+
+						<img uib-tooltip="{{admin.name}}" tooltip-placement="bottom" ng-hide="admin.avatar" src="img/user.png" alt="">
+					</li>
+
+					<li class="admin add-admin">
+						<img src="img/user.png" alt="" >
+						<div class="background" ></div>
+						<span >+</span>
+						<h6>Add Admin</h6>
+					</li>
 
 
 
-			<button class="btn btn-default" ng-click="createCourse(course)">Create Course</button>
 
+				</ul>
+			</div>
 		</div>
+	</div><!-- container, course header-->
+
+	<div class="submit-course-container">
+
+
+
+		<button class="btn btn-default" ng-click="createCourse(course)">Create Course</button>
+
+	</div>
 
 
 
 
 
 
-	</div><!-- container wrapper-->
+</div><!-- container wrapper-->
 
 
 
