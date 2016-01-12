@@ -1,7 +1,22 @@
-<div>
-    <h1>Hello {{ user.name }} </h1>
-    <div class="button">
-    	<a href="/api/logout">Logout</a>
-    </div>
-</div>
+<div navbar></div>
+<div class="dashboard">
 
+
+    <div>
+        <h1>Enrolled Courses</h1>
+        <div>
+            <div ng-click="topicShow=!topicShow" class="courses-enrolled" ng-repeat="course in courses track by $index">
+                <div>
+                    <h3>{{ course.name }}</h3></div>
+                <div>
+                    <h4>{{ course.description }}</h4></div>
+                <div><img class="course-picture" ng-src="{{course.picture}}" alt="coursePic"></div>
+            <div ng-show="topicShow" ng-repeat="topic in course.topics track by $index">
+               <h5>{{topic.name}}</h5>
+         </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
