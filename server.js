@@ -35,7 +35,8 @@ var mongoUri = 'mongodb://127.0.0.1/kronolearn';
 
 var app = express();
 
-app.use(bodyParser.json());
+// make node be able to handle big file sizes
+app.use(bodyParser.json({limit: '50mb'}));
 app.use(cors());
 app.use(cookieParser());
 
@@ -110,6 +111,14 @@ app.get('/api/topic/:id', topicCtrl.getById);
 app.post('/api/topic', topicCtrl.addTopic);
 app.delete('/api/topic/:id', topicCtrl.removeTopic);
 app.put('/api/topic/:id', topicCtrl.updateTopic);
+
+app.post('/api/course/addCourseImage', function(req, res, next){
+	// console.log('\n req.body: ', req.body);
+	console.log('\n\n body length is: \n', req.body.value.length );
+})
+
+
+
 
 // Card EndPionts
 app.get('/api/cards', cardCtrl.getCards);

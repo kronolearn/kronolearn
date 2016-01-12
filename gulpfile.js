@@ -10,10 +10,10 @@ var ngAnnotate = require('gulp-ng-annotate');
 //___________________Watcher________________________
 
 var watcher = gulp.watch(['./client/js/**/*.js', 
-                    './client/css/**/*.scss', 
-                    './client/features/**/*.scss',
-                    './client/features/**/*.js'], 
-                    ['default']);
+	'./client/css/**/*.scss', 
+	'./client/features/**/*.scss',
+	'./client/features/**/*.js'], 
+	['default']);
 
 watcher.on('change', function(event){
 	console.log('File ' + event.path + ' was ' + event.type + ' at ' + new Date() + ' , running tasks...');
@@ -24,8 +24,12 @@ watcher.on('change', function(event){
 gulp.task('javascript', function() {
 	gulp.src([
 		'./client/bower_components/jquery/dist/jquery.js',
-    './client/bower_components/sweetalert/dist/sweetalert.min.js',
+		'./client/bower_components/sweetalert/dist/sweetalert.min.js',
 		'./client/bower_components/lodash/lodash.js',
+
+		// dropzone JS
+		'./client/bower_components/dropzone/dist/dropzone.js',
+
 		// moment JS, used for time manipulations (35kb compressed.. seems worth it though)
 		// './client/bower_components/moment/moment.js',
 
@@ -72,7 +76,7 @@ gulp.task('javascript', function() {
 		'./client/bower_components/angular/angular.js',
 		// './bower_components/ngSmoothScroll/lib/angular-smooth-scroll.js',
 		'./client/bower_components/angular-ui-router/release/angular-ui-router.js',
-    './client/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+		'./client/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
 
 
 
@@ -115,7 +119,7 @@ gulp.task('javascript', function() {
 gulp.task('sass', function () {
 	return gulp.src([
 		'./client/css/main.scss',
-        
+
 
   	// './client/css/report/_report.scss',
   	// './client/css/report/sections/*.scss',
@@ -131,16 +135,14 @@ gulp.task('sass', function () {
 
   	])
 		// .pipe(sass({style: 'compressed'})
-		.pipe(sass()
+			.pipe(sass()
 
-		.on('error', sass.logError))
-		
-		.pipe(concat('main.css'))
+				.on('error', sass.logError))
 
-		.pipe(gulp.dest('./client/css'));
-	});
+			.pipe(concat('main.css'))
 
-
+			.pipe(gulp.dest('./client/css'));
+		});
 
 
 
@@ -174,4 +176,6 @@ gulp.task('sass', function () {
 
 
 
-	gulp.task('default', ['javascript', 'sass']);
+
+
+gulp.task('default', ['javascript', 'sass']);
