@@ -1,9 +1,5 @@
 var app = angular.module('kronolearn');
 
-/*app.directive('isolate', function() {
-    return {scope: true};
-}); */
-
 
 app.controller('cardCtrl', function($scope, cardService, $stateParams) {
     
@@ -51,7 +47,7 @@ app.controller('cardCtrl', function($scope, cardService, $stateParams) {
         for (var i = 0; i < $scope.currentCorrectAnswers.length; i++) {
             $scope.currentCorrectAnswersCopy.push($scope.currentCorrectAnswers[i]);
         }
-        console.log("all correct answers: ", $scope.currentCorrectAnswers);
+        //console.log("all correct answers: ", $scope.currentCorrectAnswers);
 
         for (var i = 0; i < $scope.userAnswers.length; i++) {
             if ($scope.currentCorrectAnswersCopy.indexOf($scope.userAnswers[i]) !== -1) {
@@ -60,10 +56,10 @@ app.controller('cardCtrl', function($scope, cardService, $stateParams) {
             }
             else {
                 $scope.allGood = false;
-                console.log("Wrong Answer?");
+                //console.log("Wrong Answer?");
             }
         }
-        console.log("final array...should be empty for correct", $scope.currentCorrectAnswersCopy);
+       // console.log("final array...should be empty for correct", $scope.currentCorrectAnswersCopy);
         if ($scope.currentCorrectAnswersCopy.length === 0 && $scope.allGood) {
             alert("Correct!");
         }
@@ -86,7 +82,7 @@ app.controller('cardCtrl', function($scope, cardService, $stateParams) {
             $scope.userAnswers.splice(indexToRemove, 1);
         }
         
-        console.log($scope.userAnswers);
+        //console.log($scope.userAnswers);
         
     };
     
