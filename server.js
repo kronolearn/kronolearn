@@ -14,6 +14,7 @@ var userCtrl = require('./server/controllers/userCtrl');
 var courseCtrl = require('./server/controllers/courseCtrl');
 var topicCtrl = require('./server/controllers/topicCtrl');
 var cardCtrl = require('./server/controllers/cardCtrl');
+var imageCtrl = require('./server/controllers/imageCtrl');
 require('./server/config/passport')(passport);
 
 //____________________My dependencies__________________________
@@ -121,6 +122,11 @@ app.put('/api/card/:id', cardCtrl.updateCard);
 
 // LocalAuth, check if user is logged in (if on req.session.passport.user)
 app.get('/api/auth', userCtrl.isAuth);
+
+// Image upload, Amazon S3
+app.post('/api/course/addimage', imageCtrl.saveCourseImage);
+app.post('/api/user/addimage', imageCtrl.saveUserAvatar);
+app.post('/api/topic/addimage', imageCtrl.saveTopicImage);
 
 
 
