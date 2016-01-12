@@ -149,11 +149,14 @@ div.course-page-wrapper{
     .topicForm { 
         position: fixed;
         top: 10%;
-        background-color: white;
+        background-color: #eaeaea;
         width: 46%;
         left: 27%;
         text-align: right;
         padding: 1%;
+        border: 1px solid black;
+        border-radius: .5em;
+        box-shadow: 10px 10px 5px black;
         p {
             text-align: center;
             font-size: 3em;
@@ -174,8 +177,6 @@ div.course-page-wrapper{
                     height: 200px;
                 }
             }
-        }
-        button {
         }
     }
     

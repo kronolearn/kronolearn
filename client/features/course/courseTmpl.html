@@ -91,11 +91,11 @@
         <div class="allThree">
             <div>image</div>
             <div class="nameDescription">
-                <input type="text" placeholder="Name">
-                <textarea placeholder="Topic Description"></textarea>
+                <input type="text" placeholder="Name" ng-model="newTopic.name">
+                <textarea placeholder="Topic Description" ng-model="newTopic.description"></textarea>
             </div>
         </div>
-        <button ng-click="createTopic">Create</button>
+        <button ng-click="createTopic()" class="btn btn-lg btn-primary">Create</button>
     </form>
 
 	

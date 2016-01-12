@@ -24,5 +24,9 @@ app.service('courseService', function($http) {
         });
     };
     
+    
+    this.postTopic = function (theTopic) {
+        $http.post('/api/topic', theTopic);
+    }
   
 });
