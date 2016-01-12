@@ -19,7 +19,9 @@ module.exports = {
 	},
 	
 	getById: function(req, res) {
-		Topic.findById(req.params.id, req.body, function(err, data) {
+		Topic.findById(req.params.id, req.body) 
+        .populate('cards')
+        .exec(function(err, data) {
 			if (err) {
 				res.status(500).send(err);
 			} else {
