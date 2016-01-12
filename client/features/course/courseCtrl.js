@@ -2,7 +2,7 @@ angular.module('kronolearn')
 .controller('courseCtrl', function($scope, userService, masterService, courseService, $stateParams, $state) {
 
 	var courseId = $stateParams.courseId;
-
+    
 
 	$scope.message = 'hello';
 
@@ -30,19 +30,29 @@ angular.module('kronolearn')
                                                                 
     
    //runs every time this controller loads, in order to grab the currentCourse info from the back-end
-        $scope.currentCourse = $scope.course;
-        $scope.getCurrentCourse();
+    $scope.currentCourse = $scope.course;
+    $scope.getCurrentCourse();
+
+
+
+    $scope.goToTopic = function(topicId){
+        // console.log(courseId);
+        // console.log(topicId);
+        $state.go('topic', {courseId: courseId, topicId: topicId});
+    }
+
+    //this is where the form for creating a topic will be controlled
     
+    $scope.showing = false;
     
-
- 		$scope.goToTopic = function(topicId){
- 			// console.log(courseId);
- 			// console.log(topicId);
- 			$state.go('topic', {courseId: courseId, topicId: topicId});
- 		}
-
-
-
+    $scope.showForm = function () {
+        $scope.showing = true;
+    }
+    
+    $scope.createTopic = function () {
+        $scope.showing = false;
+        courseService.postTopic($scope.newTopic);
+    }
 
 
 
