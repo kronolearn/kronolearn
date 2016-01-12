@@ -59,7 +59,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
     .state('createCourse', {
     	url: '/create-course',
     	templateUrl: './features/createCourse/createCourseTmpl.html',
-    	controller: 'createCourseCtrl'
+    	controller: 'createCourseCtrl',
+    	resolve: {
+    		user: function(userService){
+    			return userService.checkUserLogin();
+    		}
+    	}
     })
 
 

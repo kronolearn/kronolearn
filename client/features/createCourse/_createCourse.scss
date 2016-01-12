@@ -25,15 +25,60 @@ div.create-course-page-wrapper{
 		// background: red;
 		// padding: 13px;
 		div.img-wrapper{
+			position: relative;
 			padding-top: 15px;
 			text-align: center;
 			height: 100%;
-			// background: lightblue;
-			img{
-				max-width: 200px;
-				width: 100%;
-				border-radius: 5px;
-				border: 1px solid #111;
+			div.add-image{
+				@include transition(.4s ease);
+				position: absolute;
+				top: 30px;
+				left: 40px;
+				width: 150px;
+				height: 150px;
+				border-radius: 50%;
+				border: 2px solid white;
+			}
+			li{
+				@include transition(.4s ease);
+				position: relative;
+				top: 30px;
+				font-size: 1.3em;
+				color: white;
+				&.plus{
+					position: absolute;
+					font-size: 5em;
+					left: 50px;
+					top: 50px;
+				}
+			}
+			div.image-placeholder{
+				// @include transition(.4s ease);
+				cursor: pointer;
+				width: 200px;
+				height: 200px;
+				border-radius: 20px;
+				background-color: #202020;
+				background-image: url("../img/bright-squares.png");
+				&:hover{
+					// background: rgba(0,0,0,.5);
+					li{
+						color: $gold;
+						&.plus{
+							@include transform(scale(1.1));
+						}
+					}
+					div.add-image{
+						border-color: $gold;
+					}
+				}
+			}
+			img.course-picture{
+				background: #111;
+				width: 200px;
+				height: 200px;
+				border-radius: 20px;
+				// border: 1px solid #111;
 			}
 		} // img wrapper
 		div.info-wrapper{
@@ -63,86 +108,85 @@ div.create-course-page-wrapper{
 			ul.admin-images{
 				margin-top: 20px;
 				// background: gray;
+				// small adjustment to bootstrap tooltip
 				li.admin{
+					div.tooltip{
+						.tooltip-inner{
+							min-width: 80px;
+						}
+					}
+					position: relative;
 					margin-bottom: 5px;
 					&:not(:last-of-type){
 						margin-right: 5px;
 					}
 					display: inline-block;
+					// for background of adding admin
+					div.background{
+						background: rgba(0,0,0,.4);
+						height: 50px;
+						width: 50px;
+						border-radius: 50%;
+						position: relative;
+						bottom: 53px;
+					}
+					// add admin
+					&.add-admin{
+						margin-left: 30px;
+						&:hover{
+							cursor: pointer;
+							span{
+								color: $gold;
+								@include transform(scale(1.1));
+							}
+						}
+						h6{
+							position: absolute;
+							top: 55px;
+							width: 100px;
+							left: -25px;
+						}
+					}
 				}
 				img{
 					border-radius: 50%;
 					width: 50px;
 				}
+				span{
+					@include transition(.3s ease);
+					top: 0px;
+					right: 13px;
+					position: absolute;
+					color: white;
+					font-size: 3em;
+				}
 			}
 		}
 	} // course header
 
-	///////////////////////////////////////////////////
-	//  Topic container, below the header
-	///////////////////////////////////////////////////
-
-	div.topic-container{
-		// background: goldenrod;
-		div.topic{
-			cursor: pointer;
-			@include transition(.4s ease);
-			text-align: center;
-			margin-bottom: 20px;
-			// background: steelblue;
-			// border: 2px solid #ddd;
-			&:hover{
-				@include transform(scale(1.05));
-			}
-
-			div.topic-header{
-				background: $jade;
-				height: 25px;
-				padding-top: 5px;
-				padding-right: 2px;
-				padding-left: 2px;
-				border-bottom: 2px solid black;
-			}
-
-			h5.topic-name{
-				color: white;
-				display: inline-block;
-			}
-			div.num-to-review{
-				margin-right: 5px;
-				float: right;
-				// position: absolute;
-				display: inline-block;
-				right: 20px;
-				top: 4px;
-				background: white;
-				width: auto;
-				padding: 0 5px 0;
-				height: 16px;
-				border-radius: 8px;
-				li{
-					color: $jade;
-				}
-			}
-
-			div.topic-body{
-				padding-top: 20px;
-				border: 2px solid #ddd;
-				border-top: none;
-				height: 200px;
-			}
-
-			img.topic-picture{
-				width: 100px;
-			}
-
-
-
-		}
-
-
-
+	// form stuff
+	input.course-name{
+		padding: 2px 10px;
+		width: 300px;
+		font-size: 1.5em;
 	}
+	textarea.course-description{
+		width: 400px;
+		height: 100px;
+		font-size: 1.2em;
+	}
+
+
+///////////////////////////////////////////////////
+//  Everything below the course header
+///////////////////////////////////////////////////
+
+h2.more-info{
+	text-align: center;
+}
+
+
+
 
 
 
