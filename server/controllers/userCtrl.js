@@ -20,15 +20,44 @@ module.exports = {
 				}
 				else{
                     User.populate(data, {
-                        path: 'coursesEnrolledIn.topics',
+                        path: 'coursesEnrolledIn.topics', 
                         model: 'Topic'
                     }, function(){
-                        res.send(data);
+                        // res.send(data);
+                        
+                        User.populate(data, {
+                            path: 'coursesAdminFor.topics', 
+                            model: 'Topic'
+                        }, function(){
+                            res.send(data);
+                        });
+                        
+                        
+                        
+                        
+                        
+                        
                     });
                     
-
-				}
+                };
 			});
+                
+            //    .exec(function(err, data) {
+            //        if(err) {
+            //            res.status(500).send(err);
+            //        }
+            //        else{
+            //         User.populate(data, {
+            //             path: 'coursesAdminFor.topics', 
+            //             model: 'Topic'
+            //         }, function(){
+            //             res.send(data);
+            //         });
+            //         }
+            //    }); 
+                    
+				
+
 		}
 
 
