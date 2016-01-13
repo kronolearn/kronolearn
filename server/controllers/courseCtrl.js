@@ -10,6 +10,8 @@ module.exports = {
 		});
 	},
 	
+    
+    
 	addCourse: function(req, res) {
 		var imageUrl = req.imageUrl;
 		req.body.picture = imageUrl;
@@ -24,6 +26,17 @@ module.exports = {
 		// });
 
 
+	},
+    
+    	addTestCourse: function(req, res) {
+
+		 new Course(req.body).save(function (err, data) {
+		 	if (err) {
+		 		res.status(500).send(err);
+		 	} else {
+		 		res.json(data);
+		 	}
+		 });
 	},
 	
 	getById: function(req, res) {
