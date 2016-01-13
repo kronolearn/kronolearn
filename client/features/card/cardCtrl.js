@@ -86,4 +86,64 @@ app.controller('cardCtrl', function($scope, cardService, $stateParams) {
         
     };
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+$scope.Stopwatch = function (){
+  var startTime, endTime, instance = this;
+
+  this.start = function (){
+    startTime = new Date();
+  };
+
+  this.stop = function (){
+    endTime = new Date();
+  };
+
+  this.clear = function (){
+    startTime = null;
+    endTime = null;
+  };
+
+  this.getSeconds = function(){
+    if (!endTime){
+    return 0;
+    }
+    return /*Math.round*/((endTime.getTime() - startTime.getTime()) / 1000);
+  };
+/*
+  this.getMinutes = function(){
+    return instance.getSeconds() / 60;
+  }      ;
+  this.getHours = function(){
+    return instance.getSeconds() / 60 / 60;
+  };
+  this.getDays = function(){
+    return instance.getHours() / 24;
+  };   */
+}
+
+$scope.cardStopWatch = new $scope.Stopwatch();
+$scope.cardStopWatch.start(); //Start the stopwatch
+// As a test, I use the setTimeout function to delay st.stop();
+
+$scope.stopTimer = function() {
+
+    $scope.cardStopWatch.stop();
+    console.log($scope.cardStopWatch.getSeconds());
+    $scope.cardStopWatch.clear();
+    $scope.cardStopWatch.start();
+}
+
 });
