@@ -19,6 +19,8 @@ app.controller('cardCtrl', function($scope, cardService, $stateParams) {
     
     $scope.nextArrowShowing = false;
     
+    $scope.userAnswerResults = [];
+    
     $scope.toggleSubmitAccess = function() {
         $scope.submitEnabled = !$scope.submitEnabled;
     }
@@ -92,6 +94,7 @@ app.controller('cardCtrl', function($scope, cardService, $stateParams) {
         }
         
         $scope.currentCorrectAnswersCopy.length = 0;
+        //$scope.pushUserAnswerResult();
         
         
     };
@@ -164,6 +167,17 @@ $scope.stopTimer = function() {
     //$scope.cardStopWatch.start();
 }
 
+$scope.pushUserAnswerResult = function() {
+    console.log("I am here.");
+    var questionNumber = $scope.currentCard + 1;
+    var userAnswerObj = {
+        timeTaken: $scope.timeTaken,
+        answeredCorrectly: $scope.answerIsCorrect,
+        questionNumber: questionNumber
+    }
+    $scope.userAnswerResults.push(userAnswerObj);
+    console.log("These are the user answers...", $scope.userAnswerResults);
+}
 
-//$scope.
+
 });
