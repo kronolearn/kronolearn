@@ -51,7 +51,9 @@ angular.module('kronolearn')
     
     $scope.createTopic = function () {
         $scope.showing = false;
-        courseService.postTopic($scope.newTopic);
+        courseService.postTopic($scope.newTopic, $stateParams.courseId).then(function(topic){
+            $scope.currentCourse.topics.push(topic);
+        });
     }
 
 
