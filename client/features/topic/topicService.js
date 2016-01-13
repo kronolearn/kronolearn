@@ -10,4 +10,8 @@ app.service('topicService', function($http, $q) {
         return deferred.promise;
     }
     
+    this.newMaterial = function (sendMe) {
+        $http.put('/api/topic/' + sendMe._id, sendMe);
+    }
+    
 });

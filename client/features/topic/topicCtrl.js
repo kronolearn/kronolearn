@@ -36,6 +36,7 @@ app.controller('topicCtrl', function($scope, topicService, $stateParams, courseS
     
     $scope.addMaterial = function() {
         $scope.showMaterial = false;
+        topicService.putTopic($scope.topic);
     }
 
 });
