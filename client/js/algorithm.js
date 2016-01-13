@@ -2,6 +2,8 @@
 // takes in 3 arguments: ef, quality of response, and number of times
 // https://www.supermemo.com/english/ol/sm2.htm
 
+// qFactor determined by frontend quiz, ranges from 0-5  (5 perfect, 0 bad)
+
 function spacedRepetition(oldEasyF, qFactor, times, lastInterval){
 	// lastInterval is lastInterval property on each review object
 

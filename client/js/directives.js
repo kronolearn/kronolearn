@@ -116,19 +116,6 @@ angular.module('kronolearn')
 								imageValue: longString
 							};
 
-							// console.log(objToSend);
-
-
-
-
-
-
-							// console.log(e.target.result.length);
-
-							// $http.post('/api/course', imageObj);
-							
-							// window.copy(e.target.result);
-							// alert(e.target.result);
 						}
 					}
 
@@ -136,25 +123,8 @@ angular.module('kronolearn')
 
 
 
-					// init: function(){
-					// 	this.on('addedfile', function(file){
-					// 		console.log(file);
-					// 		console.log(file.upload);
-					// 		$http.post('/api/course/addCourseImage', JSON.stringify(file));
-					// 	})
-					// }
+				}); // end of dropzone definition
 
-				});
-
-
-
-				// elem.click(function(){
-				// 	console.log('click');
-				// })
-
-
-
-				   
 			}); // jquery ready
 		}// link 
 	}; // return

@@ -24,13 +24,27 @@
 			<div class="info-wrapper col-md-6 col-sm-5 col-xs-7">
 
 				<!--________________Input for course Name________________-->
-				<form action="submit" class="course-form">
-					<input class="course-name" type="text" placeholder="Enter Course Name" 
+				<form action="submit" class="course-form" name="course-form">
+					<input class="course-name" type="text" placeholder="Enter Course Name"
+					name="course-name" 
 					ng-model="course.name"
-					ng-minlength="3"
-					ng-maxlength="8"
-					required
 					>
+
+										<!--ng-minlength="3"
+					ng-maxlength="8"
+					required-->
+
+
+					<!-- show an error if username is too short -->
+<!-- 					<div ng-messages="course-form.course-name.$error" ng-show="course-form.course-name.$touched">
+						<p ng-message="minlength">Your name is too short.</p>
+						<p ng-message="maxlength">Your name is too long.</p>
+						<p ng-message="required">Your name is required.</p>
+					</div>
+ -->
+
+
+
 
 					<textarea class="course-description" name=""   ng-model="course.description" placeholder="Enter Course Description"></textarea>
 				</form>
