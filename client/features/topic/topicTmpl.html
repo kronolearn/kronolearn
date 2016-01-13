@@ -12,7 +12,7 @@
     
     <div class="review list">
         <div ng-repeat="reviewMaterial in reviewMaterials"><a href="{{reviewMaterial.materialUrl}}" target="_blank">{{reviewMaterial.material}}</a></div>
-        <div ng-click=addMaterial()>Add Review Material</div>
+        <div ng-click=displayMaterial()>Add Review Material</div>
     </div>
     
     <div class="learn">
@@ -21,11 +21,11 @@
     
     <div progress-bar class="progressBar"><div></div></div>
     
-    <form class="addMaterial">
+    <form class="addMaterial" ng-show="showMaterial">
         <p>New Material</p>
-        <input type="text" placeholder="Name of Material">
-        <input type="text" placeholder="Material Url">
-        <button class="btn btn-lg btn-primary">Add Material</button>
+        <input type="text" placeholder="Name">
+        <input type="text" placeholder="Link Url">
+        <button class="btn btn-lg btn-primary" ng-click="addMaterial()">Add Material</button>
     </form>
         
 </div>

@@ -30,8 +30,12 @@ app.controller('topicCtrl', function($scope, topicService, $stateParams, courseS
     
     $scope.showMaterial = false;
     
-    $scope.addMaterial = function() {
+    $scope.displayMaterial = function() {
         $scope.showMaterial = true;
+    }
+    
+    $scope.addMaterial = function() {
+        $scope.showMaterial = false;
     }
 
 });
