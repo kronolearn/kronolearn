@@ -1,4 +1,4 @@
-var app = angular.module('kronolearn', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.typeahead']);
+var app = angular.module('kronolearn', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.typeahead', 'ngMessages']);
 
 
 app.config(function($stateProvider, $urlRouterProvider) {

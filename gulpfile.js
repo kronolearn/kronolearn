@@ -78,6 +78,10 @@ gulp.task('javascript', function() {
 		'./client/bower_components/angular-ui-router/release/angular-ui-router.js',
 		'./client/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
 
+		// angular messages for form validation
+		'./client/bower_components/angular-messages/angular-messages.js',
+
+
 
 
 

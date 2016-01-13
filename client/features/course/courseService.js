@@ -10,6 +10,14 @@ app.service('courseService', function($http) {
 		});
 	};
 
+	this.addCourse = function(course){
+		return $http.post('/api/course', course)
+		.then(function(response){
+			return response.data;
+		})
+
+	}
+
 
 
 

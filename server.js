@@ -17,6 +17,8 @@ var cardCtrl = require('./server/controllers/cardCtrl');
 var imageCtrl = require('./server/controllers/imageCtrl');
 require('./server/config/passport')(passport);
 
+var Random = require('./server/models/Random');
+
 //____________________My dependencies__________________________
 // var usersCtrl = require('./server/controllers/usersCtrl');
 // var reportsCtrl = require('./server/controllers/reportsCtrl');
@@ -165,6 +167,25 @@ app.get('/api/logout', function (req, res) {
 });
 
 // app.get('/api/checkUserLogin', function(req, res){});
+
+
+app.post('/api/initializeRandom', function(req, res){
+	// res.send({hello: 'hello'});
+
+
+
+	new Random().save(function(err, data){
+		if(err){
+			res.send(err);
+		}
+		else{
+			res.send(data);
+		}
+	})
+
+
+
+})
 
 
 
