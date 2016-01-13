@@ -3,12 +3,28 @@
 }
 
 .dashboard {
+   .background-image {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: -1;
+        background-image: url(http://www.myfreetextures.com/wp-content/uploads/2011/06/illust31.jpg);
+        -webkit-filter: opacity(.7);
+        filter: opacity(.7);
+        background-size: cover;
+        }
+    
     .courses-wrapper, .admin-wrapper {
-        width: 80%;
+        width: 60%;
         float: right;
     .courses-enrolled-box, .add-courses-box {
-        float: right;
-        margin-right: 39.5%;
+        float: left;
+        margin-right: 20%;
+        &:last-child {
+            margin-bottom: 50px;
+        }
         }
         @media(max-width: 1600px) {
             
@@ -19,22 +35,24 @@
         
     h1 {
         text-align: center;
-        margin: 20px auto;
+        margin: 50px auto;
+        font-size: 50px;
     }
     .add-enroll, .add-course {
         @include transition(.4s ease);
         min-height: 100px;
         border: 2px solid #000;
-        background-color: /*#00a865*/ rgba(197, 220, 234, .5);
+        background-color: /*#00a865*/ rgba(197, 220, 234, .7);
         margin-top: 10px;
         border-radius: 0.5em;
         position:relative;
+        min-width: 950px;        
         &:hover{
         @include transform(scale(1.05));
         }
         h2 {
             text-align: center;
-            margin-top: 5%;
+            margin-top: 3%;
             width: 86%;
             float: right;
         }
@@ -47,11 +65,11 @@
         @include transition(.4s ease);
         min-height: 100px;
         border: 2px solid #000;
-        background-color: /*#00a865*/ rgba(197, 220, 234, .5);
-        margin-top: 10px;
-        border-radius: 0.5em;
+        background-color: /*#00a865*/ rgba(197, 220, 234, .7);
+        margin-top: 20px;
+        border-radius: 5px;
         position:relative;
-        min-width: 450px;
+        min-width: 950px;
         display: flex;
         justify-content: center;
         
@@ -60,15 +78,17 @@
         }
         
         
+        
+        
         h3, h4 {
             float: right;
             text-align: center;
-            width: 70%;
+            width: 80%;
             margin: 5px;
             overflow: hidden; 
             white-space: nowrap; 
             text-overflow: ellipsis; 
-            width: 615px;
+            width: 815px;
         }
         h3 {
             margin-top: 3%;
@@ -90,9 +110,10 @@
           text-align: center;
           border: 1px solid black;
           width: 70%;
-          background-color: #d8d5cd;
+          background-color: rgba(96, 96, 96, 0.7);
           height: auto;
           padding: 5px;
+          color: white;
           &:hover{
           @include transform(scale(1.05));  
           }  
@@ -102,16 +123,24 @@
             border-bottom-right-radius: 5px;   
             }
     }
+    
+    .notifications {
+        position: absolute;
+    }
     .notify-box {
-        border: 1px solid black;
-        width: 300px;
+        // border: 1px solid black;
+        width: 600px;
         height: auto;
         float: left;
-        margin: 20px;
+        margin: 0px 20px 20px 100px;
         border-radius: 5px;
+        h1 {
+            font-size: 50px;
+            margin: 50px 0;
+        }
         
         h1, h3{
-            margin-top: 5px;
+            // margin-top: 5px;
             text-align: center;
         }
         h3 {
@@ -119,5 +148,16 @@
         }
     }    
     
+.my-course {
+    // margin-top: 100px;
+    margin-right: 10px;
+    position: absolute;
+    margin-top: 60px;
+    margin-left: 775px;
+    background-color: white;
+    border: 1px solid gray;
+}
+
+
 
 }

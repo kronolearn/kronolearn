@@ -5,7 +5,6 @@ app.controller('dashboardCtrl', function ($scope, dashboardService, user, $state
     // user is passed into dashboard ctrl from resolve in app.js
     $scope.user = user;
 
-    $scope.adminShow = false;
 
     dashboardService.getUserAndCourses()
         .then(function (user) {
@@ -28,7 +27,17 @@ app.controller('dashboardCtrl', function ($scope, dashboardService, user, $state
     $scope.addCourse = function () {
         $state.go('createCourse');
     };
-
+    
+    // $scope.buttonShow = true;
+    
+    // $scope.adminShow = false;
+    
+    // $scope.topicShow = function () {
+    //     $scope.adminShow = true;
+    //     $scope.buttonShow = false;
+    // };
+    
+   
   
 
 
