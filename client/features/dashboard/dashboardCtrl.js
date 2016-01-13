@@ -1,24 +1,35 @@
 var app = angular.module('kronolearn');
 
 
-app.controller('dashboardCtrl', function ($scope, dashboardService, user) {
+app.controller('dashboardCtrl', function ($scope, dashboardService, user, $state) {
     // user is passed into dashboard ctrl from resolve in app.js
     $scope.user = user;
-   
-    $scope.topicShow = false;
+
+    $scope.adminShow = false;
 
     dashboardService.getUserAndCourses()
         .then(function (user) {
             $scope.userInfo = user;
             $scope.courses = user.coursesEnrolledIn;
+            $scope.adminCourses = user.coursesAdminFor;
+            console.log($scope.courses);
+            console.log($scope.adminCourses);
         });
 
-    $scope.enrolledTopics = function () {
-       if($scope.topicShow === true) {
-           $scope.topicShow = false;
-       } else {
-           $scope.topicShow = true;
-       }
+    $scope.topicClick = function (id) {
+        console.log(id);
+        $state.go('topic', { topicId: id });
     };
+
+    $scope.enrollBtn = function () {
+        $state.go('allCourses');
+    };
+
+    $scope.addCourse = function () {
+        $state.go('createCourse');
+    };
+
+  
+
 
 });
