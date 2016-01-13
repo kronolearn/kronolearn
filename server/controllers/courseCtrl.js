@@ -12,6 +12,8 @@ module.exports = {
 		});
 	},
 	
+	
+	
 	addCourse: function(req, res) {
 		var newCourse = req.body;
 		var imageUrl = req.imageUrl;
@@ -49,6 +51,17 @@ module.exports = {
 		})
 
 	}, // add course
+	
+	addTestCourse: function(req, res) {
+
+		new Course(req.body).save(function (err, data) {
+			if (err) {
+				res.status(500).send(err);
+			} else {
+				res.json(data);
+			}
+		});
+	},
 	
 	getById: function(req, res) {
 
