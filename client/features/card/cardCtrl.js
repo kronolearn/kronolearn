@@ -161,7 +161,7 @@ $scope.stopTimer = function() {
     console.log($scope.cardStopWatch.getSeconds());
     $scope.timeTaken = $scope.cardStopWatch.getSeconds();
     $scope.cardStopWatch.clear();
-    $scope.cardStopWatch.start();
+    //$scope.cardStopWatch.start();
 }
 
 
