@@ -21,35 +21,69 @@ var exports = module.exports = {};
 
 exports.saveCourseImage = function (req, res, next) {
 
+  // req.body is a course, so looks like
+  //  {
+  //    name: 
+  //    description: 
+  //    imageObj: {
+  //       imageName: 
+  //       imageExtension: 
+  //       imageValue:  (big string that is actual data)
+  //    
+  //    }
+  // }
+
+
   // console.log(req.body);
 
+  // users aren't required to add image when creating course, so possible
+  // not included
+  if(req.body.imageObj){
 
-  var buf = new Buffer(req.body.imageValue.replace(/^data:image\/\w+;base64,/, ""), 'base64');
+    var imageObj = req.body.imageObj;
 
-  // bucketName var below crates a "folder" for each user
-  var bucketName = 'kronolearn/coursePics'/* + req.body.userEmail*/;
-  var params = {
-    Bucket: bucketName
-    , Key: req.body.imageName
-    , Body: buf
-    , ContentType: 'image/' + req.body.imageExtension
-    , ACL: 'public-read'
-  };
 
-  s3.upload(params, function (err, data) {
-    console.log(err, data);
-    if (err) return res.status(500).send(err);
-    console.log("Amazon S3 FINAL RESULT: ", data);
-    
-    // TODO: save data to mongo
+    var buf = new Buffer(imageObj.imageValue.replace(/^data:image\/\w+;base64,/, ""), 'base64');
 
-    req.imageUrl = data;
+    // bucketName is amazon where data is stored
+    var bucketName = 'kronolearn/coursePics';
+    var params = {
+      Bucket: bucketName
+      , Key: imageObj.imageName
+      , Body: buf
+      , ContentType: 'image/' + imageObj.imageExtension
+      , ACL: 'public-read'
+    };
+
+    s3.upload(params, function (err, data) {
+      console.log(err, data);
+      if (err) return res.status(500).send(err);
+      console.log("Amazon S3 FINAL RESULT: ", data);
+
+      // TODO: save data to mongo
+
+      // final URL amazon returns 
+      req.imageUrl = data.Location;
+      next();
+
+    });
+  } // end of if statement
+
+
+  // if no image, just continue to add course
+  else{
     next();
-
-    // res.json(data);
-  });
-
+  }
 };
+
+
+
+
+
+
+
+
+
 
 exports.saveUserAvatar = function (req, res) {
   buf = new Buffer(req.body.imageBody.replace(/^data:image\/\w+;base64,/, ""), 'base64');

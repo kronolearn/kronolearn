@@ -1,8 +1,10 @@
 var Course = require('../models/Course');
+var Random = require('../models/Random');
+
 
 module.exports = {
-    
-    getCourses: function(req, res) {
+
+	getCourses: function(req, res) {
 		Course.find()
 
 		.then(function (response) {
@@ -10,33 +12,55 @@ module.exports = {
 		});
 	},
 	
-    
-    
+	
+	
 	addCourse: function(req, res) {
+		var newCourse = req.body;
 		var imageUrl = req.imageUrl;
-		req.body.picture = imageUrl;
-		// console.log(req.body);
+		newCourse.picture = imageUrl;
 
-		// new Course(req.body).save(function (err, data) {
-		// 	if (err) {
-		// 		res.status(500).send(err);
-		// 	} else {
-		// 		res.json(data);
-		// 	}
-		// });
+		delete newCourse.imageObj;
+
+		// need to just grab Ids from admin objects, to store on backend
+		var admins = newCourse.admins;
+		var adminIds = admins.map(function(admin){
+			return admin.id;
+		})
+		// now remove the old admins on new course, and attach admin id array
+		delete newCourse.admins;
+		newCourse.admins = adminIds;
 
 
-	},
-    
-    	addTestCourse: function(req, res) {
+		console.log('\n\ncourse to add is:', newCourse, '\n\n');
 
-		 new Course(req.body).save(function (err, data) {
-		 	if (err) {
-		 		res.status(500).send(err);
-		 	} else {
-		 		res.json(data);
-		 	}
-		 });
+		Random.find().exec(function(err, randomArr){
+			var newCourseNumber = randomArr[0].highestCourseNumber+1;
+			randomArr[0].highestCourseNumber+=1;
+			randomArr[0].save()
+			newCourse.courseNumber = newCourseNumber;
+			new Course(newCourse).save(function(err, data){
+				if(err){
+					res.status(500).send(err);
+				}
+				else{
+					// just send course number, now the front end goes to new course page
+					res.send({courseNumber: newCourseNumber});
+				}
+			})
+
+		})
+
+	}, // add course
+	
+	addTestCourse: function(req, res) {
+
+		new Course(req.body).save(function (err, data) {
+			if (err) {
+				res.status(500).send(err);
+			} else {
+				res.json(data);
+			}
+		});
 	},
 	
 	getById: function(req, res) {
@@ -66,13 +90,13 @@ module.exports = {
 	},
 	
 	updateCourse: function (req, res) {
-        Course.findByIdAndUpdate(req.params.id, req.body, function (err, data) {
-            if (err) {
-                res.status(500).send(err);
-            } else {
-                res.send(data);
-            }
-        });
+		Course.findByIdAndUpdate(req.params.id, req.body, function (err, data) {
+			if (err) {
+				res.status(500).send(err);
+			} else {
+				res.send(data);
+			}
+		});
 	},
-    
+
 };

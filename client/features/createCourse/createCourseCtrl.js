@@ -1,5 +1,5 @@
 angular.module('kronolearn')
-.controller('createCourseCtrl', function($scope, user){
+.controller('createCourseCtrl', function($scope, user, courseService, $state){
 	console.log(user);
 
 	$scope.hideSearchBar = true;
@@ -8,6 +8,7 @@ angular.module('kronolearn')
 	$scope.admins = [{
 		name: user.name,
 		avatar: user.avatar,
+		id: user._id
 
 	}];
 
@@ -15,10 +16,25 @@ angular.module('kronolearn')
 	$scope.createCourse = function(newCourse){
 		console.log(newCourse);
 
-		console.log($scope.imageObj);
+		if($scope.imageObj){
+			console.log($scope.imageObj);
+			newCourse.imageObj = $scope.imageObj;
+		}
+
 
 		newCourse.admins = $scope.admins;
 		console.log(newCourse);
+
+		courseService.addCourse(newCourse)
+		.then(function(response){
+			console.log(response);
+			$state.go('course', {courseId: response.courseNumber});
+		});
+
+
+
+
+
 	}
 
 
