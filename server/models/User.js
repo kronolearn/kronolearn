@@ -16,9 +16,9 @@ var UserSchema = Schema({
 			reviews: [{
 				date: { type: Date },
 				qResponse: { type: Number, default: 3, required: true },
-				ef: { type: Number, default: 2.5, required: true }
+				ef: { type: Number, default: 2.5, required: true },
+				lastInterval: {type: Number, required: true, default: 0}  // interval is in number of days
 			}],
-		     ef: { type: Number, default: 2.5 },
 		     dateNextReview: { type: Date },
 		}]
 });
