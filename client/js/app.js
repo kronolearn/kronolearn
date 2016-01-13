@@ -46,11 +46,18 @@ app.config(function($stateProvider, $urlRouterProvider) {
         controller: 'allCoursesCtrl'
     })
     
+    .state('quiz', {
+        url: '/quiz/:topicId/quiz',
+        templateUrl: '/features/quiz/quizTmpl.html',
+        controller: 'quizCtrl'
+    })
+/*
     .state('card', {
         url: '/topic/:topicId/card',
         templateUrl: './features/card/cardTmpl.html',
         controller: 'cardCtrl'
     })
+*/
 
     ///////////////////////////////////////////////////
     //  Creating course, topic, and card views

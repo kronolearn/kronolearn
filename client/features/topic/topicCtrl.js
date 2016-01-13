@@ -25,7 +25,7 @@ app.controller('topicCtrl', function($scope, topicService, $stateParams, courseS
     $scope.getTopic();
     
     $scope.goToQuiz = function(topicId) {  
-        $state.go('card', {topicId: topicId});
+        $state.go('quiz', {topicId: topicId});
     };
     
     $scope.showMaterial = false;

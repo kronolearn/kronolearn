@@ -1,0 +1,30 @@
+<div navbar></div>
+<div class="card-wrapper container">
+    
+  <div class="card-header">
+        <h1>{{currentTopic.name}}</h1>
+        <h2>{{currentCard + 1}}. {{currentTopic.cards[currentCard].question}}</h2>
+  </div>
+</br>
+</br>
+  <div class="card-body">
+     <li class="card-answers" ng-repeat="answer in currentTopic.cards[currentCard].answers">
+         <button isolate class="answer-btn btn" ng-class="{'btn-primary': isSelected, 'btn-info': !isSelected}" ng-click="isSelected = !isSelected; changeUserAnswer(answer.text)"  ng-disabled="(submitEnabled === false)">{{answer.text}}</button>
+      </br>
+     </li>
+</br>
+</br>
+    <button class="btn btn-warning submit-button" ng-click="stopTimer(); answerCheck(); toggleSubmitAccess(); toggleNextArrow(); pushUserAnswerResult()" ng-disabled="(submitEnabled === false)">Submit Answer</button>
+</br>
+    <i class="fa fa-check-circle answer-checkmark" ng-show="answerIsCorrect"></i>
+
+    <i class="fa fa-times-circle answer-wrongmark" ng-show="answerIsIncorrect"></i>
+
+    <p class="answers-all-correct" ng-show="answerIsCorrect">Correct!</p>
+
+    <p class="correct-answers-were" ng-show="answerIsIncorrect">Sorry, the correct answers were: {{currentCorrectAnswers}}</p>
+
+    <i class="fa fa-arrow-circle-o-right arrow-right" ng-click="nextCard(); markReset(); toggleSubmitAccess(); toggleNextArrow(); cardStopWatch.start()" ng-hide="((currentCard === (currentTopic.cards.length - 1)) || !nextArrowShowing)"></i>
+
+    <!--<i class="fa fa-arrow-circle-o-left arrow-left" ng-click="prevCard(); markReset(); toggleSubmitAccess()" ng-hide="(currentCard === 0)"></i> -->
+  </div>
