@@ -17,8 +17,14 @@ app.controller('cardCtrl', function($scope, cardService, $stateParams) {
     
     $scope.submitEnabled = true;
     
+    $scope.nextArrowShowing = false;
+    
     $scope.toggleSubmitAccess = function() {
         $scope.submitEnabled = !$scope.submitEnabled;
+    }
+    
+    $scope.toggleNextArrow = function() {
+        $scope.nextArrowShowing = !$scope.nextArrowShowing;
     }
     
     $scope.markReset = function() {

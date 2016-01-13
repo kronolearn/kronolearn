@@ -14,7 +14,7 @@
      </li>
 </br>
 </br>
-    <button class="btn btn-warning submit-button" ng-click="stopTimer(); answerCheck(); toggleSubmitAccess()" ng-disabled="(submitEnabled === false)">Submit Answer</button>
+    <button class="btn btn-warning submit-button" ng-click="stopTimer(); answerCheck(); toggleSubmitAccess(); toggleNextArrow()" ng-disabled="(submitEnabled === false)">Submit Answer</button>
 </br>
     <i class="fa fa-check-circle answer-checkmark" ng-show="answerIsCorrect"></i>
 
@@ -24,7 +24,7 @@
 
     <p class="correct-answers-were" ng-show="answerIsIncorrect">Sorry, the correct answers were: {{currentCorrectAnswers}}</p>
 
-    <i class="fa fa-arrow-circle-o-right arrow-right" ng-click="nextCard(); markReset(); toggleSubmitAccess()" ng-hide="(currentCard === (currentTopic.cards.length - 1))"></i>
+    <i class="fa fa-arrow-circle-o-right arrow-right" ng-click="nextCard(); markReset(); toggleSubmitAccess(); toggleNextArrow()" ng-hide="((currentCard === (currentTopic.cards.length - 1)) || !nextArrowShowing)"></i>
 
-    <i class="fa fa-arrow-circle-o-left arrow-left" ng-click="prevCard(); markReset(); toggleSubmitAccess()" ng-hide="(currentCard === 0)"></i>
+    <!--<i class="fa fa-arrow-circle-o-left arrow-left" ng-click="prevCard(); markReset(); toggleSubmitAccess()" ng-hide="(currentCard === 0)"></i> -->
   </div>
