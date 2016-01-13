@@ -102,7 +102,7 @@ app.get('/api/userAndCourses', userCtrl.getUserAndCourses);
 app.get('/api/courses', courseCtrl.getCourses);
 app.get('/api/course/:id', courseCtrl.getById);
 app.post('/api/course', imageCtrl.saveCourseImage, courseCtrl.addCourse);
-app.post('/api/coursetesting', courseCtrl.addCourse);
+app.post('/api/coursetesting', courseCtrl.addTestCourse);
 app.delete('/api/course/:id', courseCtrl.removeCourse);
 app.put('/api/course/:id', courseCtrl.updateCourse);
 
