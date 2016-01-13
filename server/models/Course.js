@@ -2,9 +2,9 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 	
 var	CourseSchema = Schema ({
-	name: { type: String },
-	description: { type: String },
-	subjects: [{ type: String }],
+	name: { type: String, required: true },
+	description: { type: String, required: true  },
+	subjects: [{ type: String, required: true  }],
 	topics: [{ type: Schema.Types.ObjectId, ref: 'Topic' }],
 	admins: [{ type: Schema.Types.ObjectId, ref: 'User' }],
 	students: [{ type: Schema.Types.ObjectId, ref: 'User' }],

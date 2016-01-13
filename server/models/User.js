@@ -18,8 +18,8 @@ var UserSchema = Schema({
 				qResponse: { type: Number, default: 3, required: true },
 				ef: { type: Number, default: 2.5, required: true }
 			}],
-		ef: { type: Number, default: 2.5 },
-		dateNextReview: { type: Date },
+		     ef: { type: Number, default: 2.5 },
+		     dateNextReview: { type: Date },
 		}]
 });
 
