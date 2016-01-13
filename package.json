@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/kronolearn/kronolearn#readme",
   "dependencies": {
+    "aws-sdk": "^2.2.29",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.14.2",
     "cookie-parser": "^1.4.0",
