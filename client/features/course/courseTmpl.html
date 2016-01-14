@@ -4,17 +4,17 @@
 		<div class="course-header container">
 			<div class="row">
 				<div class="img-wrapper col-md-3 col-sm-4 col-xs-5">
-					<img class="course-picture" ng-src="{{currentCourse.picture}}" alt="Course Picture">
+					<img class="course-picture" ng-src="{{course.picture}}" alt="Course Picture">
 				</div>
 				<div class="info-wrapper col-md-6 col-sm-5 col-xs-7">
-					<h1 class="course-name">{{currentCourse.name}}</h1>
-					<h5 class="course-description">{{currentCourse.description}}</h5>
+					<h1 class="course-name">{{course.name}}</h1>
+					<h5 class="course-description">{{course.description}}</h5>
 				</div>
 				<div class="admin-wrapper col-md-3 col-sm-3 col-xs-0">
 					<h3 class="admin-header">Admins</h3>
 					<!-- Will eventually have ng repeat here for imgs of admins -->
 					<ul class="admin-images">
-						<li class="admin" ng-repeat="admin in currentCourse.admins">
+						<li class="admin" ng-repeat="admin in course.admins">
 							<!-- {{admin.name}} -->
 							<img ng-if="admin.avatar"ng-src="{{admin.avatar}}" alt=""
 							uib-tooltip="{{admin.name}}" tooltip-placement="bottom" title="hello">
@@ -33,7 +33,7 @@
 
 		<div class="topic-container container">
 			<div class="row">
-				<div class="topic-wrapper col-md-3 col-sm-4 col-xs-6" ng-repeat="topic in currentCourse.topics">
+				<div class="topic-wrapper col-md-3 col-sm-4 col-xs-6" ng-repeat="topic in course.topics">
 
 					<div class="topic" ng-click="goToTopic(topic._id)">
 
@@ -55,22 +55,14 @@
 					</div>
 				</div>
               <!-- This is the permanent create a topic thing-->
-				<div class="topic-wrapper col-md-3 col-sm-4 col-xs-6">
-
+				<div ng-show="userIsAdminOfCourse" class="topic-wrapper create-topic-wrapper col-md-3 col-sm-4 col-xs-6">
 					<div class="topic" ng-click="showForm()">
-
-
 						<div class="topic-header">
 							<h5 class="topic-name">Add A Topic</h5>
 						</div>
-
 						<div class="topic-body">
 							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnBzJ92EWeYNgbTvXnDeLsuUnrPYuOinUbbofbn8lAMcAJw6kZ1w" alt="" class="topic-picture">
 						</div>
-
-
-
-						
 					</div>
 				</div>
 			</div>
