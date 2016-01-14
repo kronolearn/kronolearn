@@ -115,6 +115,7 @@ app.get('/api/topic/:id', topicCtrl.getById);
 app.post('/api/topic', topicCtrl.addTopic);
 app.delete('/api/topic/:id', topicCtrl.removeTopic);
 app.put('/api/topic/:id', topicCtrl.updateTopic);
+app.post('/api/topic/material', topicCtrl.addMaterial);
 
 // app.post('/api/course/addCourseImage', function(req, res, next){
 // 	// console.log('\n req.body: ', req.body);
