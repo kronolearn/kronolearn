@@ -5,21 +5,21 @@ module.exports = {
     
     getTopics: function(req, res) {
 		Topic.find().then(function (response) {
-			res.send(response);
+			return res.send(response);
 		});
 	},
 	
 	addTopic: function(req, res) {
 		new Topic(req.body).save(function (err, topic) {
 			if (err) {
-				res.status(500).send(err);
+				return res.status(500).send(err);
 			} else {
                 var courseId = req.query.courseId;
                 console.log(courseId);
                 Course.findOne({courseNumber: courseId})
                 .exec(function(err, course){
                     if(err){
-                        res.status(500).send(err)
+                        return res.status(500).send(err)
                     }
                     else{
                         course.topics.push(topic._id);
@@ -27,10 +27,10 @@ module.exports = {
                         console.log(course);
                         course.save(function(err, course){
                             if(err){
-                                res.status(500).send(err);
+                                return res.status(500).send(err);
                             }
                             console.log(course);
-                            res.send(topic);
+                            return res.send(topic);
                         })
                         
                     }
@@ -39,8 +39,6 @@ module.exports = {
                 
                 
                 
-                
-				res.json(topic);
 			}
 		});
 	},
