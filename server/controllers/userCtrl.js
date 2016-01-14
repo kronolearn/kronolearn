@@ -124,7 +124,7 @@ module.exports = {
 					return res.send('no user logged in');
 				}
 				else{
-					return res.send('no req.session.passport')
+					return res.send('no req.session.passport');
 				}
 			}
 			else{
