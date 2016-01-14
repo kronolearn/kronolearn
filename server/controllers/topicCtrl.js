@@ -1,19 +1,44 @@
 var Topic = require('../models/Topic');
+var Course = require('../models/Course');
 
 module.exports = {
     
     getTopics: function(req, res) {
 		Topic.find().then(function (response) {
-			res.send(response);
+			return res.send(response);
 		});
 	},
 	
 	addTopic: function(req, res) {
-		new Topic(req.body).save(function (err, data) {
+		new Topic(req.body).save(function (err, topic) {
 			if (err) {
-				res.status(500).send(err);
+				return res.status(500).send(err);
 			} else {
-				res.json(data);
+                var courseId = req.query.courseId;
+                console.log(courseId);
+                Course.findOne({courseNumber: courseId})
+                .exec(function(err, course){
+                    if(err){
+                        return res.status(500).send(err)
+                    }
+                    else{
+                        course.topics.push(topic._id);
+                        //console.log(topic._id);
+                        // console.log(course);
+                        course.save(function(err, course){
+                            if(err){
+                                return res.status(500).send(err);
+                            }
+                            console.log(course);
+                            return res.send(topic);
+                        })
+                        
+                    }
+                })
+                
+                
+                
+                
 			}
 		});
 	},
@@ -25,6 +50,7 @@ module.exports = {
 			if (err) {
 				res.status(500).send(err);
 			} else {
+                console.log(data);
 				res.send(data);
 			}
 		});
@@ -45,9 +71,27 @@ module.exports = {
             if (err) {
                 res.status(500).send(err);
             } else {
+                console.log(data);
                 res.send(data);
             }
         });
 	},
+    
+    addMaterial: function(req, res) {
+        Topic.findById(req.query.id, function(err, topic) {
+            if (err) {
+                res.status(500).send(err);
+            } else {
+                topic.reviewMaterials.push(req.body);
+                topic.save(function(err, data) {
+                    if (err) {
+                        res.status(500).send(err);
+                    } else {
+                        res.send(data);
+                    }
+                })
+            }
+        })
+    }
     
 };

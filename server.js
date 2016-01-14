@@ -115,6 +115,7 @@ app.get('/api/topic/:id', topicCtrl.getById);
 app.post('/api/topic', topicCtrl.addTopic);
 app.delete('/api/topic/:id', topicCtrl.removeTopic);
 app.put('/api/topic/:id', topicCtrl.updateTopic);
+app.post('/api/topic/material', topicCtrl.addMaterial);
 
 // app.post('/api/course/addCourseImage', function(req, res, next){
 // 	// console.log('\n req.body: ', req.body);
@@ -195,7 +196,10 @@ app.post('/api/initializeRandom', function(req, res){
 
 
 //_____________Connecting to Port_________________
-var port = process.env.PORT || 3000;
+// var port = process.env.PORT || 3000;
+
+// making port 3000, just so that it doesn't look at process.env.PORT
+var port = 3000;
 
 app.listen(port, function () {
     console.log('listening to port ', port);
