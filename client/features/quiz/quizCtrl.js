@@ -170,7 +170,16 @@ $scope.stopTimer = function() {
 $scope.pushUserAnswerResult = function() {
     console.log("I am here.");
     var questionNumber = $scope.currentCard + 1;
+    var currDate = new Date();
+    
+    
+    
+    
+    
+    
     var userAnswerObj = {
+        cardId: $scope.currentTopic.cards[$scope.currentCard]._id,
+        date: currDate,
         timeTaken: $scope.timeTaken,
         answeredCorrectly: $scope.answerIsCorrect,
         questionNumber: questionNumber
