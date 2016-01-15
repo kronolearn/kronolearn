@@ -5,7 +5,6 @@ app.controller('quizCtrl', function($scope, quizService, $stateParams, userServi
     
     userService.checkUserLogin()
 	.then(function(user){
-		//console.log('initial user: ', user);
 		$scope.user = user;
         $scope.userCopy = $scope.user;
 	})
@@ -62,7 +61,8 @@ app.controller('quizCtrl', function($scope, quizService, $stateParams, userServi
         $scope.currentCorrectAnswers = [];
         $scope.currentCard--;
     };
-    
+
+//Populates the currentCorrectAnswers array; the currentUserAnswers array gets checked against this on each card/question.
     $scope.getCurrentCorrectAnswers = function() {
         for (var i = 0; i < $scope.currentTopic.cards[$scope.currentCard].answers.length; i++) {
             if ($scope.currentTopic.cards[$scope.currentCard].answers[i].correctAnswer === true) {
@@ -71,7 +71,8 @@ app.controller('quizCtrl', function($scope, quizService, $stateParams, userServi
             }
         }
     };
-    
+
+//Checks to see if user answered correctly or not.
     $scope.answerCheck = function() {
         $scope.getCurrentCorrectAnswers();
         $scope.allGood = true;
@@ -79,7 +80,6 @@ app.controller('quizCtrl', function($scope, quizService, $stateParams, userServi
         for (var i = 0; i < $scope.currentCorrectAnswers.length; i++) {
             $scope.currentCorrectAnswersCopy.push($scope.currentCorrectAnswers[i]);
         }
-        //console.log("all correct answers: ", $scope.currentCorrectAnswers);
 
         for (var i = 0; i < $scope.userAnswers.length; i++) {
             if ($scope.currentCorrectAnswersCopy.indexOf($scope.userAnswers[i]) !== -1) {
@@ -88,26 +88,24 @@ app.controller('quizCtrl', function($scope, quizService, $stateParams, userServi
             }
             else {
                 $scope.allGood = false;
-                //console.log("Wrong Answer?");
             }
         }
-       // console.log("final array...should be empty for correct", $scope.currentCorrectAnswersCopy);
+        
         if ($scope.currentCorrectAnswersCopy.length === 0 && $scope.allGood) {
             $scope.answerIsCorrect = true;
-            //alert("Correct!");
         }
         
         else {
             $scope.answerIsIncorrect = true;
-            //alert("Incorrect...Correct Answers were: " + $scope.currentCorrectAnswers);
         }
         
+        //clears the currentCorrectAnswersCopy array.
         $scope.currentCorrectAnswersCopy.length = 0;
-        //$scope.pushUserAnswerResult();
         
         
     };
     
+//Whenever user clicks on a different answer, it is added to/removed from array.
     $scope.changeUserAnswer = function(answerText) {
         if ($scope.userAnswers.indexOf(answerText) === -1) {
             $scope.userAnswers.push(answerText);
@@ -116,19 +114,10 @@ app.controller('quizCtrl', function($scope, quizService, $stateParams, userServi
             var indexToRemove = $scope.userAnswers.indexOf(answerText);
             $scope.userAnswers.splice(indexToRemove, 1);
         }
-        
-        //console.log($scope.userAnswers);
-        
     };
     
     
-    
 
-    
-    
-    
-    
-    
 $scope.Stopwatch = function (){
   var startTime, endTime, instance = this;
 
@@ -151,32 +140,20 @@ $scope.Stopwatch = function (){
     }
     return /*Math.round*/((endTime.getTime() - startTime.getTime()) / 1000);
   };
-/*
-  this.getMinutes = function(){
-    return instance.getSeconds() / 60;
-  }      ;
-  this.getHours = function(){
-    return instance.getSeconds() / 60 / 60;
-  };
-  this.getDays = function(){
-    return instance.getHours() / 24;
-  };   */
 }
 
 $scope.cardStopWatch = new $scope.Stopwatch();
-$scope.cardStopWatch.start(); //Start the stopwatch
-// As a test, I use the setTimeout function to delay st.stop();
+$scope.cardStopWatch.start(); //Start the stopwatch on new card load;
 
+
+//Used to stop the timer and record the timeTaken on quizQuestionSubmit.
 $scope.stopTimer = function() {
 
     $scope.cardStopWatch.stop();
     console.log($scope.cardStopWatch.getSeconds());
     $scope.timeTaken = $scope.cardStopWatch.getSeconds();
     $scope.cardStopWatch.clear();
-    //$scope.cardStopWatch.start();
 }
-
-
 
 
 
@@ -204,83 +181,52 @@ $scope.getQresponse = function() {
 
 
 
-
-
 $scope.pushUserAnswerResult = function() {
-    
     
         userService.checkUserLogin()
 	.then(function(user){
-		//console.log('ok NOW the user: ', user);
 		$scope.user = user;
 	})
         
+        //Gets UPDATED user info (info since the last quiz question was submitted).
         quizService.getUserInfo($scope.user._id).then(function(response) {
-            //console.log('WOOOOOHOOOOO', response);
             $scope.userCopy = response;
-       
-    //might have to do a new server call instead of the above call...the above call only calls to AUTH endpoint, maybe i need to get the USER? could also change this up above!!! (near beginning of controller, instead of setting $scope.user = *whatever the AUTH returns*
         
         
-    var currDate = new Date();
-    var nextReviewDate = currDate;
-    nextReviewDate.setHours(nextReviewDate.getHours() + 24);
-    var currDate2 = new Date();
-    
+            var currDate = new Date();
+            var nextReviewDate = currDate;
+            nextReviewDate.setHours(nextReviewDate.getHours() + 24);
+            var currDate2 = new Date();    
+   
+            
+            $scope.isNewUserCard = true; //Used in qResponse function.
+            var isNewUserCard = true;  //Used locally, in this function.
+            for (var i = 0; i < $scope.userCopy.cards.length; i++) {
+                if ($scope.userCopy.cards[i].card === $scope.currentTopic.cards[$scope.currentCard]._id) {
+                    isNewUserCard = false;
+                    $scope.isNewUserCard = false;
+                }
+            }        
 
-    var questionNumber = $scope.currentCard + 1;
-    
-
-   /* var userAnswerObj = {
-        cardId: $scope.currentTopic.cards[$scope.currentCard]._id,
-        date: currDate,
-        timeTaken: $scope.timeTaken,
-        answeredCorrectly: $scope.answerIsCorrect,
-        questionNumber: questionNumber
-    };
-    $scope.userAnswerResults.push(userAnswerObj); */
-    //console.log("These are the user answers...", $scope.userAnswerResults);
-                
+            $scope.getQresponse();
             
+            var cardObj = {
+                card: $scope.currentTopic.cards[$scope.currentCard]._id,
+                reviews: [{
+                    date: currDate2,
+                    qResponse: $scope.qResponse
+                }],
+                dateNextReview: nextReviewDate
+            };
             
-            
-            
-        $scope.isNewUserCard = true; //this is just used in the getQresponse function, NOT really here.
-    var isNewUserCard = true;  //this is the var used in THIS function.
-    for (var i = 0; i < $scope.userCopy.cards.length; i++) {
-        if ($scope.userCopy.cards[i].card === $scope.currentTopic.cards[$scope.currentCard]._id) {
-            isNewUserCard = false;
-            $scope.isNewUserCard = false;
-            //console.log("ok really...this SHOULD be showing up.", $scope.userCopy.cards[i].card._id);
-            //console.log("...2: ", $scope.currentTopic.cards[$scope.currentCard]._id);
-        }
-    }        
-            
-            
-            
-
-    $scope.getQresponse();
-            
-            
-            
-            
-    var cardObj = {
-        card: $scope.currentTopic.cards[$scope.currentCard]._id,
-        reviews: [{
-            date: currDate2,
-            qResponse: $scope.qResponse      //may need to change this?
-        }],
-        dateNextReview: nextReviewDate
-    };
-
-    if (isNewUserCard) {
+//Adds current Card to User.cards, if not already in array.
+            if (isNewUserCard) {
         
-        console.log("New Card Detected! Adding now...");
-        quizService.addNewCard(cardObj, $scope.user._id).then(function(response) {
-            console.log(response);
+                quizService.addNewCard(cardObj, $scope.user._id).then(function(response) {
+                    console.log(response);
+                });
+            }
         });
-    }
- });
 }
 
 
