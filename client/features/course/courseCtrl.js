@@ -22,11 +22,6 @@ angular.module('kronolearn')
 
 
 
-
-
-
-
-
 	   });
 
  }) // end of user checking login
