@@ -175,6 +175,22 @@ updateUser: function (req, res) {
 	});
 },
 
+updateUserAvatar: function(req, res){
+	// console.log(req.imageUrl);
+	// console.log(req.body.user);{}
+
+	User.findById(req.body.user._id)
+	.exec(function(err, user){
+		user.avatar = req.imageUrl;
+		user.save();
+		res.send({message: 'user avatar changed'});
+	})
+
+
+},
+
+
+
 
 isAuth: function(req, res, next) {
 	if(req){

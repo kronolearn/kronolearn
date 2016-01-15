@@ -44,6 +44,10 @@ div.navbar-wrapper{
 	}
 
 	div.navbar-logo{
+		margin-left: 20px;
+		@include phoneOrLess {
+			margin-left: 5px;
+		}
 		display: inline-block;
 		margin-right: 200px;
 		// background: blue;
@@ -83,7 +87,8 @@ div.navbar-wrapper{
 		margin-right: 10px;
 		position: relative;
 		display: inline-block;
-		width: 44px;
+		// width: 44px;
+		height: 40px;
 		border-radius: 5px;
 		// float: right;
 	}

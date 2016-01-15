@@ -1,0 +1,65 @@
+<div class="account-wrapper container-wrapper">
+	<div class="navbar" navbar></div>
+
+	<div class="main-content container">
+		<h1 class="main-header">Account</h1>
+
+		<div class="row">
+
+			<div class="settings col-md-10-col-md-offset-1">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="avatar">
+							<img ng-if="user.avatar" ng-src="{{user.avatar}}" alt="">
+							<img ng-if="!user.avatar" src="./img/user.png" alt="">
+
+							<button ng-click="addPicture()" class="clickable" dropzone action="/file-upload" ng-if="user.avatar">Change Picture</button>
+							<button ng-click="addPicture()" class="clickable" dropzone action="/file-upload" ng-if="!user.avatar">Add a Picture</button>
+							<button ng-click="saveAccount()" ng-show="pictureAdded" class="add-picture">Save Picture</button>
+
+							<div class="add-image">image</div>
+
+
+						</div>
+					</div>
+
+					<div class="info col-md-8">
+						<p>Name:  {{user.name}}</p>
+						<p>Email: {{user.email}}</p>
+						
+
+
+					</div>
+
+				</div>
+
+
+
+			</div><!-- settings bigger row-->
+			
+
+
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</div><!-- main content-->
+</div> <!-- account-wrapper, nothing below this-->

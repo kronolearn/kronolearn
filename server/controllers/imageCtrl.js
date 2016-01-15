@@ -85,27 +85,45 @@ exports.saveCourseImage = function (req, res, next) {
 
 
 
-exports.saveUserAvatar = function (req, res) {
-  buf = new Buffer(req.body.imageBody.replace(/^data:image\/\w+;base64,/, ""), 'base64');
+exports.saveUserAvatar = function (req, res, next) {
+  // console.log(req.body);
+  var imageObj = req.body.imageObj;
+  // console.log(imageObj)
 
-  // bucketName var below crates a "folder" for each user
+  var buf = new Buffer(imageObj.imageValue.replace(/^data:image\/\w+;base64,/, ""), 'base64');
+
+  // // bucketName var below crates a "folder" for each user
   var bucketName = 'kronolearn/userAvatars'/* + req.body.userEmail*/;
   var params = {
     Bucket: bucketName
-    , Key: req.body.imageName
+    , Key: imageObj.imageName
     , Body: buf
-    , ContentType: 'image/' + req.body.imageExtension
+    , ContentType: 'image/' + imageObj.imageExtension
     , ACL: 'public-read'
   };
 
   s3.upload(params, function (err, data) {
     console.log(err, data);
     if (err) return res.status(500).send(err);
-    console.log("Amazon S3 FINAL RESULT: ", data);
+    // console.log("Amazon S3 FINAL RESULT: ", data);
     // TODO: save data to mongo
-    res.json(data);
+
+    req.imageUrl = data.Location;
+    console.log(data.Location);
+    next();
   });
+
+
+
 };
+
+
+
+
+
+
+
+
 
 exports.saveTopicImage = function (req, res) {
   buf = new Buffer(req.body.imageBody.replace(/^data:image\/\w+;base64,/, ""), 'base64');

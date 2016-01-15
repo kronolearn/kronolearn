@@ -74,6 +74,23 @@ app.config(function($stateProvider, $urlRouterProvider) {
     	}
     })
 
+  ///////////////////////////////////////////////////
+  //  Account view
+  ///////////////////////////////////////////////////
+
+  .state('account', {
+  	url: '/account',
+  	templateUrl: './features/account/account.html',
+  	controller: 'accountCtrl',
+  	resolve: {
+  		user: function(userService){
+  			return userService.checkUserLogin();
+  		}
+  	}
+  })
+
+
+
 
 
 
