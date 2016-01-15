@@ -8,7 +8,6 @@ angular.module('kronolearn')
 
 	userService.checkUserLogin()
 	.then(function(user){
-		console.log(user);
 		$scope.user = user;
 	})
 
@@ -16,10 +15,8 @@ angular.module('kronolearn')
 
     $scope.currentCourseNumber = $stateParams;
     $scope.getCurrentCourse = function() {
-        console.log("===test 1: ", $scope.currentCourseNumber);
         masterService.getCurrentCourse($scope.currentCourseNumber).then(function(response) {
             
-            console.log("ULTIMATE RESPONSE:", response);
             $scope.currentCourse = response;
       });
     }
@@ -36,8 +33,6 @@ angular.module('kronolearn')
 
 
     $scope.goToTopic = function(topicId){
-        // console.log(courseId);
-        // console.log(topicId);
         $state.go('topic', {courseId: courseId, topicId: topicId});
     }
 

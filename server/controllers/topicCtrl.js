@@ -15,7 +15,7 @@ module.exports = {
 				return res.status(500).send(err);
 			} else {
                 var courseId = req.query.courseId;
-                console.log(courseId);
+                //console.log(courseId);
                 Course.findOne({courseNumber: courseId})
                 .exec(function(err, course){
                     if(err){
@@ -29,7 +29,7 @@ module.exports = {
                             if(err){
                                 return res.status(500).send(err);
                             }
-                            console.log(course);
+                            //console.log(course);
                             return res.send(topic);
                         })
                         
@@ -50,7 +50,7 @@ module.exports = {
 			if (err) {
 				res.status(500).send(err);
 			} else {
-                console.log(data);
+                //console.log(data);
 				res.send(data);
 			}
 		});
@@ -71,7 +71,7 @@ module.exports = {
             if (err) {
                 res.status(500).send(err);
             } else {
-                console.log(data);
+                //console.log(data);
                 res.send(data);
             }
         });
