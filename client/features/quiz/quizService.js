@@ -20,4 +20,10 @@ app.service('quizService', function($http) {
             return response.data;
         })
     };
+    
+    this.getUserInfo = function(userId) {
+        return $http.get('/api/user/' + userId).then(function(response){
+            return response.data;
+        })
+    };
 });

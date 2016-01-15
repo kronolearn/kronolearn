@@ -187,8 +187,12 @@ $scope.pushUserAnswerResult = function() {
 	.then(function(user){
 		console.log('ok NOW the user: ', user);
 		$scope.user = user;
-        $scope.userCopy = $scope.user;
 	})
+        
+        quizService.getUserInfo($scope.user._id).then(function(response) {
+            console.log('WOOOOOHOOOOO', response);
+            $scope.userCopy = response;
+       
     //might have to do a new server call instead of the above call...the above call only calls to AUTH endpoint, maybe i need to get the USER? could also change this up above!!! (near beginning of controller, instead of setting $scope.user = *whatever the AUTH returns*
         
         
@@ -222,10 +226,10 @@ $scope.pushUserAnswerResult = function() {
     };
     
     var isNewUserCard = true;
-    for (var i = 0; i < $scope.user.cards.length; i++) {
-        if ($scope.user.cards[i].card === $scope.currentTopic.cards[$scope.currentCard]._id) {
+    for (var i = 0; i < $scope.userCopy.cards.length; i++) {
+        if ($scope.userCopy.cards[i].card === $scope.currentTopic.cards[$scope.currentCard]._id) {
             isNewUserCard = false;
-            console.log("ok really...this SHOULD be showing up.", $scope.user.cards[i].card._id);
+            console.log("ok really...this SHOULD be showing up.", $scope.userCopy.cards[i].card._id);
             console.log("...2: ", $scope.currentTopic.cards[$scope.currentCard]._id);
         }
     }
@@ -236,6 +240,7 @@ $scope.pushUserAnswerResult = function() {
             console.log(response);
         });
     }
+ });
 }
 
 
