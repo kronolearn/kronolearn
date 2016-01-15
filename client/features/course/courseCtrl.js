@@ -94,10 +94,6 @@ angular.module('kronolearn')
 
 
 
-	$scope.goToTopic = function (id) {
-		$state.go('topic', { topicId: id });
-	}
-
 
 
 
