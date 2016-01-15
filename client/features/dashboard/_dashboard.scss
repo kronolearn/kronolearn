@@ -59,15 +59,18 @@
         }
         h2 {
             text-align: center;
-            margin-top: 3%;
-            width: 80%;
+            margin-top: 5%;
+            width: 100%;
             // width: 86%;
             float: right;
         }
         .add-picture {
             max-width: 100px;
 			width: 100%;
+            position: absolute;
         }
+        
+        
     }
     .courses-enrolled, .courses-admin {
         @include transition(.4s ease);
@@ -89,16 +92,20 @@
         .course-info {
             width: 100%;
         
+        .info-box {
+            float: right;
+            width: 100%;
         
         
         
         h3, h4 {
                 // float: right;
-            width: 75%;
-            float: right;
+            width: 59%;
+            // float: right;
             text-align: center;
             // width: 80%;
-            margin: 5px;
+            // margin: 5px;
+            margin: 5px auto;
             overflow: hidden; 
             white-space: nowrap; 
             text-overflow: ellipsis; 
@@ -111,13 +118,24 @@
             clear: both;
             text-overflow: ellipsis;
         }
+        }
         img.course-picture {
-            max-width: 100px;
-			width: 100%;
-            height: auto;
+            // max-width: 100px;
+			width: 100px;
+            height: 76px;
+            position: absolute;
+            // height: auto;
 			border-radius: 5px;
 			border: 1px solid #111;
             margin: 10px 10px;
+        }
+        
+        .goToCourseBtn {
+            position: absolute;
+            background-color: white;
+            border: 1px solid gray;
+            margin-left: 80%;
+            margin-top: 5%;
         }
         }
     }
