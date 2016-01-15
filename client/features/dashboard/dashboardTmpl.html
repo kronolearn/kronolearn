@@ -1,6 +1,6 @@
 <div navbar></div>
 <div class="dashboard">
-<div class="background-image"></div>
+    <div class="background-image"></div>
     <!--Courses They Are Admin For Section-->
     <div ng-show="adminShow" class="admin-wrapper">
         <div class="add-courses-box">
@@ -11,7 +11,7 @@
                 <img class="add-picture" src="../img/plus.png" alt="plus">
             </div>
             <div ng-repeat="course in adminCourses track by $index">
-                <div class="courses-admin" ng-click="adminTopicShow=!adminTopicShow" >
+                <div class="courses-admin" ng-click="adminTopicShow=!adminTopicShow">
                     <div>
                         <h3>{{course.name}}</h3>
                         <h4>{{course.description}}</h4>
@@ -57,17 +57,18 @@
     <div class="notifications">
         <div class="notify-box">
             <h1>Time to review!</h1>
-            
-            <!--ng-repeat over notifications after live-->
-            <h3>Review blah</h3>
-            <h3>Review blah</h3>
-            <h3>Review blah</h3>
+
+            <div ng-repeat="course in courses">
+                <h3>{{course.name}}</h3>
+            </div>
         </div>
     </div>
 
     <div>
-        
+
     </div>
+
+
 
 
 

@@ -159,6 +159,65 @@ isAuth: function(req, res, next) {
 			if(req.session.passport){
 				if(req.session.passport.user){
 					return res.send(req.session.passport.user);
+	
+	getUsers: function(req, res) {
+		User.find().then(function (response) {
+			res.send(response);
+		});
+	},
+	
+	addUser: function(req, res) {
+		new User(req.body).save(function (err, data) {
+			if (err) {
+				res.status(500).send(err);
+			} else {
+				res.json(data);
+			}
+		});
+	},
+	
+	getById: function(req, res) {
+		User.findById(req.params.id, req.body, function(err, data) {
+			if (err) {
+				res.status(500).send(err);
+			} else {
+				res.send(data);
+			}
+		});
+	},
+	
+	removeUser: function(req, res) {
+		User.findByIdAndRemove(req.params.id, function(err, data) {
+			if (err) {
+				res.status(500).send(err);
+			} else {
+				res.send(data);
+			}
+		});
+	},
+	
+	updateUser: function (req, res) {
+		User.findByIdAndUpdate(req.params.id, req.body, function (err, data) {
+			if (err) {
+				res.status(500).send(err);
+			} else {
+				res.send(data);
+			}
+		});
+	},
+	
+	
+	isAuth: function(req, res, next) {
+		if(req){
+			if(req.session){
+				if(req.session.passport){
+					if(req.session.passport.user){
+						return res.send(req.session.passport.user);
+					}
+					return res.send('no user logged in');
+				}
+				else{
+					return res.send('no req.session.passport');
 				}
 				return res.send('no user logged in');
 			}

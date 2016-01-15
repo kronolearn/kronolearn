@@ -23,8 +23,8 @@ module.exports = {
                     }
                     else{
                         course.topics.push(topic._id);
-                        console.log(topic._id);
-                        console.log(course);
+                        //console.log(topic._id);
+                        // console.log(course);
                         course.save(function(err, course){
                             if(err){
                                 return res.status(500).send(err);
@@ -50,6 +50,7 @@ module.exports = {
 			if (err) {
 				res.status(500).send(err);
 			} else {
+                console.log(data);
 				res.send(data);
 			}
 		});
@@ -70,9 +71,27 @@ module.exports = {
             if (err) {
                 res.status(500).send(err);
             } else {
+                console.log(data);
                 res.send(data);
             }
         });
 	},
+    
+    addMaterial: function(req, res) {
+        Topic.findById(req.query.id, function(err, topic) {
+            if (err) {
+                res.status(500).send(err);
+            } else {
+                topic.reviewMaterials.push(req.body);
+                topic.save(function(err, data) {
+                    if (err) {
+                        res.status(500).send(err);
+                    } else {
+                        res.send(data);
+                    }
+                })
+            }
+        })
+    }
     
 };
