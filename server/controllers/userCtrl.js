@@ -204,7 +204,7 @@ leaveCourse: function(req, res){
                 }
 		    }
 		else{
-			return res.send('no req.session')
+			return res.send('no req.session');
 		}
 	}
 	else{
