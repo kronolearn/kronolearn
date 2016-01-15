@@ -57,9 +57,8 @@
     <div class="notifications">
         <div class="notify-box">
             <h1>Time to review!</h1>
-
             <div ng-repeat="course in courses">
-                <h3>{{course.name}}</h3>
+                <h3 ng-click="courseClick(course.courseNumber)">{{course.name}}</h3>
             </div>
         </div>
     </div>

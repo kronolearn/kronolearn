@@ -190,7 +190,7 @@ isAuth: function(req, res, next) {
 			}
 		}
 		else{
-			return res.send('no req.session')
+			return res.send('no req.session');
 		}
 	}
 	else{
