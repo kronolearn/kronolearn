@@ -11,8 +11,8 @@ angular.module('kronolearn')
 
 
 	this.enrollInCourse = function(courseId, userId){
-		console.log('getting here to service');
-		$http.put('/api/course/enrollInCourse?courseId='+courseId+'&userId='+userId)
+		// console.log('getting here to service');
+		$http.put('/api/enrollInCourse?courseId='+courseId+'&userId='+userId)
 
 
 		// .then(function(response){
@@ -21,7 +21,8 @@ angular.module('kronolearn')
 	};
 
 	this.leaveCourse = function(courseId, userId){
-		$http.put('/api/course/leaveCourse?courseId='+courseId+'&userId='+userId);
+		console.log(courseId, userId);
+		$http.put('/api/leaveCourse?courseId='+courseId+'&userId='+userId);
 	};
 
 
