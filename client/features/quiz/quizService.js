@@ -9,4 +9,15 @@ app.service('quizService', function($http) {
             return response.data;
         })
     };
+    
+    this.addNewCard = function(cardObj, userId) {
+        var fullObj = {
+            cardObj: cardObj,
+            _id: userId
+        }
+        return $http.put('/api/usercard', fullObj).then(function(response) {
+            console.log(response);
+            return response.data;
+        })
+    };
 });

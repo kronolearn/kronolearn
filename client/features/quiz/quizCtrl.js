@@ -1,7 +1,14 @@
 var app = angular.module('kronolearn');
 
 
-app.controller('quizCtrl', function($scope, quizService, $stateParams) {
+app.controller('quizCtrl', function($scope, quizService, $stateParams, userService) {
+    
+    userService.checkUserLogin()
+	.then(function(user){
+		console.log('initial user: ', user);
+		$scope.user = user;
+        $scope.userCopy = $scope.user;
+	})
     
     $scope.currentCard = 0;
     
@@ -167,25 +174,68 @@ $scope.stopTimer = function() {
     //$scope.cardStopWatch.start();
 }
 
+
+
+
+
+
+
 $scope.pushUserAnswerResult = function() {
-    console.log("I am here.");
-    var questionNumber = $scope.currentCard + 1;
+    
+    
+        userService.checkUserLogin()
+	.then(function(user){
+		console.log('ok NOW the user: ', user);
+		$scope.user = user;
+        $scope.userCopy = $scope.user;
+	})
+    //might have to do a new server call instead of the above call...the above call only calls to AUTH endpoint, maybe i need to get the USER? could also change this up above!!! (near beginning of controller, instead of setting $scope.user = *whatever the AUTH returns*
+        
+        
     var currDate = new Date();
+    var nextReviewDate = currDate;
+    nextReviewDate.setHours(nextReviewDate.getHours() + 24);
+    var currDate2 = new Date();
     
+
+    var questionNumber = $scope.currentCard + 1;
     
-    
-    
-    
-    
-    var userAnswerObj = {
+
+   /* var userAnswerObj = {
         cardId: $scope.currentTopic.cards[$scope.currentCard]._id,
         date: currDate,
         timeTaken: $scope.timeTaken,
         answeredCorrectly: $scope.answerIsCorrect,
         questionNumber: questionNumber
+    };
+    $scope.userAnswerResults.push(userAnswerObj); */
+    //console.log("These are the user answers...", $scope.userAnswerResults);
+    
+
+    var cardObj = {
+        card: $scope.currentTopic.cards[$scope.currentCard]._id,
+        reviews: [{
+            date: currDate2
+        
+        }],
+        dateNextReview: nextReviewDate
+    };
+    
+    var isNewUserCard = true;
+    for (var i = 0; i < $scope.user.cards.length; i++) {
+        if ($scope.user.cards[i].card === $scope.currentTopic.cards[$scope.currentCard]._id) {
+            isNewUserCard = false;
+            console.log("ok really...this SHOULD be showing up.", $scope.user.cards[i].card._id);
+            console.log("...2: ", $scope.currentTopic.cards[$scope.currentCard]._id);
+        }
     }
-    $scope.userAnswerResults.push(userAnswerObj);
-    console.log("These are the user answers...", $scope.userAnswerResults);
+    if (isNewUserCard) {
+        
+        console.log("New Card Detected! Adding now...");
+        quizService.addNewCard(cardObj, $scope.user._id).then(function(response) {
+            console.log(response);
+        });
+    }
 }
 
 

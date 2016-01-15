@@ -112,6 +112,17 @@ module.exports = {
 			}
 		});
 	},
+    
+    updateUserCard: function (req, res) {
+        var userId = req.body._id;
+        var query = {_id: userId};
+        User.findOneAndUpdate(query, {$push: {cards: req.body.cardObj}}, {upsert:true, new:true}, function(err, doc) {
+            if (err) return res.status(500).send(err);
+            else {
+                return res.send(doc);
+            }
+        });
+    },
 	
 	
 	isAuth: function(req, res, next) {
