@@ -66,7 +66,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 */
 
     ///////////////////////////////////////////////////
-    //  Creating course, topic, and card views
+    //  Creating course, topic, and card views       //
     ///////////////////////////////////////////////////
 
     .state('createCourse', {
