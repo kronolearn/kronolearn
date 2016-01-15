@@ -66,12 +66,8 @@ module.exports = {
 
 
 enrollInCourse: function(req, res){
-	console.log('getting here course blah');
-	// console.log(req.query);
 	var courseId = req.query.courseId;
 	var userId = req.query.userId;
-	// console.log(courseId, userId);
-
 
 
 	// first put userId into courses list of students
@@ -81,54 +77,46 @@ enrollInCourse: function(req, res){
 		course.save();
 	});
 
-	// // find User and add course to enrolled courses
+	// then find User and add course to enrolled courses
 	User.findById(userId)
 	.exec(function(err, user){
 		user.coursesEnrolledIn.push(courseId);
 		user.save();
 	});
 
-
-},
+}, // end of enroll in course
 
 leaveCourse: function(req, res){
 	var courseId = req.query.courseId;
 	var userId = req.query.userId;
 
-	console.log('leave course');
+	// first remove student Id from course students
+	Course.findById(courseId)
+	.exec(function(err, course){
+		for(var i=0; i<course.students.length; i++){
+			// need to convert mongoose object ID to string, otherwise different types
+			var studentId = course.students[i].toString();
+			if(studentId===userId){
+				course.students.splice(i, 1);
+				break;
+			}
+		}
+		course.save();
+	});
 
-	// Course.findById(courseId)
-	// .exec(function(err, course){
-	// 	for(var i=0; i<course.students.length; i++){
-	// 		var studentId = course.students[i];
-	// 		if(studentId===userId){
-	// 			course.students.splice(i, 1);
-	// 			break;
-	// 		}
-	// 	}
-	// 	course.save();
-	// });
-
-	// User.findById(userId)
-	// .exec(function(err, user){
-	// 	for(var i=0; i<user.coursesEnrolledIn; i++){
-	// 		var course_id = user.coursesEnrolledIn[i];
-	// 		if(course_id===courseId){
-	// 			user.coursesEnrolledIn.splice(i, 1);
-	// 			break;
-	// 		}
-	// 	}
-	// 	user.save();
-	// })
-
-
-
-
-
-
-
-
-},
+	// then, remove course Id from student's list of enrolled courses
+	User.findById(userId)
+	.exec(function(err, user){
+		for(var k=0; k<user.coursesEnrolledIn.length; k++){
+			var course_id = user.coursesEnrolledIn[k].toString();
+			if(course_id===courseId){
+				user.coursesEnrolledIn.splice(k, 1);
+				break;
+			}
+		}
+		user.save();
+	})
+},  // end of leave course
 
 
 
