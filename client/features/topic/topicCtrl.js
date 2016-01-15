@@ -28,6 +28,10 @@ app.controller('topicCtrl', function($scope, topicService, $stateParams, courseS
         $state.go('quiz', {topicId: topicId});
     };
     
+    $scope.createCards = function(topicId) {
+        $state.go('createQuiz', {topicId: topicId});
+    };
+    
     $scope.showMaterial = false;
     
     $scope.displayMaterial = function() {

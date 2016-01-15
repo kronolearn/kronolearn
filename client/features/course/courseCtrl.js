@@ -14,11 +14,6 @@ angular.module('kronolearn')
 	   .then(function(course) {
 	   	console.log("COURSE RESPONSE:", course);
 	   	$scope.course = course;
-<<<<<<< HEAD
-=======
-	   	$scope.courseId = course._id;
-
->>>>>>> master
 	   	checkIfUserIsAdmin(user, course);
 
 	   	checkIfUserIsEnrolled(user, course);
@@ -84,28 +79,6 @@ angular.module('kronolearn')
 
 	};
 
-<<<<<<< HEAD
-	$scope.goToTopic = function (id) {
-		$state.go('topic', { topicId: id });
-	}
-=======
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> master
 
 	$scope.goToTopic = function(topicId){
         // console.log(courseId);
