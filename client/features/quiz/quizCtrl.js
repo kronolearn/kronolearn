@@ -159,13 +159,13 @@ $scope.stopTimer = function() {
 
 
 $scope.getQresponse = function() {
-    if ($scope.timeTaken < 5 && $scope.answerIsCorrect)
+    if ($scope.timeTaken < 10 && $scope.answerIsCorrect)
         $scope.qResponse = 5;
     
-    else if ($scope.timeTaken > 5 && $scope.timeTaken < 15 && $scope.answerIsCorrect)
+    else if ($scope.timeTaken >= 10 && $scope.timeTaken < 20 && $scope.answerIsCorrect)
         $scope.qResponse = 4;
     
-    else if ($scope.timeTaken > 15 && $scope.answerIsCorrect)
+    else if ($scope.timeTaken >= 20 && $scope.answerIsCorrect)
         $scope.qResponse = 3;
     
     else if ($scope.answerIsIncorrect) {
@@ -209,22 +209,78 @@ $scope.pushUserAnswerResult = function() {
             }        
 
             $scope.getQresponse();
-            
-            var cardObj = {
-                card: $scope.currentTopic.cards[$scope.currentCard]._id,
-                reviews: [{
-                    date: currDate2,
-                    qResponse: $scope.qResponse
-                }],
-                dateNextReview: nextReviewDate
-            };
+
             
 //Adds current Card to User.cards, if not already in array.
             if (isNewUserCard) {
         
-                quizService.addNewCard(cardObj, $scope.user._id).then(function(response) {
+                var newCardObj = {
+                    card: $scope.currentTopic.cards[$scope.currentCard]._id,
+                    reviews: [{
+                        date: currDate2,
+                        qResponse: $scope.qResponse
+                    }],
+                    dateNextReview: nextReviewDate
+                };
+                
+                
+                quizService.addNewCard(newCardObj, $scope.user._id).then(function(response) {
                     console.log(response);
                 });
+            }
+
+//Updates Card that is already in User.cards
+            
+/*
+
+IMPLEMENT ALGORITHM HERE
+--if user answered incorrectly...factor in previous qResponse
+--update EF
+--update lastInterval
+
+
+--findOneAndUpdate
+--reviews.push ReviewObject (date, qResponse, EF, lastInterval)
+--change dateNextReview
+
+
+*/
+            
+//If previous qResponse was 2 or 1, and current question was answered incorrectly, qResponse will be 1.
+
+            
+            else {
+                var currCard = $scope.userCopy.cards[$scope.currentCard];
+                //var currCardNumReviews = $scope.userCopy.cards[$scope.currentCard].reviews.length;
+                
+                
+                
+                    if ($scope.qResponse === 2 && (currCard.reviews[currCard.reviews.length - 1].qResponse === 2 || currCard.reviews[currCard.reviews.length - 1].qResponse === 1)) {
+                        $scope.qResponse = 1;
+                    }
+                        
+                        var oldEasyF = currCard.reviews[currCard.reviews.length - 1].ef;
+                        var timesReviewed = currCard.reviews.length;
+                        var lastInterval = 0;
+                        if (currCard.reviews.length < 2) {
+                            lastInterval = 0;
+                        }
+                
+                        else {
+                            lastInterval = (currCard.reviews[currCard.reviews.length - 1].date.getHours() - currCard.reviews[currCard.reviews.length - 2].date.getHours()) / 24;
+                            
+                        }
+                        
+                
+                        console.log("INFO being sent to SPACED REP algorithm...", oldEasyF, $scope.qResponse, timesReviewed, lastInterval); 
+                        console.log("SPACED REP returned object...", spacedRepetition(oldEasyF, $scope.qResponse, timesReviewed, lastInterval));
+                
+                
+                
+                
+                
+                var newReviewObj = spacedRepetition
+                console.log("nothing here");
             }
         });
 }

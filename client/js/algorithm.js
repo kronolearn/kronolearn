@@ -15,7 +15,7 @@ function spacedRepetition(oldEasyF, qFactor, times, lastInterval){
 	times++;
 
 	// # of ms in a day
-	var msInDay = 86400000
+	var msInDay = 86400000;
 
 
 	var interval = calculateInterval();
