@@ -5,7 +5,7 @@ app.controller('quizCtrl', function($scope, quizService, $stateParams, userServi
     
     userService.checkUserLogin()
 	.then(function(user){
-		console.log('initial user: ', user);
+		//console.log('initial user: ', user);
 		$scope.user = user;
         $scope.userCopy = $scope.user;
 	})
@@ -27,6 +27,8 @@ app.controller('quizCtrl', function($scope, quizService, $stateParams, userServi
     $scope.nextArrowShowing = false;
     
     $scope.userAnswerResults = [];
+    
+    $scope.qResponse = 3;
     
     $scope.toggleSubmitAccess = function() {
         $scope.submitEnabled = !$scope.submitEnabled;
@@ -179,18 +181,42 @@ $scope.stopTimer = function() {
 
 
 
+$scope.getQresponse = function() {
+    if ($scope.timeTaken < 5 && $scope.answerIsCorrect)
+        $scope.qResponse = 5;
+    
+    else if ($scope.timeTaken > 5 && $scope.timeTaken < 15 && $scope.answerIsCorrect)
+        $scope.qResponse = 4;
+    
+    else if ($scope.timeTaken > 15 && $scope.answerIsCorrect)
+        $scope.qResponse = 3;
+    
+    else if ($scope.answerIsIncorrect) {
+        if ($scope.isNewUserCard) {
+            $scope.qResponse = 2;
+        }
+        
+        else {
+            $scope.qResponse = 1;
+        }
+    }
+}
+
+
+
+
 
 $scope.pushUserAnswerResult = function() {
     
     
         userService.checkUserLogin()
 	.then(function(user){
-		console.log('ok NOW the user: ', user);
+		//console.log('ok NOW the user: ', user);
 		$scope.user = user;
 	})
         
         quizService.getUserInfo($scope.user._id).then(function(response) {
-            console.log('WOOOOOHOOOOO', response);
+            //console.log('WOOOOOHOOOOO', response);
             $scope.userCopy = response;
        
     //might have to do a new server call instead of the above call...the above call only calls to AUTH endpoint, maybe i need to get the USER? could also change this up above!!! (near beginning of controller, instead of setting $scope.user = *whatever the AUTH returns*
@@ -214,25 +240,39 @@ $scope.pushUserAnswerResult = function() {
     };
     $scope.userAnswerResults.push(userAnswerObj); */
     //console.log("These are the user answers...", $scope.userAnswerResults);
-    
-
-    var cardObj = {
-        card: $scope.currentTopic.cards[$scope.currentCard]._id,
-        reviews: [{
-            date: currDate2
-        
-        }],
-        dateNextReview: nextReviewDate
-    };
-    
-    var isNewUserCard = true;
+                
+            
+            
+            
+            
+        $scope.isNewUserCard = true; //this is just used in the getQresponse function, NOT really here.
+    var isNewUserCard = true;  //this is the var used in THIS function.
     for (var i = 0; i < $scope.userCopy.cards.length; i++) {
         if ($scope.userCopy.cards[i].card === $scope.currentTopic.cards[$scope.currentCard]._id) {
             isNewUserCard = false;
-            console.log("ok really...this SHOULD be showing up.", $scope.userCopy.cards[i].card._id);
-            console.log("...2: ", $scope.currentTopic.cards[$scope.currentCard]._id);
+            $scope.isNewUserCard = false;
+            //console.log("ok really...this SHOULD be showing up.", $scope.userCopy.cards[i].card._id);
+            //console.log("...2: ", $scope.currentTopic.cards[$scope.currentCard]._id);
         }
-    }
+    }        
+            
+            
+            
+
+    $scope.getQresponse();
+            
+            
+            
+            
+    var cardObj = {
+        card: $scope.currentTopic.cards[$scope.currentCard]._id,
+        reviews: [{
+            date: currDate2,
+            qResponse: $scope.qResponse      //may need to change this?
+        }],
+        dateNextReview: nextReviewDate
+    };
+
     if (isNewUserCard) {
         
         console.log("New Card Detected! Adding now...");
