@@ -67,23 +67,26 @@ module.exports = {
 
 enrollInCourse: function(req, res){
 	console.log('getting here course blah');
+	// console.log(req.query);
+	var courseId = req.query.courseId;
+	var userId = req.query.userId;
+	// console.log(courseId, userId);
 
-	// var courseId = req.query.courseId;
-	// var userId = req.query.userId;
+
 
 	// first put userId into courses list of students
-	// Course.findById(courseId)
-	// .exec(function(err, course){
-	// 	course.students.push(userId);
-	// 	course.save();
-	// });
+	Course.findById(courseId)
+	.exec(function(err, course){
+		course.students.push(userId);
+		course.save();
+	});
 
 	// // find User and add course to enrolled courses
-	// User.findById(userId)
-	// .exec(function(err, user){
-	// 	user.coursesEnrolledIn.push(userId);
-	// 	user.save();
-	// });
+	User.findById(userId)
+	.exec(function(err, user){
+		user.coursesEnrolledIn.push(courseId);
+		user.save();
+	});
 
 
 },
@@ -91,6 +94,38 @@ enrollInCourse: function(req, res){
 leaveCourse: function(req, res){
 	var courseId = req.query.courseId;
 	var userId = req.query.userId;
+
+	console.log('leave course');
+
+	// Course.findById(courseId)
+	// .exec(function(err, course){
+	// 	for(var i=0; i<course.students.length; i++){
+	// 		var studentId = course.students[i];
+	// 		if(studentId===userId){
+	// 			course.students.splice(i, 1);
+	// 			break;
+	// 		}
+	// 	}
+	// 	course.save();
+	// });
+
+	// User.findById(userId)
+	// .exec(function(err, user){
+	// 	for(var i=0; i<user.coursesEnrolledIn; i++){
+	// 		var course_id = user.coursesEnrolledIn[i];
+	// 		if(course_id===courseId){
+	// 			user.coursesEnrolledIn.splice(i, 1);
+	// 			break;
+	// 		}
+	// 	}
+	// 	user.save();
+	// })
+
+
+
+
+
+
 
 
 },

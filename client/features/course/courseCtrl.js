@@ -15,6 +15,7 @@ angular.module('kronolearn')
 	   .then(function(course) {
 	   	console.log("COURSE RESPONSE:", course);
 	   	$scope.course = course;
+	   	$scope.courseId = course._id;
 
 	   	checkIfUserIsAdmin(user, course);
 
@@ -52,7 +53,7 @@ angular.module('kronolearn')
 		// console.log('function getting fired');
 		for(var i=0; i<course.students.length; i++){
 			var student = course.students[i];
-			if(student._id===user._id){
+			if(student===user._id){
 				console.log('user is in course!')
 				$scope.userIsEnrolled = true;
 				break;
@@ -102,7 +103,7 @@ angular.module('kronolearn')
 	$scope.goToTopic = function(topicId){
         // console.log(courseId);
         // console.log(topicId);
-        $state.go('topic', {courseId: courseId, topicId: topicId});
+        $state.go('topic', {courseId: $scope.courseId, topicId: topicId});
       }
 
     //this is where the form for creating a topic will be controlled
