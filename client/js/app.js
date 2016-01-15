@@ -82,11 +82,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
   	url: '/account',
   	templateUrl: './features/account/account.html',
   	controller: 'accountCtrl',
-  	// resolve: {
-  	// 	user: function(userService){
-  	// 		return UserService.checkUserLogin();
-  	// 	}
-  	// }
+  	resolve: {
+  		user: function(userService){
+  			return userService.checkUserLogin();
+  		}
+  	}
   })
 
 
