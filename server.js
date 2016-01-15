@@ -108,6 +108,10 @@ app.post('/api/coursetesting', courseCtrl.addTestCourse);
 app.delete('/api/course/:id', courseCtrl.removeCourse);
 app.put('/api/course/:id', courseCtrl.updateCourse);
 
+app.put('/api/enrollInCourse', userCtrl.enrollInCourse);
+app.put('/api/leaveCourse', userCtrl.leaveCourse);
+
+
 
 // Topic EndPoints
 app.get('/api/topics', topicCtrl.getTopics);
