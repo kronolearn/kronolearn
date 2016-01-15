@@ -51,6 +51,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
         templateUrl: '/features/quiz/quizTmpl.html',
         controller: 'quizCtrl'
     })
+    
+    .state('createQuiz', {
+        url: '/quiz/:topicId/createQuiz',
+        templateUrl: '/features/createQuiz/createQuiz.html',
+        controller: 'createQuizCtrl'
+    })
 /*
     .state('card', {
         url: '/topic/:topicId/card',

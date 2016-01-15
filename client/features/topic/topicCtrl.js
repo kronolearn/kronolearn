@@ -42,5 +42,7 @@ app.controller('topicCtrl', function($scope, topicService, $stateParams, courseS
             //console.log($scope.topic);
         });
     }
+    
+    $scope.makeCards
 
 });
