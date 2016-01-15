@@ -12,8 +12,14 @@
 						<div class="avatar">
 							<img ng-if="user.avatar" ng-src="{{user.avatar}}" alt="">
 							<img ng-if="!user.avatar" src="./img/user.png" alt="">
-							<button ng-if="user.avatar">Change Picture</button>
-							<button ng-if="!user.avatar">Add a Picture</button>
+
+							<button ng-click="addPicture()" class="clickable" dropzone action="/file-upload" ng-if="user.avatar">Change Picture</button>
+							<button ng-click="addPicture()" class="clickable" dropzone action="/file-upload" ng-if="!user.avatar">Add a Picture</button>
+							<button ng-click="saveAccount()" ng-show="pictureAdded" class="add-picture">Save Picture</button>
+
+							<div class="add-image">image</div>
+
+
 						</div>
 					</div>
 
