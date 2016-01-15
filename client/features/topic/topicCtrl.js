@@ -36,7 +36,11 @@ app.controller('topicCtrl', function($scope, topicService, $stateParams, courseS
     
     $scope.addMaterial = function() {
         $scope.showMaterial = false;
-        topicService.putTopic($scope.topic);
+        topicService.addMaterial($scope.material, $scope.topic._id).then(function(topic) {
+            var reviewMaterialToAdd = topic.reviewMaterials[topic.reviewMaterials.length-1];   
+            $scope.topic.reviewMaterials.push(reviewMaterialToAdd);
+            console.log($scope.topic);
+        });
     }
 
 });

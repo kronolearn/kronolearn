@@ -12,9 +12,9 @@ app.service('masterService', function($http) {
     
 
     
-        this.getCurrentCourse = function(currentCourseNumber) {
-            console.log('url params? ', currentCourseNumber.courseId);
-            return $http.get('/api/course/' + currentCourseNumber.courseId).then(function(response) {
+        this.getCurrentCourse = function(courseNumber) {
+            console.log('url params? ', courseNumber);
+            return $http.get('/api/course/' + courseNumber).then(function(response) {
                 console.log("courseServiceRETURN", response.data);
                 return response.data;
             });
