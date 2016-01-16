@@ -4,9 +4,6 @@
 		<div class="course-header container">
 			<div class="row">
 				<div class="img-wrapper col-md-3 col-sm-4 col-xs-5">
-					<img ng-if="course.image" class="course-picture" ng-src="{{course.image}}" alt="Course Picture">
-
-					<!-- <form dropzone action="/file-upload"class="dropzone" id="my-awesome-dropzone"> -->
 
 					<div ng-if="!course.image" class="image-placeholder clickable" 
 					dropzone action="/file-upload"

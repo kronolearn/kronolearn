@@ -1,0 +1,41 @@
+.createQuiz {
+    .cardForm {
+        background-image: url(http://www.transparenttextures.com/patterns/white-texture.png);
+        width: 60%;
+        margin: 5% auto;
+        text-align: center;
+        padding: 1%;
+        p {
+            text-align: center;
+            font-size: 3em;
+            text-decoration: underline;
+            margin-bottom: 1%;
+        }
+        textarea {
+            width: 90%;
+            height: 45%;
+            font-size: 1.3em;
+            padding: 1%;
+            margin-bottom: 1%;
+        }
+        .answers {
+            margin: 0 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            p {
+                text-decoration: none;
+                font-size: 1.5em;
+            }
+            textarea {
+                width: 75%;
+                height: 2.3em;
+            }
+            .checky {
+                transform:scale(2, 2);
+                margin: 0;
+            }
+            
+        }
+    }
+}

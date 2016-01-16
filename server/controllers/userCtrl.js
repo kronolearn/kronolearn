@@ -130,23 +130,24 @@ leaveCourse: function(req, res){
 
 
 
+
 	
 	
-	getUsers: function(req, res) {
-		User.find().then(function (response) {
-			res.send(response);
+getUsers: function(req, res) {
+    User.find().then(function (response) {
+        res.send(response);
 		});
-	},
+},
 	
-	addUser: function(req, res) {
-		new User(req.body).save(function (err, data) {
-			if (err) {
-				res.status(500).send(err);
-			} else {
-				res.json(data);
-			}
-		});
-	},
+addUser: function(req, res) {
+	new User(req.body).save(function (err, data) {
+		if (err) {
+			res.status(500).send(err);
+		} else {
+			res.json(data);
+		}
+	});
+},
 	
 	getById: function(req, res) {
 		User.findById(req.params.id, req.body, function(err, data) {
