@@ -33,8 +33,8 @@ app.service('courseService', function($http) {
     };
     
     
-    this.postTopic = function (theTopic, courseId) {
-        return $http.post('/api/topic?courseId='+courseId, theTopic).then(function(response) {
+    this.postTopic = function (topic) {
+        return $http.post('/api/topic', topic).then(function(response) {
             return response.data;
         })
     }
