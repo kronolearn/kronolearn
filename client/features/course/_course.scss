@@ -179,6 +179,69 @@ div.course-page-wrapper{
             }
         }
     }
+
+
+    ///////////////////////////////////////////////////
+    //  More styling of add topic form
+    ///////////////////////////////////////////////////
+
+    	div.img-wrapper{
+			position: relative;
+			padding-top: 15px;
+			text-align: center;
+			height: 100%;
+			div.add-image{
+				@include transition(.4s ease);
+				position: absolute;
+				top: 30px;
+				left: 25px;
+				width: 150px;
+				height: 150px;
+				border-radius: 50%;
+				border: 2px solid white;
+			}
+			li{
+				@include transition(.4s ease);
+				position: relative;
+				top: 30px;
+				font-size: 1.3em;
+				color: white;
+				&.plus{
+					position: absolute;
+					font-size: 5em;
+					left: 50px;
+					top: 50px;
+				}
+			}
+			div.image-placeholder{
+				// @include transition(.4s ease);
+				cursor: pointer;
+				width: 200px;
+				height: 200px;
+				border-radius: 20px;
+				background-color: #202020;
+				background-image: url("../img/bright-squares.png");
+				&:hover{
+					// background: rgba(0,0,0,.5);
+					li{
+						color: $gold;
+						&.plus{
+							@include transform(scale(1.1));
+						}
+					}
+					div.add-image{
+						border-color: $gold;
+					}
+				}
+			}
+			img.course-picture{
+				background: #111;
+				width: 200px;
+				height: 200px;
+				border-radius: 20px;
+				// border: 1px solid #111;
+			}
+		} // img wrapper
     
 
 

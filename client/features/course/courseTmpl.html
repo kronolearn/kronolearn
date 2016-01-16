@@ -60,7 +60,7 @@
 						
 					</div>
 				</div>
-              <!-- This is the permanent create a topic thing-->
+				<!-- This is the permanent create a topic thing-->
 				<div ng-show="userIsAdminOfCourse" class="topic-wrapper create-topic-wrapper col-md-3 col-sm-4 col-xs-6">
 					<div class="topic" ng-click="showForm()">
 						<div class="topic-header">
@@ -84,20 +84,34 @@
 
 
 
-    <form class="topicForm" ng-show="showing">
-        <p>New Topic</p>
-        <div class="allThree">
-            <div>image</div>
-            <div class="nameDescription">
-                <input type="text" placeholder="Name" ng-model="newTopic.name">
-                <textarea placeholder="Topic Description" ng-model="newTopic.description"></textarea>
-            </div>
-        </div>
-        <button ng-click="createTopic()" class="btn btn-lg btn-primary">Create</button>
-        <button ng-click="showing=!showing" class="btn btn-lg btn-primary">Close</button>
-    </form>
+	<form class="topicForm" ng-show="showing">
+		<p>New Topic</p>
+		<div class="allThree">
 
-	
+
+			<div class="img-wrapper ">
+
+				<div ng-if="!course.image" class="image-placeholder clickable" 
+				dropzone action="/file-upload"
+				>
+				<div class="add-image " >
+				<li class="">Add Topic <br> Image</li>
+					<li class="plus ">+</li>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="nameDescription">
+			<input type="text" placeholder="Name" ng-model="newTopic.name">
+			<textarea placeholder="Topic Description" ng-model="newTopic.description"></textarea>
+		</div>
+	</div>
+	<button ng-click="createTopic()" class="btn btn-lg btn-primary">Create</button>
+	<button ng-click="showing=!showing" class="btn btn-lg btn-primary">Close</button>
+</form>
+
+
 
 
 
