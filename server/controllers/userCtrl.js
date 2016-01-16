@@ -178,9 +178,10 @@ leaveCourse: function(req, res){
 		});
 	},
     
-    updateUserCard: function (req, res) {
+    addUserCard: function (req, res) {
         var userId = req.body._id;
         var query = {_id: userId};
+        console.log(req.body.cardObj);
         User.findOneAndUpdate(query, {$push: {cards: req.body.cardObj}}, {upsert:true, new:true}, function(err, doc) {
             if (err) return res.status(500).send(err);
             else {
@@ -188,6 +189,37 @@ leaveCourse: function(req, res){
             }
         });
     },
+    
+    updateUserCard: function (req, res) {
+        var userId = req.body._id;
+        var cardIndex = req.body.reviewObj.cardIndex;
+        console.log("THIS IS CARD INDEX:", cardIndex);
+        
+        var newReview = req.body.reviewObj.newReview;
+
+	   User.findById(userId)
+	   .exec(function(err, user){
+           if (err) return res.status(500).send(err);
+           else {
+               user.cards[cardIndex].reviews.push(newReview);
+               user.cards[cardIndex].dateNextReview = req.body.reviewObj.dateNextReview;
+               user.save();
+               return res.send(user);
+           }
+	   })
+    },
+        
+        /*
+        User.findOneAndUpdate(query, {$push: {cards[0].reviews: req.body.newReview}, dateNextReview: req.body.reviewObj.dateNextReview}, {upsert:true, new:true}, function(err, doc) {
+            if (err) return res.status(500).send(err);
+            else {
+                return res.send(doc);
+            }
+        });
+        
+    },
+    
+    cards: [] */
 	
 	
 	isAuth: function(req, res, next) {

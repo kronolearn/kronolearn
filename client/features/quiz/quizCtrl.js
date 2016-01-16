@@ -224,7 +224,7 @@ $scope.pushUserAnswerResult = function() {
                         date: currDate2,
                         qResponse: $scope.qResponse,
                         ef: nextReview.easyF,
-                        interval: nextReview.interval
+                        lastInterval: 1
                     }],
                     dateNextReview: nextReviewDate
                 };
@@ -267,26 +267,46 @@ IMPLEMENT ALGORITHM HERE
                         
                         var oldEasyF = currCard.reviews[currCard.reviews.length - 1].ef;
                         var timesReviewed = currCard.reviews.length;
-                        var lastInterval = 0;
-                        if (currCard.reviews.length < 2) {
-                            lastInterval = 0;
+                        var lastInterval;
+                        if (currCard.reviews.length === 1) {
+                            lastInterval = 6;
                         }
                 
                         else {
-                            lastInterval = (currCard.reviews[currCard.reviews.length - 1].date.getHours() - currCard.reviews[currCard.reviews.length - 2].date.getHours()) / 24;
-                            
+            
+                            lastInterval = currCard.reviews[currCard.reviews.length - 1].lastInterval;
+                            console.log("LAST INTERVAL (before algorithm): ", lastInterval);
                         }
                         
                 
                         console.log("INFO being sent to SPACED REP algorithm...", oldEasyF, $scope.qResponse, timesReviewed, lastInterval); 
-                        console.log("SPACED REP returned object...", spacedRepetition(oldEasyF, $scope.qResponse, timesReviewed, lastInterval));
+                        var nextReviewInfo = spacedRepetition(oldEasyF, $scope.qResponse, timesReviewed, lastInterval);
+                        console.log("NEXT REVIEW INFO (after algorithm): ", nextReviewInfo);
+                        console.log("Hello World!");
+                    
+                    var currDate = new Date();
+                    var nextReviewDate = currDate;
+                    nextReviewDate.setHours(nextReviewDate.getHours() + nextReviewInfo.interval * 24);
+                
+                    var currDate2 = new Date();
+                
+                    var newReviewObj = {
+                    cardIndex: $scope.currentCard,
+                    newReview: {
+                        date: currDate2,
+                        qResponse: $scope.qResponse,
+                        ef: nextReviewInfo.easyF,
+                        lastInterval: nextReviewInfo.interval
+                    },
+                    dateNextReview: nextReviewDate
+                };
+                
+                console.log(newReviewObj);
                 
                 
-                
-                
-                
-                var newReviewObj = spacedRepetition
-                console.log("nothing here");
+                quizService.updateCard(newReviewObj, $scope.user._id).then(function(response) {
+                    console.log("UPDATED CARD backend-response: ", response);
+                });  
             }
         });
 }
