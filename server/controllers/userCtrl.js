@@ -129,12 +129,16 @@ leaveCourse: function(req, res){
 
 
 
-getUsers: function(req, res) {
-	User.find().then(function (response) {
-		res.send(response);
-	});
-},
 
+
+	
+	
+getUsers: function(req, res) {
+    User.find().then(function (response) {
+        res.send(response);
+		});
+},
+	
 addUser: function(req, res) {
 	new User(req.body).save(function (err, data) {
 		if (err) {
@@ -144,67 +148,94 @@ addUser: function(req, res) {
 		}
 	});
 },
+	
+	getById: function(req, res) {
+		User.findById(req.params.id, req.body, function(err, data) {
+			if (err) {
+				res.status(500).send(err);
+			} else {
+				res.send(data);
+			}
+		});
+	},
+	
+	removeUser: function(req, res) {
+		User.findByIdAndRemove(req.params.id, function(err, data) {
+			if (err) {
+				res.status(500).send(err);
+			} else {
+				res.send(data);
+			}
+		});
+	},
+	
+	updateUser: function (req, res) {
+		User.findByIdAndUpdate(req.params.id, req.body, function (err, data) {
+			if (err) {
+				res.status(500).send(err);
+			} else {
+				res.send(data);
+			}
+		});
+	},
+    
+    addUserCard: function (req, res) {
+        var userId = req.body._id;
+        var query = {_id: userId};
+        console.log(req.body.cardObj);
+        User.findOneAndUpdate(query, {$push: {cards: req.body.cardObj}}, {upsert:true, new:true}, function(err, doc) {
+            if (err) return res.status(500).send(err);
+            else {
+                return res.send(doc);
+            }
+        });
+    },
+    
+    updateUserCard: function (req, res) {
+        var userId = req.body._id;
+        var cardIndex = req.body.reviewObj.cardIndex;
+        console.log("THIS IS CARD INDEX:", cardIndex);
+        
+        var newReview = req.body.reviewObj.newReview;
 
-getById: function(req, res) {
-	User.findById(req.params.id, req.body, function(err, data) {
-		if (err) {
-			res.status(500).send(err);
-		} else {
-			res.send(data);
-		}
-	});
-},
-
-removeUser: function(req, res) {
-	User.findByIdAndRemove(req.params.id, function(err, data) {
-		if (err) {
-			res.status(500).send(err);
-		} else {
-			res.send(data);
-		}
-	});
-},
-
-updateUser: function (req, res) {
-	User.findByIdAndUpdate(req.params.id, req.body, function (err, data) {
-		if (err) {
-			res.status(500).send(err);
-		} else {
-			res.send(data);
-		}
-	});
-},
-
-updateUserAvatar: function(req, res){
-	// console.log(req.imageUrl);
-	// console.log(req.body.user);{}
-
-	User.findById(req.body.user._id)
-	.exec(function(err, user){
-		user.avatar = req.imageUrl;
-		user.save();
-		res.send({message: 'user avatar changed'});
-	})
-
-
-},
-
-
-
-
-isAuth: function(req, res, next) {
-	if(req){
-		if(req.session){
-			if(req.session.passport){
-				if(req.session.passport.user){
-					return res.send(req.session.passport.user);
+	   User.findById(userId)
+	   .exec(function(err, user){
+           if (err) return res.status(500).send(err);
+           else {
+               user.cards[cardIndex].reviews.push(newReview);
+               user.cards[cardIndex].dateNextReview = req.body.reviewObj.dateNextReview;
+               user.save();
+               return res.send(user);
+           }
+	   })
+    },
+        
+        /*
+        User.findOneAndUpdate(query, {$push: {cards[0].reviews: req.body.newReview}, dateNextReview: req.body.reviewObj.dateNextReview}, {upsert:true, new:true}, function(err, doc) {
+            if (err) return res.status(500).send(err);
+            else {
+                return res.send(doc);
+            }
+        });
+        
+    },
+    
+    cards: [] */
+	
+	
+	isAuth: function(req, res, next) {
+		if(req){
+			if(req.session){
+				if(req.session.passport){
+					if(req.session.passport.user){
+						return res.send(req.session.passport.user);
+					}
+					return res.send('no user logged in');
 				}
-				return res.send('no user logged in');
-			}
-			else{
-				return res.send('no req.session.passport');
-			}
-		}
+				else{
+					return res.send('no req.session.passport')
+                }
+		    }
 		else{
 			return res.send('no req.session');
 		}

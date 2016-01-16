@@ -96,6 +96,9 @@ app.delete('/api/user/:id', userCtrl.removeUser);
 app.put('/api/user/:id', userCtrl.updateUser);
 
 app.get('/api/userAndCourses', userCtrl.getUserAndCourses);
+app.put('/api/usercard', userCtrl.addUserCard);
+app.put('/api/updateusercard', userCtrl.updateUserCard);
+
 
 app.put('/api/saveUserAvatar', imageCtrl.saveUserAvatar, userCtrl.updateUserAvatar)
 
