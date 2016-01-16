@@ -1,6 +1,5 @@
 angular.module('kronolearn')
 .controller('courseCtrl', function($scope, userService, masterService, courseService, $stateParams, $state) {
-
 	var courseNumber = $stateParams.courseId;
 
 
@@ -15,8 +14,6 @@ angular.module('kronolearn')
 	   .then(function(course) {
 	   	console.log("COURSE RESPONSE:", course);
 	   	$scope.course = course;
-	   	$scope.courseId = course._id;
-
 	   	checkIfUserIsAdmin(user, course);
 
 	   	checkIfUserIsEnrolled(user, course);
@@ -76,18 +73,11 @@ angular.module('kronolearn')
 		;
 		$scope.userIsEnrolled = true;
 	};
-
 	$scope.leaveCourse = function(){
 		userService.leaveCourse($scope.course._id, $scope.user._id);
 		$scope.userIsEnrolled = false;
 
 	};
-
-
-
-
-
-
 
 
 	$scope.goToTopic = function(topicId){
@@ -118,9 +108,5 @@ angular.module('kronolearn')
     		$scope.course.topics.push(topic);
     	});
     };
-
-
-
-
 
   });

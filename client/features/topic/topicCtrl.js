@@ -28,6 +28,10 @@ app.controller('topicCtrl', function($scope, topicService, $stateParams, courseS
         $state.go('quiz', {topicId: topicId});
     };
     
+    $scope.createCards = function(topicId) {
+        $state.go('createQuiz', {topicId: topicId});
+    };
+    
     $scope.showMaterial = false;
     
     $scope.displayMaterial = function() {
@@ -39,8 +43,10 @@ app.controller('topicCtrl', function($scope, topicService, $stateParams, courseS
         topicService.addMaterial($scope.material, $scope.topic._id).then(function(topic) {
             var reviewMaterialToAdd = topic.reviewMaterials[topic.reviewMaterials.length-1];   
             $scope.topic.reviewMaterials.push(reviewMaterialToAdd);
-            console.log($scope.topic);
+            //console.log($scope.topic);
         });
     }
+    
+    $scope.makeCards
 
 });
