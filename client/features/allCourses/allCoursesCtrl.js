@@ -4,10 +4,11 @@ var app = angular.module('kronolearn');
 app.controller('allCoursesCtrl', function($scope, allCoursesService, $state, userService) {
     
     userService.checkUserLogin()
-	.then(function(user){
-		console.log(user);
-		$scope.user = user;
-	})
+    .then(function(user){
+        if(user.name){
+            $scope.user = user;
+        }
+    })
     
     $scope.topicsShowing = false;
     
