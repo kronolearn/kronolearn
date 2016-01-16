@@ -1,6 +1,7 @@
 angular.module('kronolearn')
 .controller('createCourseCtrl', function($scope, user, courseService, $state){
 	console.log(user);
+	$scope.user = user;
 
 	$scope.hideSearchBar = true;
 
