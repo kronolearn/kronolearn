@@ -193,10 +193,7 @@ $scope.pushUserAnswerResult = function() {
             $scope.userCopy = response;
         
         
-            var currDate = new Date();
-            var nextReviewDate = currDate;
-            nextReviewDate.setHours(nextReviewDate.getHours() + 24);
-            var currDate2 = new Date();    
+   
    
             
             $scope.isNewUserCard = true; //Used in qResponse function.
@@ -213,12 +210,21 @@ $scope.pushUserAnswerResult = function() {
             
 //Adds current Card to User.cards, if not already in array.
             if (isNewUserCard) {
-        
+                // EF: 2.5(default), qResponse, 0 times reviewed previous to now, and lastInterval was 0;
+                var nextReview = spacedRepetition(2.5, $scope.qResponse, 0, 0);
+                var currDate = new Date();
+                var nextReviewDate = currDate;
+                nextReviewDate.setHours(nextReviewDate.getHours() + nextReview.interval * 24);
+                
+                var currDate2 = new Date(); 
+                
                 var newCardObj = {
                     card: $scope.currentTopic.cards[$scope.currentCard]._id,
                     reviews: [{
                         date: currDate2,
-                        qResponse: $scope.qResponse
+                        qResponse: $scope.qResponse,
+                        ef: nextReview.easyF,
+                        interval: nextReview.interval
                     }],
                     dateNextReview: nextReviewDate
                 };

@@ -7,26 +7,26 @@
 function spacedRepetition(oldEasyF, qFactor, times, lastInterval){
 	// lastInterval is lastInterval property on each review object
 
-	if(oldEasyF<1.3) oldEasyF = 1.3;
+	if(oldEasyF<1.1) oldEasyF = 1.1;
 
 	// dateNow is # ms since 1970 (universal time)
-	var dateNow = new Date().getTime();
+//	var dateNow = new Date().getTime();
 	// increment times person has reviewed card, so at least is 1
 	times++;
 
 	// # of ms in a day
-	var msInDay = 86400000;
+//	var msInDay = 86400000;
 
 
 	var interval = calculateInterval();
-	var dateNextReview = dateNow+interval*msInDay;
+//	var dateNextReview = dateNow+interval*msInDay;
 	var easyF = calculateEasyF();
 
 	// object that is returned by program
 	var nextReview = {
 		easyF: easyF,
 		interval: interval, // interval is in days
-		dateNextReview: dateNextReview
+//		dateNextReview: dateNextReview
 	};
 
 	// function to calculate new easiness factor
