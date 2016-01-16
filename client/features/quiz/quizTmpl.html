@@ -22,7 +22,7 @@
 
     <p class="answers-all-correct" ng-show="answerIsCorrect">Correct!</p>
 
-    <p class="correct-answers-were" ng-show="answerIsIncorrect">Sorry, the correct answers were: {{currentCorrectAnswers}}</p>
+    <p class="correct-answers-were" ng-show="answerIsIncorrect">Sorry, the correct answer was: {{currentCorrectAnswers}}</p>
 
     <i class="fa fa-arrow-circle-o-right arrow-right" ng-click="nextCard(); markReset(); toggleSubmitAccess(); toggleNextArrow(); cardStopWatch.start()" ng-hide="((currentCard === (currentTopic.cards.length - 1)) || !nextArrowShowing)"></i>
 
