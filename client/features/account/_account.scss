@@ -1,0 +1,85 @@
+div.account-wrapper{
+	div.main-content{
+		font-size: 1.5rem;
+		text-align: center;
+	}
+
+
+	h1.main-header{
+		padding-top: 30px;
+		text-decoration: underline;
+	}
+
+	div.settings{
+		padding: 10px;
+		font-size: 1em; 
+		margin-top: 30px;
+		padding-bottom: 500px;
+	}
+
+	div.avatar{
+		position: relative;
+		display: inline-block;
+		img{
+			border-radius: 20px;
+			max-width: 200px;
+		}
+		button{
+			font-size: .6em;
+			position: absolute;
+			left: 50px;
+			bottom: -20px;
+		}
+	}
+
+	div.info{
+		font-size: .9em;
+		text-align: left;
+		p:not(:first-of-type){
+			margin-top: 15px;
+		}
+		@include tabletOrLess {
+			margin-top: 50px;
+			text-align: center;
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+} // end of account-wrapper

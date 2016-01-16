@@ -25,6 +25,14 @@ angular.module('kronolearn')
 		$http.put('/api/leaveCourse?courseId='+courseId+'&userId='+userId);
 	};
 
+	this.saveUserAvatar = function(imageObj, user){
+		console.log(imageObj);
+		return $http.put('/api/saveUserAvatar', {imageObj: imageObj, user: user})
+		.then(function(response){
+			return response.data;
+		})
+	}
+
 
 
 

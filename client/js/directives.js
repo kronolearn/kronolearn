@@ -133,6 +133,23 @@ angular.module('kronolearn')
 
 
 
+angular.module('kronolearn')
+.directive('dropzoneGeneral', function($http){
+	return {
+		link: function(scope, elem, attrs){
+			$(function(){
+
+				var myDropzone = new Dropzone($(elem));
+				console.log('hello');
+
+			});
+		}
+	}
+})
+
+
+
+
 
 
 

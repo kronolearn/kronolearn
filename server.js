@@ -97,6 +97,8 @@ app.put('/api/user/:id', userCtrl.updateUser);
 
 app.get('/api/userAndCourses', userCtrl.getUserAndCourses);
 
+app.put('/api/saveUserAvatar', imageCtrl.saveUserAvatar, userCtrl.updateUserAvatar)
+
 
 
 
@@ -116,7 +118,10 @@ app.put('/api/leaveCourse', userCtrl.leaveCourse);
 // Topic EndPoints
 app.get('/api/topics', topicCtrl.getTopics);
 app.get('/api/topic/:id', topicCtrl.getById);
-app.post('/api/topic', topicCtrl.addTopic);
+
+app.post('/api/topic', imageCtrl.saveTopicImage, topicCtrl.addTopic);
+
+
 app.delete('/api/topic/:id', topicCtrl.removeTopic);
 app.put('/api/topic/:id', topicCtrl.updateTopic);
 app.post('/api/topic/material', topicCtrl.addMaterial);

@@ -8,7 +8,7 @@
 						<a ui-sref="home">Kronolearn</a>
 					</div>
 
-					<div class="search-wrapper" searchbar-expand>
+					<div class="search-wrapper spec" searchbar-expand>
 						<i class="fa fa-search"></i>
 						<input class="search-bar-peter" type="text" placeholder='Search for Courses ' name="masterCoursesInput" id="masterCoursesInput" class="search-bar-peter" ng-model="mastercoursesearch" typeahead="course.name for course in masterCoursesArray | filter:{name: $viewValue} | limitTo:8" typeahead-on-select="goToCourse($item, $model, $label)">
 					</div>
@@ -17,11 +17,11 @@
 				<!--_______________user profile drop down menu________________-->
 					<div ng-show="user" user-menu class="user-profile">
 					<img ng-show="user.avatar" class="user-profile" ng-src="{{user.avatar}}" ng-if="!loadingUser" alt="">
-					<img class="user-profile" ng-hide="user.avatar" src="img/user.png" alt="">
+					<img class="user-profile" ng-hide="user.avatar" src="img/user.png" alt=""><i class="fa tabletOrLess fa-caret-down"></i>
 						<li>{{user.name}} <i class="fa fa-caret-down"></i></li>
 						<div  class="user-menu">
 							<!-- acccount page goes to reports, within account -->
-							<a class="menu-item-wrapper" ui-sref="account.reports">
+							<a class="menu-item-wrapper" ui-sref="account">
 								<div class="menu-item">
 									<li>Account</li>
 									<i class="fa fa-user"></i>
