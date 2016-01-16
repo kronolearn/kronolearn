@@ -3,12 +3,13 @@ var Card = require('../models/Card');
 module.exports = {
 	
 	getCards: function(req, res) {
-		Card.find().then(function (response) {
+		Card.find().populate('topic').exec().then(function (response) {
 			res.send(response);
 		});
 	},
 	
 	addCard: function(req, res) {
+        console.log(req.body);
 		new Card(req.body).save(function (err, data) {
 			if (err) {
 				res.status(500).send(err);

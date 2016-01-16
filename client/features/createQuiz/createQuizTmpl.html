@@ -2,28 +2,28 @@
 <div class="createQuiz">
     <div class="cardForm">
         <p>{{quizTopic.name}}</p>
-        <textarea placeholder="Write your question here."></textarea>
+        <textarea placeholder="Write your question here." ng-model="newCard.question"></textarea>
         <div class="answers">
             <p>Write Answers Here. (Use what you need.)</p>
             <p>Check correct answer.</p>
         </div>
         <div class="answers">
-            <textarea placeholder="Option 1"></textarea>
-            <input type="checkbox" class="checky">
+            <textarea placeholder="Option 1" ng-model="first.text"></textarea>
+            <input type="checkbox" class="checky" ng-model="first.correctAnswer">
         </div>
         <div class="answers">
-            <textarea placeholder="Option 2"></textarea>
-            <input type="checkbox" class="checky">
+            <textarea placeholder="Option 2" ng-model="second.text"></textarea>
+            <input type="checkbox" class="checky" ng-model="second.correctAnswer">
         </div>
         <div class="answers">
-            <textarea placeholder="Option 3"></textarea>
-            <input type="checkbox" class="checky">
+            <textarea placeholder="Option 3" ng-model="third.text"></textarea>
+            <input type="checkbox" class="checky" ng-model="third.correctAnswer">
         </div>
         <div class="answers">
-            <textarea placeholder="Option 4"></textarea>
-            <input type="checkbox" class="checky">
+            <textarea placeholder="Option 4" ng-model="fourth.text"></textarea>
+            <input type="checkbox" class="checky" ng-model="fourth.correctAnswer">
         </div>
-        <button class="btn btn-lg btn-primary">Submit Card</button>
+        <button class="btn btn-lg btn-primary" ng-click="postCard()">Submit Card</button>
         <button class="btn btn-lg btn-primary">Return to Topic</button>
     </div>
 </div>

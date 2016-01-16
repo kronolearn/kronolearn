@@ -6,4 +6,10 @@ angular.module('kronolearn').service('createQuizService', function($http) {
         })
     };
     
+    this.postCard = function(card) {
+        return $http.post('/api/card', card).then(function(response) {
+            return response.data;
+        })
+    }
+    
 });
