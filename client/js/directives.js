@@ -92,6 +92,8 @@ angular.module('kronolearn')
 					// method: 'POST',
 					clickable: '.clickable',
 					acceptedFiles: 'image/*',
+					thumbnailWidth: "400",
+					thumbnailHeight: "400",
 
 					accept: function(file, done){
 						console.log(file);

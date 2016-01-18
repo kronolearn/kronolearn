@@ -44,6 +44,33 @@ div.account-wrapper{
 		}
 	}
 
+	///////////////////////////////////////////////////
+	//  Edition dropzone preview when uploading file
+	///////////////////////////////////////////////////
+	div.dz-preview{
+		div.dz-image{
+			img{
+				width: 200px;
+			}
+			// background: red;
+			display: absolute;
+			width: 200px;
+		}
+
+
+		div.dz-success-mark, div.dz-error-mark{
+			display: none;
+		}
+	}
+
+	button.save-picture{
+		margin-left: 80px;
+	}
+	button.cancel {
+		position: relative;
+		right: 50px;
+	}
+
 
 
 
