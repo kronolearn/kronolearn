@@ -20,6 +20,12 @@ app.service('dashboardService', function($http, $state) {
 		});
 	};
     
+    this.getCardsToReview = function() {
+        return $http.get('/api/dashboard/cards').then(function(response) {
+            console.log(response);
+        });
+    }
+    
     
     
 });

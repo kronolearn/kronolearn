@@ -6,7 +6,14 @@ app.controller('dashboardCtrl', function ($scope, user, $state, dashboardService
     $scope.user = user;
     // console.log($scope.user);
 
-
+    
+    
+    $scope.getCardsToReview = function() {
+        
+        dashboardService.getCardsToReview().then(function(response){
+            console.log(response);
+        });
+    }
 
     $scope.notify = function () {
         $scope.cards.forEach(function (card) {
@@ -30,11 +37,7 @@ app.controller('dashboardCtrl', function ($scope, user, $state, dashboardService
             $scope.adminCourses = user.coursesAdminFor;
             $scope.cards = user.cards;
             $scope.notify();
-
-
         });
-
-
 
     $scope.topicClick = function (id) {
         $state.go('topic', { topicId: id });
@@ -51,11 +54,4 @@ app.controller('dashboardCtrl', function ($scope, user, $state, dashboardService
     $scope.addCourse = function () {
         $state.go('createCourse');
     };
-
-
-
-
-
-
-
 });
