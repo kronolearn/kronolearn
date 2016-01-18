@@ -26,7 +26,7 @@ angular.module('kronolearn')
 		newCourse.admins = $scope.admins;
 		console.log(newCourse);
 
-		courseService.addCourse(newCourse)
+		courseService.addCourse(newCourse, user._id)
 		.then(function(response){
 			console.log(response);
 			$state.go('course', {courseId: response.courseNumber});

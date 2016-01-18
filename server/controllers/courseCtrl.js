@@ -1,5 +1,7 @@
 var Course = require('../models/Course');
 var Random = require('../models/Random');
+var User = require('../models/User');
+
 
 
 module.exports = {
@@ -15,6 +17,7 @@ module.exports = {
 	
 	
 	addCourse: function(req, res) {
+		var userId = req.query.userId;
 		var newCourse = req.body;
 		var imageUrl = req.imageUrl;
 		newCourse.picture = imageUrl;
@@ -30,6 +33,10 @@ module.exports = {
 		delete newCourse.admins;
 		newCourse.admins = adminIds;
 
+		// put creator(s) of course as student(s)
+		delete newCourse.students;
+		newCourse.students = adminIds;
+
 
 		console.log('\n\ncourse to add is:', newCourse, '\n\n');
 
@@ -38,13 +45,23 @@ module.exports = {
 			randomArr[0].highestCourseNumber+=1;
 			randomArr[0].save()
 			newCourse.courseNumber = newCourseNumber;
-			new Course(newCourse).save(function(err, data){
+			new Course(newCourse).save(function(err, course){
 				if(err){
 					res.status(500).send(err);
 				}
 				else{
-					// just send course number, now the front end goes to new course page
-					res.send({courseNumber: newCourseNumber});
+					// need to add courseId to courseadmin for on user
+					User.findById(userId)
+					.exec(function(err, user){
+						user.coursesAdminFor.push(course._id);
+
+						user.coursesEnrolledIn.push(course._id);
+						// just send course number, now the front end goes to new course page
+						res.send({courseNumber: newCourseNumber});
+					})
+
+
+
 				}
 			})
 

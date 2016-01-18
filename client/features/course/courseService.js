@@ -10,8 +10,8 @@ app.service('courseService', function($http) {
 		});
 	};
 
-	this.addCourse = function(course){
-		return $http.post('/api/course', course)
+	this.addCourse = function(course, userId){
+		return $http.post('/api/course?userId='+userId, course)
 		.then(function(response){
 			return response.data;
 		})
