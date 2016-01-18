@@ -29,4 +29,8 @@ angular.module('kronolearn').controller('createQuizCtrl', function($scope, creat
         });
     }
     
+    $scope.goBack = function() {
+        window.history.back();
+    }
+    
 });
