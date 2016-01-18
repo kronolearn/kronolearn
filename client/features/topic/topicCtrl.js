@@ -40,7 +40,7 @@ app.controller('topicCtrl', function($scope, topicService, $stateParams, courseS
     };
     
     $scope.createCards = function(topicId) {
-        $state.go('createQuiz', {topicId: topicId});
+        $state.go('createQuiz', {topicId: topicId, courseId: courseId});
     };
     
     $scope.showMaterial = false;

@@ -70,21 +70,22 @@ angular.module('kronolearn')
 		// 	console.log(response);
 		// })
 
-		;
-		$scope.userIsEnrolled = true;
-	};
-	$scope.leaveCourse = function(){
-		userService.leaveCourse($scope.course._id, $scope.user._id);
-		$scope.userIsEnrolled = false;
+;
+$scope.userIsEnrolled = true;
+};
+$scope.leaveCourse = function(){
+	userService.leaveCourse($scope.course._id, $scope.user._id);
+	$scope.userIsEnrolled = false;
 
-	};
+};
 
 
-	$scope.goToTopic = function(topicId){
-        // console.log(courseId);
-        // console.log(topicId);
-        $state.go('topic', {courseId: $scope.courseId, topicId: topicId});
-      }
+$scope.goToTopic = function(topicId){
+
+  // console.log(courseId);
+  // console.log(topicId);
+  $state.go('topic', {courseId: courseNumber, topicId: topicId});
+}
 
     //this is where the form for creating a topic will be controlled
     

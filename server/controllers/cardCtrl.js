@@ -10,20 +10,24 @@ module.exports = {
 	},
 	
 	addCard: function(req, res) {
-		new Card(req.body).save(function (err, data) {
+		console.log(req.body);
+		new Card(req.body).save(function (err, card) {
 			if (err) {
+				console.log(err);
 				res.status(500).send(err);
 			} else {
-                Topic.findById(data.topic, function(err, topic) { 
+                Topic.findById(card.topicId, function(err, topic) { 
                     if (err) {
+                    	console.log(err);
                         res.status(500).send(err);
                     } else {
-                        topic.cards.push(data._id);
-                        topic.save(function(err, data) {
+                        topic.cards.push(card._id);
+                        topic.save(function(err, topic) {
                             if (err) {
+                            		console.log(err);
                                 res.status(500).send(err);
                             } else {
-                                res.json(data);
+                                res.json(topic);
                             }
                         })
                     }
