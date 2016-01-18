@@ -22,6 +22,10 @@ angular.module('kronolearn').controller('createQuizCtrl', function($scope, creat
             $scope.second.text = "";
             $scope.third.text = "";
             $scope.fourth.text = "";
+            $scope.first.correctAnswer = false;
+            $scope.second.correctAnswer = false;
+            $scope.third.correctAnswer = false;
+            $scope.fourth.correctAnswer = false;
         });
     }
     

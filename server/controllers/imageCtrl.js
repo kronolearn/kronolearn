@@ -88,6 +88,7 @@ exports.saveCourseImage = function (req, res, next) {
 exports.saveUserAvatar = function (req, res, next) {
   // console.log(req.body);
   var imageObj = req.body.imageObj;
+  console.log(imageObj.imageName);
   // console.log(imageObj)
 
   var buf = new Buffer(imageObj.imageValue.replace(/^data:image\/\w+;base64,/, ""), 'base64');
