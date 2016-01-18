@@ -1,5 +1,16 @@
 angular.module('kronolearn').controller('createQuizCtrl', function($scope, createQuizService, $stateParams) {
     
+    // variables needed from state params
+    var courseNumber = Number($stateParams.courseId);
+    var topicId = $stateParams.topicId;
+
+    console.log(courseNumber, topicId);
+
+
+
+
+
+
     $scope.getCard = function() {
         createQuizService.getTopic($stateParams.topicId).then(function(response) {
             $scope.quizTopic = response;
@@ -11,7 +22,8 @@ angular.module('kronolearn').controller('createQuizCtrl', function($scope, creat
     
     
     $scope.postCard = function() {
-        $scope.newCard.topic = $stateParams.topicId;
+        $scope.newCard.topicId = topicId;
+        $scope.newCard.courseNumber = courseNumber;
         $scope.newCard.answers = [];
         $scope.newCard.answers.push($scope.first, $scope.second, $scope.third, $scope.fourth);
         console.log($scope.newCard);
