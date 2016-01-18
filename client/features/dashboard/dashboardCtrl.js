@@ -29,6 +29,7 @@ app.controller('dashboardCtrl', function ($scope, user, $state, dashboardService
             $scope.courses = user.coursesEnrolledIn;
             $scope.adminCourses = user.coursesAdminFor;
             $scope.cards = user.cards;
+            console.log($scope.cards);
             $scope.notify();
 
 

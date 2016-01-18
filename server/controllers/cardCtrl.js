@@ -2,6 +2,8 @@ var Card = require('../models/Card');
 
 module.exports = {
 	
+    
+    
 	getCards: function(req, res) {
 		Card.find().then(function (response) {
 			res.send(response);
