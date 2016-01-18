@@ -9,6 +9,14 @@ angular.module('kronolearn')
 		})
 	};
 
+	this.getUser = function(userId){
+		return $http.get('/api/user/'+userId)
+		.then(function(response){
+			return response.data;
+		})
+
+	}
+
 
 	this.enrollInCourse = function(courseId, userId){
 		// console.log('getting here to service');
