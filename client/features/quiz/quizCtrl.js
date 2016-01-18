@@ -1,7 +1,7 @@
 var app = angular.module('kronolearn');
 
 
-app.controller('quizCtrl', function($scope, quizService, $stateParams, userService) {
+app.controller('quizCtrl', function($scope, quizService, $stateParams, userService, $state) {
     
     userService.checkUserLogin()
 	.then(function(user){
@@ -43,9 +43,17 @@ app.controller('quizCtrl', function($scope, quizService, $stateParams, userServi
     }
     
     $scope.getCardInfo = function() {
-        quizService.getCardInfo($stateParams.topicId).then(function(response) {
-            $scope.currentTopic = response;
-        });
+        if ($stateParams.topicId) {
+            quizService.getCardInfo($stateParams.topicId).then(function(response) {
+                $scope.currentTopic = response;
+            });
+        }
+        else {
+            $scope.currentTopic = {
+                name: "Review",
+                cards: userService.currentReviewArray
+            }
+        }
     };
     
     $scope.getCardInfo();
@@ -291,7 +299,8 @@ IMPLEMENT ALGORITHM HERE
                     var currDate2 = new Date();
                 
                     var newReviewObj = {
-                    cardIndex: $scope.currentCard,
+                    //cardIndex: $scope.currentCard,
+                    cardID: $scope.currentTopic.cards[$scope.currentCard]._id,
                     newReview: {
                         date: currDate2,
                         qResponse: $scope.qResponse,
@@ -311,5 +320,8 @@ IMPLEMENT ALGORITHM HERE
         });
 }
 
+$scope.endQuiz = function() {
+    $state.go('dashboard');
+}
 
 });
