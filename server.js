@@ -100,7 +100,7 @@ app.put('/api/usercard', userCtrl.addUserCard);
 app.put('/api/updateusercard', userCtrl.updateUserCard);
 
 
-app.put('/api/saveUserAvatar', imageCtrl.saveUserAvatar, userCtrl.updateUserAvatar)
+app.put('/api/saveUserAvatar', imageCtrl.saveUserAvatar, userCtrl.updateUserAvatar);
 
 
 
