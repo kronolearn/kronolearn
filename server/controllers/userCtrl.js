@@ -207,8 +207,9 @@ addUser: function(req, res) {
     
     updateUserCard: function (req, res) {
         var userId = req.body._id;
-        var cardIndex = req.body.reviewObj.cardIndex;
-        console.log("THIS IS CARD INDEX:", cardIndex);
+        //var cardIndex = req.body.reviewObj.cardIndex;
+        var cardId = req.body.reviewObj.cardID;
+        console.log("THIS IS CARD ID:", cardId);
         
         var newReview = req.body.reviewObj.newReview;
 
@@ -216,9 +217,23 @@ addUser: function(req, res) {
 	   .exec(function(err, user){
            if (err) return res.status(500).send(err);
            else {
+               var correctIndex = null;
+               for (var i = 0; i < user.cards.length; i++) {
+                   console.log("users.cards ID", user.cards[i]._id);
+                   console.log("cardId = ", cardId);
+                   if (user.cards[i].card == cardId) {
+                       correctIndex = i;
+                   }
+               }
+               
+               user.cards[correctIndex].reviews.push(newReview);
+               user.cards[correctIndex].dateNextReview = req.body.reviewObj.dateNextReview;
+               user.save();
+               
+               /*
                user.cards[cardIndex].reviews.push(newReview);
                user.cards[cardIndex].dateNextReview = req.body.reviewObj.dateNextReview;
-               user.save();
+               user.save(); */
                return res.send(user);
            }
 	   })
