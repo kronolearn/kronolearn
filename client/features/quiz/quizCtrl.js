@@ -264,8 +264,11 @@ IMPLEMENT ALGORITHM HERE
 
             
             else {
-                var currCard = $scope.userCopy.cards[$scope.currentCard];
-                //var currCardNumReviews = $scope.userCopy.cards[$scope.currentCard].reviews.length;
+                for (var i = 0; i < $scope.userCopy.cards.length; i++) {
+                    if ($scope.currentTopic.cards[$scope.currentCard]._id == $scope.userCopy.cards[i].card)
+                        currCard = $scope.userCopy.cards[i];
+                }
+                //var currCard = $scope.userCopy.cards[$scope.currentCard];
                 
                 
                 
