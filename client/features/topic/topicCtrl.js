@@ -1,10 +1,21 @@
 var app = angular.module("kronolearn");
 
 
-app.controller('topicCtrl', function($scope, topicService, $stateParams, courseService, $state) {
+app.controller('topicCtrl', function($scope, topicService, $stateParams, courseService, $state, userService) {
 	var topicId = $stateParams.topicId;
 	var courseId = $stateParams.courseId;
-    $scope.bacon = 75;
+    
+    $scope.getUserInfo = function () {
+        userService.checkUserLogin().then(function(user){
+            $scope.user = user;
+        })
+    }
+    
+    $scope.getUserInfo();
+    
+    
+    $scope.progress = 75;
+    
 
 	$scope.getCourse = function(){
 		courseService.getCourse(courseId)
