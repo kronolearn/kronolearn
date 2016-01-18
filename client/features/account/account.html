@@ -13,9 +13,16 @@
 							<img ng-if="user.avatar" ng-src="{{user.avatar}}" alt="">
 							<img ng-if="!user.avatar" src="./img/user.png" alt="">
 
-							<button ng-click="addPicture()" class="clickable btn btn-primary" dropzone action="/file-upload" ng-if="user.avatar">Change Picture</button>
-							<button ng-click="addPicture()" class="clickable btn btn-primary" dropzone action="/file-upload" ng-if="!user.avatar">Add a Picture</button>
-							<button ng-click="saveAccount()" ng-show="pictureAdded" class="add-picture">Save Picture</button>
+							<button  ng-hide="pictureAdded" ng-click="addPicture()" class="clickable btn btn-primary" dropzone action="/file-upload" ng-if="user.avatar">Change Picture</button>
+							<button ng-hide="pictureAdded" ng-click="addPicture()" class="clickable btn btn-primary" dropzone action="/file-upload" ng-if="!user.avatar">Add a Picture</button>
+
+							<button class="save-picture btn btn-primary" ng-click="saveAccount()" ng-show="pictureAdded" class="add-picture btn btn-default">Save Picture</button>
+							<button class="cancel btn btn-primary" ng-show="pictureAdded" ng-click="cancel()">Cancel</button>
+
+
+							<!-- <button ng-click="addPicture()" class="clickable btn" dropzone action="/file-upload" ng-if="pictureAdded">Different Picture</button> -->
+
+
 
 							<div class="add-image"></div>
 
