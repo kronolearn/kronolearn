@@ -1,183 +1,243 @@
-* {
-    // outline: 1px solid red;
-}
+div.dashboard{
+  min-height: 100%;
+  font-size: 1.5rem;
+  div.container-wrapper{
+    // background-color: #eeeeee;
+    // background-image: url("../img/handmade-paper.png");
+    background: #eee;
+    min-height: 100%;
+  }
+  div.main-wrapper{
 
-.dashboard {
-   .background-image {
-        position: fixed;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        z-index: -1;
-        background-image: url(http://www.myfreetextures.com/wp-content/uploads/2011/06/illust31.jpg);
-        -webkit-filter: opacity(.7);
-        filter: opacity(.7);
-        background-size: cover;
-        }
-    
-    .courses-wrapper, .admin-wrapper {
-        width: 55%;
-        float: right;
-    .courses-enrolled-box, .add-courses-box {
-        float: left;
-        margin-right: 20%;
-        &:last-child {
-            margin-bottom: 50px;
-        }
-        }
-        @media(max-width: 1600px) {
-            
-           .courses-enrolled-box, .add-courses-box {
-                margin-right: 10%;
-            }
-        }
-        
-    h1 {
-        text-align: center;
-        // margin: 50px auto;
-        font-size: 50px;
-        margin-top: 50px;
-        margin-bottom: 50px;
-        width: 60%;
+  }
+  div.container{
+    width: 100%;
+    min-height: 100%;
+    @include largeDesktop {
+      width: 100%;
+      max-width: 1500px;
     }
-    
-    // .admin-wrapper .add-courses-box h1 {
-    //     width: 100%;
+    max-width: 1500px;
+    // background: lightblue;
+  }
+  div.row{
+    min-height: 500px;
+  }
+  div.sidebar{
+    border-right: 2px solid #aaa;
+    padding-top: 20px;
+    // @include tabletOrLess {
+    //   max-width: 200px;
     // }
-    .add-enroll, .add-course {
-        @include transition(.4s ease);
-        min-height: 100px;
-        border: 2px solid #000;
-        background-color: /*#00a865*/ rgba(197, 220, 234, .7);
-        margin-top: 10px;
-        border-radius: 0.5em;
-        position:relative;
-        width: 80%;        
-        &:hover{
-        @include transform(scale(1.05));
-        }
-        h2 {
-            text-align: center;
-            margin-top: 3%;
-            width: 80%;
-            // width: 86%;
-            float: right;
-        }
-        .add-picture {
-            max-width: 100px;
-			width: 100%;
-        }
+    // background: $jade;
+    height: 500px;
+    @include phoneOrLess {
+      display: none;
     }
-    .courses-enrolled, .courses-admin {
-        @include transition(.4s ease);
-        min-height: 100px;
-        border: 2px solid #000;
-        background-color: /*#00a865*/ rgba(197, 220, 234, .7);
-        margin-top: 20px;
-        border-radius: 5px;
-        position:relative;
-        width: 80%;
-        display: flex;
-        justify-content: center;
-        
-        &:hover{
-        @include transform(scale(1.05));
-        }
-        
-        
-        .course-info {
-            width: 100%;
-        
-        
-        
-        
-        h3, h4 {
-                // float: right;
-            width: 75%;
-            float: right;
-            text-align: center;
-            // width: 80%;
-            margin: 5px;
-            overflow: hidden; 
-            white-space: nowrap; 
-            text-overflow: ellipsis; 
-            // width: 815px;
-        }
-        h3 {
-            margin-top: 3%;
-        }
-        h4 {
-            clear: both;
-            text-overflow: ellipsis;
-        }
-        img.course-picture {
-            max-width: 100px;
-			width: 100%;
-            height: auto;
-			border-radius: 5px;
-			border: 1px solid #111;
-            margin: 10px 10px;
-        }
-        }
-    }
-      .topic-box {
-        //   margin: 0 auto;
-          text-align: center;
-          border: 1px solid black;
-          width: 60%;
-          margin-left: 10%;
-          background-color: rgba(96, 96, 96, 0.7);
-          height: auto;
-          padding: 5px;
-          color: white;
-          &:hover{
-          @include transform(scale(1.05));  
-          }  
+  }
+
+  h5.intro{
+    font-size: .7em;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+
+  form.checkboxes{
+    // display: inline-block;
+    text-align: center;
+    margin: auto;
+    // background: red;
+    margin-bottom: 20px;
+    div.checkbox{
+      margin-left: 30px;
+      display: inline-block;
+      // background: blue;
+      h6{
+        font-size: .6em;
       }
-            .topic-box:last-child {
-            border-bottom-left-radius: 5px;
-            border-bottom-right-radius: 5px;   
-            }
     }
-    
-    .notifications {
-        position: absolute;
+  }
+
+
+
+
+
+  div.course{
+    padding-top: 10px;
+    position: relative;
+    max-width: 800px;
+    margin: auto;
+    background: #fafafa;
+    border: 1px solid black;
+    min-height: 100px;
+    border-radius: 10px;
+    &:not(:last-of-type){
+      margin-bottom: 50px;
     }
-    .notify-box {
-        // border: 1px solid black;
-        width: 45%;
-        height: auto;
-        float: left;
-        margin: 0px 20px 20px 15%;
-        border-radius: 5px;
-        h1 {
-            font-size: 50px;
-            margin: 50px 0;
-        }
-        
-        h1, h3{
-            // margin-top: 5px;
-            text-align: center;
-        }
-        h3 {
-            margin-bottom: 10px;
-            &:hover{
-            @include transform(scale(1.05));
-            }
-        }
-    }    
-    
-.my-course {
-    // margin-top: 100px;
-    margin-right: 10px;
-    position: absolute;
-    margin-top: 60px;
-    margin-left: 33%;
-    background-color: white;
-    border: 1px solid gray;
-}
+    h3{
+      text-align: center;
+      text-transform: capitalize;
+    }
+    span.plus{
+      position: absolute;
+      top: 0px;
+      right: 10px;
+      font-size: 40px;
+    }
+  }// course
 
 
 
-}
+
+
+
+
+
+
+
+
+} // end of dashboard, nothing below this
+
+
+
+
+// .dashboard {
+
+
+//     .add-enroll, .add-course {
+//         @include transition(.4s ease);
+//         min-height: 100px;
+//         border: 2px solid #000;
+//         background-color: /*#00a865*/ rgba(197, 220, 234, .7);
+//         margin-top: 10px;
+//         border-radius: 0.5em;
+//         position:relative;
+//         width: 80%;        
+//         &:hover{
+//         @include transform(scale(1.05));
+//         }
+//         h2 {
+//             text-align: center;
+//             margin-top: 3%;
+//             width: 80%;
+//             // width: 86%;
+//             float: right;
+//         }
+//         .add-picture {
+//             max-width: 100px;
+// 			width: 100%;
+//         }
+//     }
+//     .courses-enrolled, .courses-admin {
+//         @include transition(.4s ease);
+//         min-height: 100px;
+//         border: 2px solid #000;
+//         background-color: /*#00a865*/ rgba(197, 220, 234, .7);
+//         margin-top: 20px;
+//         border-radius: 5px;
+//         position:relative;
+//         width: 80%;
+//         display: flex;
+//         justify-content: center;
+
+//         &:hover{
+//         @include transform(scale(1.05));
+//         }
+
+
+//         .course-info {
+//             width: 100%;
+
+
+
+
+//         h3, h4 {
+//                 // float: right;
+//             width: 75%;
+//             float: right;
+//             text-align: center;
+//             // width: 80%;
+//             margin: 5px;
+//             overflow: hidden; 
+//             white-space: nowrap; 
+//             text-overflow: ellipsis; 
+//             // width: 815px;
+//         }
+//         h3 {
+//             margin-top: 3%;
+//         }
+//         h4 {
+//             clear: both;
+//             text-overflow: ellipsis;
+//         }
+//         img.course-picture {
+//             max-width: 100px;
+// 			width: 100%;
+//             height: auto;
+// 			border-radius: 5px;
+// 			border: 1px solid #111;
+//             margin: 10px 10px;
+//         }
+//         }
+//     }
+//       .topic-box {
+//         //   margin: 0 auto;
+//           text-align: center;
+//           border: 1px solid black;
+//           width: 60%;
+//           margin-left: 10%;
+//           background-color: rgba(96, 96, 96, 0.7);
+//           height: auto;
+//           padding: 5px;
+//           color: white;
+//           &:hover{
+//           @include transform(scale(1.05));  
+//           }  
+//       }
+//             .topic-box:last-child {
+//             border-bottom-left-radius: 5px;
+//             border-bottom-right-radius: 5px;   
+//             }
+//     }
+
+//     .notifications {
+//         position: absolute;
+//     }
+//     .notify-box {
+//         // border: 1px solid black;
+//         width: 45%;
+//         height: auto;
+//         float: left;
+//         margin: 0px 20px 20px 15%;
+//         border-radius: 5px;
+//         h1 {
+//             font-size: 50px;
+//             margin: 50px 0;
+//         }
+
+//         h1, h3{
+//             // margin-top: 5px;
+//             text-align: center;
+//         }
+//         h3 {
+//             margin-bottom: 10px;
+//             &:hover{
+//             @include transform(scale(1.05));
+//             }
+//         }
+//     }    
+
+// .my-course {
+//     // margin-top: 100px;
+//     margin-right: 10px;
+//     position: absolute;
+//     margin-top: 60px;
+//     margin-left: 33%;
+//     background-color: white;
+//     border: 1px solid gray;
+// }
+
+
+
+// }
