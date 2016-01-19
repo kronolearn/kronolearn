@@ -49,6 +49,7 @@ app.controller('quizCtrl', function($scope, quizService, $stateParams, userServi
             });
         }
         else {
+            console.log("FINAL ARRAY?:", userService.currentReviewArray);
             $scope.currentTopic = {
                 name: "Review",
                 cards: userService.currentReviewArray

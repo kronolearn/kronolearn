@@ -64,6 +64,32 @@ module.exports = {
 
 },
 
+    
+getCardsToReview: function(req,res) {
+			var userId = req.session.passport.user._id;
+			User.findById(userId)
+			.populate('coursesEnrolledIn')
+			.populate('coursesAdminFor')
+			.populate('cards.card')
+
+            .exec(function(err, user){
+                if (err) return res.status(500).send(err);
+                else {
+                    var cardsToReviewArray = [];
+                    var today = new Date();
+                    for (var i = 0; i < user.cards.length; i++) {
+                        //console.log("next review...", user.cards[i].dateNextReview.getTime());
+                        //console.log("today is...", today.getTime());
+                        if ((user.cards[i].dateNextReview).getTime() < (today).getTime()) {
+                            cardsToReviewArray.push(user.cards[i]);
+                        }
+                    }
+
+                    console.log("Cards to Review Array Final: ", cardsToReviewArray.length);
+                    return res.send(cardsToReviewArray);
+           }
+	   })
+},
 
 enrollInCourse: function(req, res){
 	var courseId = req.query.courseId;
