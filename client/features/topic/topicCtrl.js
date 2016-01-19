@@ -13,8 +13,7 @@ app.controller('topicCtrl', function($scope, topicService, $stateParams, courseS
     
     $scope.getUserInfo();
     
-    
-    $scope.progress = 75;
+    $scope.hasCards = false;
     
 
 	$scope.getCourse = function(){
@@ -29,6 +28,9 @@ app.controller('topicCtrl', function($scope, topicService, $stateParams, courseS
 
             $scope.topic = response;
             $scope.reviewMaterials = response.reviewMaterials;
+            if (response.cards.length > 0) {
+                $scope.hasCards = true;
+            }
         })
     }
 

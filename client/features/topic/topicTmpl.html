@@ -16,7 +16,7 @@
     </div>
     
     <div class="learn">
-        <button class="btn btn-lg btn-primary" ng-click="goToQuiz(topic._id)">Start Quiz!</button>
+        <button class="btn btn-lg btn-primary" ng-click="goToQuiz(topic._id)" ng-show="hasCards">Start Quiz!</button>
         <button class="btn btn-lg btn-primary" ng-click="createCards(topic._id)">Make Cards</button>
     </div>
     

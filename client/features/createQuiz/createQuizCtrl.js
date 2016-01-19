@@ -4,11 +4,6 @@ angular.module('kronolearn').controller('createQuizCtrl', function($scope, creat
     var courseNumber = Number($stateParams.courseId);
     var topicId = $stateParams.topicId;
 
-    console.log(courseNumber, topicId);
-
-
-
-
 
 
     $scope.getCard = function() {
