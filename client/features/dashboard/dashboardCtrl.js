@@ -11,9 +11,17 @@ app.controller('dashboardCtrl', function ($scope, user, $state, dashboardService
     $scope.getCardsToReview = function() {
         
         dashboardService.getCardsToReview().then(function(response){
-            console.log(response);
+            console.log("Cards to review, dashboardCtrl data: ", response);
+            $scope.cardsToReview = response;
         });
     }
+    
+    $scope.getCardsToReview();
+    
+    
+    
+    
+    
 
     $scope.notify = function () {
         $scope.cards.forEach(function (card) {
