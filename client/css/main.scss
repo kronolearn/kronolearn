@@ -1,11 +1,4 @@
-// loading bootstrap, bourbon, reset.scss
-@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
-@import "../bower_components/bourbon/app/assets/stylesheets/bourbon";
-@import "../bower_components/reset-css/_reset.scss";
-@import "../bower_components/sweetalert/dist/sweetalert.css";
-
-//___________________Variables____________________
-
+//______________bootstrap Variables have to set before bootstrap loads_____________________
 $jade: #00B16A;
 $darkJade: darken($jade, 5);
 $lightJade: lighten($jade, 5);
@@ -15,6 +8,24 @@ $gold: #ffe766;
 //____________________Fonts_____________________
 $headerFont: 'Bitter', serif;
 $textFont: 'Open Sans', sans-serif;
+
+
+
+
+$btn-primary-bg: $jade;
+$btn-primary-border: $darkJade;
+
+
+
+
+
+
+
+// loading bootstrap, bourbon, reset.scss
+@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "../bower_components/bourbon/app/assets/stylesheets/bourbon";
+@import "../bower_components/reset-css/_reset.scss";
+@import "../bower_components/sweetalert/dist/sweetalert.css";
 
 
 
@@ -61,6 +72,11 @@ $textFont: 'Open Sans', sans-serif;
 @import "../features/createCourse/createCourse";
 
 @import "../features/quiz/quiz";
+
+@import "../features/createQuiz/createQuiz";
+
+@import "../features/account/account";
+
 
 
 

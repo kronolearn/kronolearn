@@ -1,11 +1,12 @@
 var Card = require('../models/Card');
+var Topic = require('../models/Topic');
 
 module.exports = {
 	
     
     
 	getCards: function(req, res) {
-		Card.find().then(function (response) {
+		Card.find().populate('topic').exec().then(function (response) {
 			res.send(response);
 		});
 	},
@@ -15,8 +16,21 @@ module.exports = {
 			if (err) {
 				res.status(500).send(err);
 			} else {
-				res.json(data);
-			}
+                Topic.findById(data.topic, function(err, topic) { 
+                    if (err) {
+                        res.status(500).send(err);
+                    } else {
+                        topic.cards.push(data._id);
+                        topic.save(function(err, data) {
+                            if (err) {
+                                res.status(500).send(err);
+                            } else {
+                                res.json(data);
+                            }
+                        })
+                    }
+                })
+            }
 		});
 	},
 	
@@ -48,6 +62,6 @@ module.exports = {
 				res.send(data);
 			}
 		});
-	},
+	}
 	
 };

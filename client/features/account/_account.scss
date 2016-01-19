@@ -1,0 +1,112 @@
+div.account-wrapper{
+	div.main-content{
+		font-size: 1.5rem;
+		text-align: center;
+	}
+
+
+	h1.main-header{
+		padding-top: 30px;
+		text-decoration: underline;
+	}
+
+	div.settings{
+		padding: 10px;
+		font-size: 1em; 
+		margin-top: 30px;
+		padding-bottom: 500px;
+	}
+
+	div.avatar{
+		position: relative;
+		display: inline-block;
+		img{
+			border-radius: 20px;
+			max-width: 200px;
+		}
+		button{
+			font-size: .6em;
+			position: absolute;
+			left: 50px;
+			bottom: -35px;
+		}
+	}
+
+	div.info{
+		font-size: .9em;
+		text-align: left;
+		p:not(:first-of-type){
+			margin-top: 15px;
+		}
+		@include tabletOrLess {
+			margin-top: 50px;
+			text-align: center;
+		}
+	}
+
+	///////////////////////////////////////////////////
+	//  Edition dropzone preview when uploading file
+	///////////////////////////////////////////////////
+	div.dz-preview{
+		div.dz-image{
+			img{
+				width: 200px;
+			}
+			// background: red;
+			display: absolute;
+			width: 200px;
+		}
+
+
+		div.dz-success-mark, div.dz-error-mark{
+			display: none;
+		}
+	}
+
+	button.save-picture{
+		margin-left: 80px;
+	}
+	button.cancel {
+		position: relative;
+		right: 50px;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+} // end of account-wrapper

@@ -20,7 +20,7 @@ angular.module('kronolearn')
                 $('.progressBar').each(function () {
                     //alert('Hello');
                     var bar = $(this);
-                    var max = scope.bacon;
+                    var max = scope.progress;
                     
                     progress(max, bar);
                 });

@@ -92,6 +92,8 @@ angular.module('kronolearn')
 					// method: 'POST',
 					clickable: '.clickable',
 					acceptedFiles: 'image/*',
+					thumbnailWidth: "400",
+					thumbnailHeight: "400",
 
 					accept: function(file, done){
 						console.log(file);
@@ -129,6 +131,23 @@ angular.module('kronolearn')
 		}// link 
 	}; // return
 }); // whole directive
+
+
+
+
+angular.module('kronolearn')
+.directive('dropzoneGeneral', function($http){
+	return {
+		link: function(scope, elem, attrs){
+			$(function(){
+
+				var myDropzone = new Dropzone($(elem));
+				console.log('hello');
+
+			});
+		}
+	}
+})
 
 
 

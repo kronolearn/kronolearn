@@ -47,9 +47,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
     })
     
     .state('quiz', {
-        url: '/quiz/:topicId/quiz',
+        url: '/topic/:topicId/quiz',
         templateUrl: '/features/quiz/quizTmpl.html',
         controller: 'quizCtrl'
+    })
+    
+    .state('createQuiz', {
+        url: '/quiz/:topicId/createQuiz',
+        templateUrl: '/features/createQuiz/createQuizTmpl.html',
+        controller: 'createQuizCtrl'
     })
 /*
     .state('card', {
@@ -60,7 +66,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 */
 
     ///////////////////////////////////////////////////
-    //  Creating course, topic, and card views
+    //  Creating course, topic, and card views       //
     ///////////////////////////////////////////////////
 
     .state('createCourse', {
@@ -73,6 +79,23 @@ app.config(function($stateProvider, $urlRouterProvider) {
     		}
     	}
     })
+
+  ///////////////////////////////////////////////////
+  //  Account view
+  ///////////////////////////////////////////////////
+
+  .state('account', {
+  	url: '/account',
+  	templateUrl: './features/account/account.html',
+  	controller: 'accountCtrl',
+  	resolve: {
+  		user: function(userService){
+  			return userService.checkUserLogin();
+  		}
+  	}
+  })
+
+
 
 
 

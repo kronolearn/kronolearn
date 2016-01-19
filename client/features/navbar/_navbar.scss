@@ -15,6 +15,43 @@ div.navbar-wrapper{
 		width: 60%;
 	}
 
+	div.search-wrapper.spec{
+		@include tabletOrLess {
+			right: -150px;
+		}
+		@include smallPhone {
+			left: 7px;
+			top: -17px;
+			width: 200px;
+		}
+		@media (max-width: 630px) and (min-width: 461px) {
+			width: 220px;
+			right: -100px;
+		}
+	}
+
+
+	///////////////////////////////////////////////////
+	//  Drop down menu from typeahed, when user types in search bar
+	///////////////////////////////////////////////////
+
+	div.search-wrapper ul.dropdown-menu {
+		padding-top: 12px;
+		li{
+			display: block;
+			&.active a{
+				background: $jade;
+			}
+		}
+	}
+
+
+
+
+
+
+
+
 
 
 
@@ -44,12 +81,24 @@ div.navbar-wrapper{
 	}
 
 	div.navbar-logo{
+		margin-left: 20px;
+		@include phoneOrLess {
+			margin-left: 5px;
+		}
+		@include smallPhone {
+			display: none;
+		}
 		display: inline-block;
 		margin-right: 200px;
 		// background: blue;
 		a{
+			display: inline-block;
 			color: white;
 			font-size: 1.5em;
+			@include phoneOrLess {
+				font-size: 1.2em;
+				margin-top: 5px;
+			}
 			cursor: pointer;
 			@include transition(.4s ease);
 			&:hover{
@@ -75,6 +124,9 @@ div.navbar-wrapper{
 		@include phoneOrLess {
 			margin-right: 5px;
 		}
+		@include smallPhone {
+			margin-right: -5px;
+		}
 		&:hover{
 			cursor: pointer;
 		}
@@ -83,11 +135,25 @@ div.navbar-wrapper{
 		margin-right: 10px;
 		position: relative;
 		display: inline-block;
-		width: 44px;
+		// width: 44px;
+		height: 40px;
 		border-radius: 5px;
 		// float: right;
+		&+i.tabletOrLess{
+			display: none;
+			@include tabletOrLess {
+				display: inline;
+				font-size: 1.8em;
+				position: relative;
+				top: -5px;
+				color: white;
+			}
+		}
 	}
 	li{
+		@include tabletOrLess {
+			display: none;
+		}
 		display: inline-block;
 		font-size: .9em;
 		color: white;
@@ -96,6 +162,9 @@ div.navbar-wrapper{
 		bottom: 14px;
 		position: relative;
 		i.fa{
+			@include tabletOrLess {
+				display: inline;
+			}
 			position: absolute;
 			right: -22px;
 			top: -6px;

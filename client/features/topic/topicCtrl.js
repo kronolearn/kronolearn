@@ -1,10 +1,21 @@
 var app = angular.module("kronolearn");
 
 
-app.controller('topicCtrl', function($scope, topicService, $stateParams, courseService, $state) {
+app.controller('topicCtrl', function($scope, topicService, $stateParams, courseService, $state, userService) {
 	var topicId = $stateParams.topicId;
 	var courseId = $stateParams.courseId;
-    $scope.bacon = 75;
+    
+    $scope.getUserInfo = function () {
+        userService.checkUserLogin().then(function(user){
+            $scope.user = user;
+        })
+    }
+    
+    $scope.getUserInfo();
+    
+    
+    $scope.progress = 75;
+    
 
 	$scope.getCourse = function(){
 		courseService.getCourse(courseId)
@@ -28,6 +39,10 @@ app.controller('topicCtrl', function($scope, topicService, $stateParams, courseS
         $state.go('quiz', {topicId: topicId});
     };
     
+    $scope.createCards = function(topicId) {
+        $state.go('createQuiz', {topicId: topicId});
+    };
+    
     $scope.showMaterial = false;
     
     $scope.displayMaterial = function() {
@@ -39,8 +54,10 @@ app.controller('topicCtrl', function($scope, topicService, $stateParams, courseS
         topicService.addMaterial($scope.material, $scope.topic._id).then(function(topic) {
             var reviewMaterialToAdd = topic.reviewMaterials[topic.reviewMaterials.length-1];   
             $scope.topic.reviewMaterials.push(reviewMaterialToAdd);
-            console.log($scope.topic);
+            //console.log($scope.topic);
         });
     }
+    
+    $scope.makeCards
 
 });

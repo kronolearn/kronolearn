@@ -40,5 +40,10 @@ $scope.loginMess = "";
             ;
     };
 
+    $scope.openLoginModal = function(){
+
+        
+    }
+
 
 });
