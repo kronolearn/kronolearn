@@ -77,6 +77,7 @@ getCardsToReview: function(req,res) {
                 else {
                     var cardsToReviewArray = [];
                     var today = new Date();
+                    console.log(user.cards);
                     for (var i = 0; i < user.cards.length; i++) {
                         //console.log("next review...", user.cards[i].dateNextReview.getTime());
                         //console.log("today is...", today.getTime());

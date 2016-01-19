@@ -9,6 +9,7 @@ app.controller('dashboardCtrl', function ($scope, user, $state, dashboardService
     
     dashboardService.getUserAndCourses()
         .then(function (user) {
+            console.log(user);
             $scope.userInfo = user;
             $scope.courses = user.coursesEnrolledIn;
             $scope.adminCourses = user.coursesAdminFor;
@@ -53,14 +54,14 @@ app.controller('dashboardCtrl', function ($scope, user, $state, dashboardService
     
     $scope.getCoursesToReview = function() {
         for (var i = 0; i < $scope.cardsToReview.length; i++) {
-            if ($scope.courseIDsToReview.indexOf($scope.cardsToReview[i].card.course) === -1) {
-                $scope.courseIDsToReview.push($scope.cardsToReview[i].card.course);
+            if ($scope.courseIDsToReview.indexOf($scope.cardsToReview[i].card.courseNumber) === -1) {
+                $scope.courseIDsToReview.push($scope.cardsToReview[i].card.courseNumber);
             }
         }
         console.log("what is $scope.courses?: ", $scope.courses);
         for (var j = 0; j < $scope.courseIDsToReview.length; j++) {
             for (var k = 0; k < $scope.courses.length; k++) {
-                if (($scope.courses[k]._id === $scope.courseIDsToReview[j]/* && ($scope.coursesToReview.indexOf($scope.courses[k]) === -1)*/) && ($scope.coursesToReview.length < $scope.courseIDsToReview.length)) {
+                if (($scope.courses[k].courseNumber === $scope.courseIDsToReview[j]/* && ($scope.coursesToReview.indexOf($scope.courses[k]) === -1)*/) && ($scope.coursesToReview.length < $scope.courseIDsToReview.length)) {
                     $scope.coursesToReview.push($scope.courses[k]);
                 }
             }
@@ -92,9 +93,9 @@ app.controller('dashboardCtrl', function ($scope, user, $state, dashboardService
         
     $scope.cardsToPass = [];
         
-    $scope.passCardsToQuizCourse = function(courseId) {
+    $scope.passCardsToQuizCourse = function(courseNumber) {
         for (var i = 0; i < $scope.cardsToReview.length; i++) {
-            if ($scope.cardsToReview[i].card.course === courseId) {
+            if ($scope.cardsToReview[i].card.courseNumber === courseNumber) {
                 $scope.cardsToPass.push($scope.cardsToReview[i].card);
             }
         }
