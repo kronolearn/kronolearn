@@ -40,7 +40,7 @@ app.controller('topicCtrl', function($scope, topicService, $stateParams, courseS
     };
     
     $scope.createCards = function(topicId) {
-        $state.go('createQuiz', {topicId: topicId});
+        $state.go('createQuiz', {topicId: topicId, courseId: courseId});
     };
     
     $scope.showMaterial = false;
@@ -51,13 +51,15 @@ app.controller('topicCtrl', function($scope, topicService, $stateParams, courseS
     
     $scope.addMaterial = function() {
         $scope.showMaterial = false;
+        $scope.material.materialUrl = $scope.material.materialUrl.replace("http://", "").replace("https://", "");
         topicService.addMaterial($scope.material, $scope.topic._id).then(function(topic) {
-            var reviewMaterialToAdd = topic.reviewMaterials[topic.reviewMaterials.length-1];   
+            var reviewMaterialToAdd = topic.reviewMaterials[topic.reviewMaterials.length-1];
+            console.log(reviewMaterialToAdd);
             $scope.topic.reviewMaterials.push(reviewMaterialToAdd);
             //console.log($scope.topic);
         });
     }
     
-    $scope.makeCards
+    
 
 });

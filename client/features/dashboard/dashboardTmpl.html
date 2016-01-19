@@ -1,72 +1,92 @@
 <div navbar></div>
 <div class="dashboard">
-    <div class="background-image"></div>
-    <!--Courses They Are Admin For Section-->
-    <div ng-show="adminShow" class="admin-wrapper">
-        <!--<div class="add-courses-box">-->
-            <button ng-click="adminShow=!adminShow" class="btn my-course">Enrolled Courses</button>
-            <h1>Your Courses</h1>
-            <div class="add-course" ng-click="addCourse()">
-                <h2>Make a Course</h2>
-                <img class="add-picture" src="../img/plus.png" alt="plus">
-            </div>
-            <div ng-repeat="course in adminCourses track by $index">
-                <div class="courses-admin" ng-click="adminTopicShow=!adminTopicShow">
-                    <div class="course-info">
-                        <h3>{{course.name}}</h3>
-                        <h4>{{course.description}}</h4>
-                        <img class="course-picture" src="{{course.picture}}" alt="coursePic">
-                    </div>
-                    <!--<button>Go To Course</button>-->
-                </div>
-                <div class="topic-box" ng-show="adminTopicShow" ng-repeat="topic in course.topics track by $index" ng-click="topicClick(topic._id)">
-                    <h5>{{topic.name}}</h5>
-                </div>
-            </div>
-        <!--</div>-->
-    </div>
 
+  <div class="container-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="sidebar col-lg-3 col-md-3 col-sm-5">
+          <h2>Courses To Review</h2>
 
-
-    <!--Enrolled In Courses Section-->
-    <div ng-show="!adminShow" class="courses-wrapper">
-        <!--<div class="courses-enrolled-box">-->
-            <button ng-click="adminShow=!adminShow" class="btn my-course">My Created Courses</button>
-            <h1>Enrolled Courses</h1>
-            <div class="add-enroll" ng-click="enrollBtn()">
-                <h2>Enroll in a Course</h2>
-                <img class="add-picture" src="../img/plus.png" alt="plus">
-            </div>
-            <div ng-repeat="course in courses track by $index">
-                <div ng-click="topicShow=!topicShow" class="courses-enrolled">
-                    <div class="course-info">
-                        <h3>{{ course.name }}</h3>
-                        <h4>{{ course.description }}</h4>
-                        <img class="course-picture" ng-src="{{course.picture}}" alt="coursePic">
-                    </div>
-                </div>
-                <div class="topic-box" ng-show="topicShow" ng-repeat="topic in course.topics track by $index" ng-click="topicClick(topic._id)">
-                    <h5>{{topic.name}}</h5>
-                </div>
-            </div>
-        <!--</div>-->
-    </div>
-
-
-    <!--Notification Section-->
-
-    <div class="notifications">
-        <div class="notify-box">
-            <h1>Time to review!</h1>
-            <div ng-repeat="course in courses">
-                <h3 ng-click="courseClick(course.courseNumber)">{{course.name}}</h3>
-            </div>
         </div>
+        <div class="main-wrapper col-lg-9 col-md-9 col-sm-7">
+          <h5 class="intro">Welcome back, {{user.name}}.  You have 63 cards to review in 3 different courses.</h5>
+
+          <div class="courses">
+            <!-- Form controlling whether to show enrolled courses or courses admin of -->
+            <form class="checkboxes" action="">
+              <div class="checkbox courses-admin-for">
+                <h6>Courses Admin For</h6>
+                <input type="checkbox" checked ng-click="include"> 
+              </div>
+              <div class="checkbox courses-enrolled-in">
+                <h6>Courses Enrolled In</h6>
+                <input type="checkbox" checked>
+              </div>
+
+
+            </form>
+
+
+            <div class="course" ng-repeat="course in allCourses" expand-course>
+              <span class="plus">+</span>
+              <img ng-src="{{course.picture}}" alt="" class="course-picture">
+              <h3>{{course.name}}</h3>
+
+              <div class="topics">
+                <div class="topic" ng-repeat="topic in course.topics">
+                  {{topic.name}}
+                  
+                </div>
+                  }
+              </div>
+
+
+            </div>
+
+
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
     </div>
 
-    <div>
 
-    </div>
+
+
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <!-- <div class="background-image"></div> -->
+
+
+
+
+
+
+
+  <!-- Courses They Are Admin For Section-->
+
 
 
 

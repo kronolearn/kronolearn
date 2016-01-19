@@ -144,10 +144,30 @@ angular.module('kronolearn')
 				var myDropzone = new Dropzone($(elem));
 				console.log('hello');
 
-			});
-		}
-	}
-})
+			}); //jquery ready
+		} // link
+	}; // return
+}); // whole directive
+
+
+
+
+// expanding course to show topics behavior
+angular.module('kronolearn')
+.directive('expandCourse', function($http){
+	return {
+		link: function(scope, elem, attrs){
+			$(function(){
+
+				var myDropzone = new Dropzone($(elem));
+				console.log('hello');
+
+			}); //jquery ready
+		} // link
+	}; // return
+}); // whole directive
+
+
 
 
 

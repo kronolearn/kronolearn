@@ -17,6 +17,7 @@ var TopicSchema = Schema({
         reviewTags: [{ type: String }],
         materialUrl: { type: String }
     }],
+    courseNumber: {type: Number, required: true},
     course: [{ type: Schema.Types.ObjectId, ref: 'Course' }],
     cards: [{ type: Schema.Types.ObjectId, ref: 'Card' }]
 });

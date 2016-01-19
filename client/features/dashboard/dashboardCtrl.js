@@ -13,10 +13,27 @@ app.controller('dashboardCtrl', function ($scope, user, $state, dashboardService
             $scope.courses = user.coursesEnrolledIn;
             $scope.adminCourses = user.coursesAdminFor;
             $scope.cards = user.cards;
-            //$scope.notify();
-       
+            $scope.coursesEnrolledIn = user.coursesEnrolledIn;
 
-    
+            // creates array of courses enrolled in and admin for
+            $scope.allCourses = user.coursesEnrolledIn.slice(0);
+            $scope.allCourses.push(user.coursesAdminFor);
+
+            $scope.allCourses = _.flatten($scope.allCourses);
+
+            // remove duplicates
+            for(var i=0; i<$scope.allCourses.length; i++){
+                var courseId = $scope.allCourses[i]._id;
+                for(var j=$scope.allCourses.length-1; j>i; j--){
+                    var courseIdToCompare = $scope.allCourses[j]._id;
+                    if(courseId===courseIdToCompare){
+                        console.log('match');
+                        // remove duplicate from array
+                        $scope.allCourses.splice(j, 1);
+                    }
+                }
+            }
+       
     $scope.getCardsToReview = function() {
         
         dashboardService.getCardsToReview().then(function(response){
@@ -65,8 +82,7 @@ app.controller('dashboardCtrl', function ($scope, user, $state, dashboardService
         } else {
             console.log("no notifications today");
         }
-
-    }; */
+*/
 
     $scope.topicClick = function (id) {
         $state.go('topic', { topicId: id });
