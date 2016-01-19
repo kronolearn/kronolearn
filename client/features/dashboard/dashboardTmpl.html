@@ -6,7 +6,7 @@
       <div class="row">
         <div class="sidebar col-lg-3 col-md-3 col-sm-5">
           <h2>Courses To Review</h2>
-            <p ng-repeat="course in coursesToReview" ng-click="passCardsToQuizCourse(course._id)">{{course.name}}</p>
+            <p ng-repeat="course in coursesToReview" ng-click="passCardsToQuizCourse(course.courseNumber)">{{course.name}}</p>
         </div>
         <div class="main-wrapper col-lg-9 col-md-9 col-sm-7">
           <h5 class="intro">Welcome back, {{user.name}}.  You have 63 cards to review in 3 different courses.</h5>
@@ -35,9 +35,10 @@
               <div class="topics">
                 <div class="topic" ng-repeat="topic in course.topics">
                   {{topic.name}}
-                  
                 </div>
-                  }
+                <div class="no-topics" ng-show="course.topics.length===0">
+                  No Topics Created Yet!
+                </div>
               </div>
 
 

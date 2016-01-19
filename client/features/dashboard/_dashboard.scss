@@ -75,6 +75,13 @@ div.dashboard{
     &:not(:last-of-type){
       margin-bottom: 50px;
     }
+    div.topics{
+      // background: blue;
+      height: 50px;
+      max-width: 300px;
+      margin: auto;
+      font-size: .6em;
+    }
     h3{
       text-align: center;
       text-transform: capitalize;
@@ -84,6 +91,11 @@ div.dashboard{
       top: 0px;
       right: 10px;
       font-size: 40px;
+      @include transition(.4s ease);
+      cursor: pointer;
+      &.reveal{
+        @include transform(rotate(45deg));
+      }
     }
     img.course-picture{
       position: absolute;
