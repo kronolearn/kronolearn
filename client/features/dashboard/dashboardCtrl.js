@@ -66,23 +66,6 @@ app.controller('dashboardCtrl', function ($scope, user, $state, dashboardService
             }
         }
     };
-    
-    
-    
-/*
-    $scope.notify = function () {
-        $scope.cards.forEach(function (card) {
-            $scope.card = card;
-            $scope.date = card.dateNextReview;
-        });
-        $scope.today = Date.now();
-        $scope.reviewDate = Date.parse($scope.date);
-        if ($scope.reviewDate < $scope.today) {
-            console.log("New Notifications");
-        } else {
-            console.log("no notifications today");
-        }
-*/
 
     $scope.topicClick = function (id) {
         $state.go('topic', { topicId: id });
