@@ -82,5 +82,32 @@ app.controller('dashboardCtrl', function ($scope, user, $state, dashboardService
     $scope.addCourse = function () {
         $state.go('createCourse');
     };
+        
+        
+        
+        
+        
+        
+        
+        
+    $scope.cardsToPass = [];
+        
+    $scope.passCardsToQuizCourse = function(courseId) {
+        for (var i = 0; i < $scope.cardsToReview.length; i++) {
+            if ($scope.cardsToReview[i].card.course === courseId) {
+                $scope.cardsToPass.push($scope.cardsToReview[i]);
+            }
+        }
+    };
+        
+    $scope.passCardsToQuizTopic = function(topicId) {
+        for (var i = 0; i < $scope.cardsToReview.length; i++) {
+            if ($scope.cardsToReview[i].card.topic === topicId) {
+                $scope.cardsToPass.push($scope.cardsToReview[i]);
+            }
+        }
+    };
+        
+        
     });
 });
