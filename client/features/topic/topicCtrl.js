@@ -13,8 +13,7 @@ app.controller('topicCtrl', function($scope, topicService, $stateParams, courseS
     
     $scope.getUserInfo();
     
-    
-    $scope.progress = 75;
+    $scope.hasCards = false;
     
 
 	$scope.getCourse = function(){
@@ -29,6 +28,9 @@ app.controller('topicCtrl', function($scope, topicService, $stateParams, courseS
 
             $scope.topic = response;
             $scope.reviewMaterials = response.reviewMaterials;
+            if (response.cards.length > 0) {
+                $scope.hasCards = true;
+            }
         })
     }
 
@@ -54,12 +56,16 @@ app.controller('topicCtrl', function($scope, topicService, $stateParams, courseS
         $scope.material.materialUrl = $scope.material.materialUrl.replace("http://", "").replace("https://", "");
         topicService.addMaterial($scope.material, $scope.topic._id).then(function(topic) {
             var reviewMaterialToAdd = topic.reviewMaterials[topic.reviewMaterials.length-1];
-            console.log(reviewMaterialToAdd);
+            //console.log(reviewMaterialToAdd);
             $scope.topic.reviewMaterials.push(reviewMaterialToAdd);
+            $scope.material = "";
             //console.log($scope.topic);
         });
     }
     
+    $scope.hideMaterial = function() {
+        $scope.showMaterial = false;
+    }
     
 
 });

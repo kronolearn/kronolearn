@@ -16,17 +16,20 @@
     </div>
     
     <div class="learn">
-        <button class="btn btn-lg btn-primary" ng-click="goToQuiz(topic._id)">Start Quiz!</button>
+        <button class="btn btn-lg btn-primary" ng-click="goToQuiz(topic._id)" ng-show="hasCards">Start Quiz!</button>
         <button class="btn btn-lg btn-primary" ng-click="createCards(topic._id)">Make Cards</button>
     </div>
     
-    <div progress-bar class="progressBar"><div></div></div>
+ <!--   <div progress-bar class="progressBar"><div></div></div>-->
     
     <form class="addMaterial" ng-show="showMaterial">
         <p>New Material</p>
         <input type="text" placeholder="Name" ng-model="material.material">
         <input type="text" placeholder="Link Url" ng-model="material.materialUrl">
-        <button class="btn btn-lg btn-primary" ng-click="addMaterial()">Add Material</button>
+        <div>
+            <button class="btn btn-lg" ng-click="hideMaterial()">Close</button>
+            <button class="btn btn-lg" ng-click="addMaterial()">Add Material</button>
+        </div>
     </form> 
         
 </div>
