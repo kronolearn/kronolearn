@@ -25,9 +25,44 @@ app.controller('dashboardCtrl', function ($scope, user, $state, dashboardService
 
     dashboardService.getUserAndCourses()
         .then(function (user) {
+            console.log(user);
             $scope.userInfo = user;
             $scope.courses = user.coursesEnrolledIn;
+            $scope.coursesEnrolledIn = user.coursesEnrolledIn;
             $scope.adminCourses = user.coursesAdminFor;
+
+            // creates array of courses enrolled in and admin for
+            $scope.allCourses = user.coursesEnrolledIn.slice(0);
+            $scope.allCourses.push(user.coursesAdminFor);
+
+            $scope.allCourses = _.flatten($scope.allCourses);
+
+            // remove duplicates
+            for(var i=0; i<$scope.allCourses.length; i++){
+                var courseId = $scope.allCourses[i]._id;
+                for(var j=$scope.allCourses.length-1; j>i; j--){
+                    var courseIdToCompare = $scope.allCourses[j]._id;
+                    if(courseId===courseIdToCompare){
+                        console.log('match');
+                        // remove duplicate from array
+                        $scope.allCourses.splice(j, 1);
+                    }
+                }
+            }
+
+            $scope.allCourses = $scope.allCourses;
+
+
+
+
+
+
+
+
+
+            // $scope.allCourses = _.flattenDeep($scope.allCourses);
+            console.log($scope.allCourses);
+
             $scope.cards = user.cards;
             $scope.notify();
 
