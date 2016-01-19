@@ -14,9 +14,9 @@
 							<img ng-if="!user.avatar" src="./img/user.png" alt="">
 
 							<button  ng-hide="pictureAdded" ng-click="addPicture()" class="clickable btn btn-primary" dropzone action="/file-upload" >{{uploadMessage}}</button>
-							<button  ng-hide="pictureAdded" ng-click="addPicture()" class="clickable btn btn-primary" dropzone action="/file-upload">
+<!-- 							<button  ng-hide="pictureAdded" ng-click="addPicture()" class="clickable btn btn-primary" dropzone action="/file-upload">
 							{{uploadMessage}}</button>
-							<!-- <button ng-hide="pictureAdded" ng-click="addPicture()" class="clickable btn btn-primary" dropzone action="/file-upload" ng-if="!user.avatar">Add a Picture</button> -->
+ -->							<!-- <button ng-hide="pictureAdded" ng-click="addPicture()" class="clickable btn btn-primary" dropzone action="/file-upload" ng-if="!user.avatar">Add a Picture</button> -->
 
 							<button class="save-picture btn btn-primary" ng-click="saveAccount()" ng-show="pictureAdded" class="add-picture btn btn-default">Save Picture</button>
 							<button class="cancel btn btn-primary" ng-show="pictureAdded" ng-click="cancel()">Cancel</button>

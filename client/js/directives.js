@@ -158,9 +158,16 @@ angular.module('kronolearn')
 	return {
 		link: function(scope, elem, attrs){
 			$(function(){
+				var $plus = elem.find('span.plus');
+				var $topics = elem.find('div.topics');
 
-				var myDropzone = new Dropzone($(elem));
-				console.log('hello');
+				$topics.hide();
+
+				$plus.click(function(){
+					$topics.slideToggle();
+					$plus.toggleClass('reveal');
+				})
+
 
 			}); //jquery ready
 		} // link

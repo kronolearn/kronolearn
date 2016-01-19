@@ -35,9 +35,10 @@
               <div class="topics">
                 <div class="topic" ng-repeat="topic in course.topics">
                   {{topic.name}}
-                  
                 </div>
-                  }
+                <div class="no-topics" ng-show="course.topics.length===0">
+                  No Topics Created Yet!
+                </div>
               </div>
 
 
