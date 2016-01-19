@@ -27,9 +27,18 @@
             </form>
 
 
-            <div class="course" ng-repeat="course in courses">
+            <div class="course" ng-repeat="course in allCourses" expand-course>
               <span class="plus">+</span>
+              <img ng-src="{{course.picture}}" alt="" class="course-picture">
               <h3>{{course.name}}</h3>
+
+              <div class="topics">
+                <div class="topic" ng-repeat="topic in course.topics">
+                  {{topic.name}}
+                  
+                </div>
+                  }
+              </div>
 
 
             </div>

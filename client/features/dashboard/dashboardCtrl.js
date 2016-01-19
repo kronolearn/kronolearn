@@ -27,7 +27,7 @@ app.controller('dashboardCtrl', function ($scope, user, $state, dashboardService
         .then(function (user) {
             console.log(user);
             $scope.userInfo = user;
-            $scope.courses = users.coursesEnrolledIn;
+            $scope.courses = user.coursesEnrolledIn;
             $scope.coursesEnrolledIn = user.coursesEnrolledIn;
             $scope.adminCourses = user.coursesAdminFor;
 

@@ -70,7 +70,7 @@ div.dashboard{
     margin: auto;
     background: #fafafa;
     border: 1px solid black;
-    min-height: 100px;
+    min-height: 120px;
     border-radius: 10px;
     &:not(:last-of-type){
       margin-bottom: 50px;
@@ -84,6 +84,14 @@ div.dashboard{
       top: 0px;
       right: 10px;
       font-size: 40px;
+    }
+    img.course-picture{
+      position: absolute;
+      left: 10px;
+      background:orange;
+      max-width: 100px;
+      max-height: 100px;
+      top: 5px;
     }
   }// course
 
