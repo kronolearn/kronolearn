@@ -72,6 +72,13 @@ angular.module('kronolearn')
 }
         
 ];
+    
+    this.addCards = function(cardsInArray) {
+        this.currentReviewArray = cardsInArray;
+        console.log("CURRENT ARRAY: ", this.currentReviewArray);
+    }
+    
+
 
 
 

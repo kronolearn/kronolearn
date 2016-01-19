@@ -159,7 +159,7 @@ angular.module('kronolearn')
 		link: function(scope, elem, attrs){
 			$(function(){
 
-				var myDropzone = new Dropzone($(elem));
+				//var myDropzone = new Dropzone($(elem));
 				console.log('hello');
 
 			}); //jquery ready
