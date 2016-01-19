@@ -1,7 +1,7 @@
 var app = angular.module('kronolearn');
 
 
-app.controller('dashboardCtrl', function ($scope, user, $state, dashboardService, allCoursesService) {
+app.controller('dashboardCtrl', function ($scope, user, $state, dashboardService, allCoursesService, userService) {
     // user is passed into dashboard ctrl from resolve in app.js
     $scope.user = user;
     // console.log($scope.user);
@@ -95,17 +95,21 @@ app.controller('dashboardCtrl', function ($scope, user, $state, dashboardService
     $scope.passCardsToQuizCourse = function(courseId) {
         for (var i = 0; i < $scope.cardsToReview.length; i++) {
             if ($scope.cardsToReview[i].card.course === courseId) {
-                $scope.cardsToPass.push($scope.cardsToReview[i]);
+                $scope.cardsToPass.push($scope.cardsToReview[i].card);
             }
         }
+        userService.addCards($scope.cardsToPass);
+        $state.go('quiz');
     };
         
     $scope.passCardsToQuizTopic = function(topicId) {
         for (var i = 0; i < $scope.cardsToReview.length; i++) {
             if ($scope.cardsToReview[i].card.topic === topicId) {
-                $scope.cardsToPass.push($scope.cardsToReview[i]);
+                $scope.cardsToPass.push($scope.cardsToReview[i].card);
             }
         }
+        userService.addCards($scope.cardsToPass);
+        $state.go('quiz');
     };
         
         
