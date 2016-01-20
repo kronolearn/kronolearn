@@ -34,6 +34,27 @@ app.controller('dashboardCtrl', function ($scope, user, $state, dashboardService
                     }
                 }
             }
+        
+            $scope.adminCoursesShowing = true;
+            $scope.coursesEnrolledInShowing = true;
+            $scope.dashCoursesToShow = [];
+            
+            $scope.changeCoursesToShow = function() {
+                
+                if ($scope.adminCoursesShowing && $scope.coursesEnrolledInShowing) {
+                    $scope.dashCoursesToShow = $scope.allCourses;
+                }
+                else if ($scope.adminCoursesShowing && !$scope.coursesEnrolledInShowing) {
+                    $scope.dashCoursesToShow = $scope.adminCourses;
+                }
+                else if ($scope.coursesEnrolledInShowing && !$scope.adminCoursesShowing) {
+                    $scope.dashCoursesToShow = $scope.courses;
+                }
+                else {
+                    $scope.dashCoursesToShow = $scope.allCourses;
+                }
+            }
+            
 
             $scope.getCardsToReview = function () {
 

@@ -17,18 +17,18 @@
             <form class="checkboxes" action="">
               <div class="checkbox courses-admin-for">
                 <h6>Courses Admin For</h6>
-                <input type="checkbox" checked ng-click="include"> 
+                <input type="checkbox" checked ng-click="adminCoursesShowing = !adminCoursesShowing; changeCoursesToShow()">
               </div>
               <div class="checkbox courses-enrolled-in">
                 <h6>Courses Enrolled In</h6>
-                <input type="checkbox" checked>
+                <input type="checkbox" checked ng-click="coursesEnrolledInShowing = !coursesEnrolledInShowing; changeCoursesToShow()">
               </div>
 
 
             </form>
 
 
-            <div class="course" ng-repeat="course in allCourses" expand-course>
+            <div class="course" ng-repeat="course in dashCoursesToShow" expand-course>
               <span class="plus">+</span>
               <img ui-sref="course({courseId: {{course.courseNumber}}})" ng-src="{{course.picture}}" alt="" class="course-picture">
               <h3 class="course-name" ><a ui-sref="course({courseId: {{course.courseNumber}}})">{{course.name}}</a></h3>
