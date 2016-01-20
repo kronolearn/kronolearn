@@ -148,39 +148,40 @@ div.course-page-wrapper{
 
 
 
-	.topicForm { 
-		position: fixed;
-		top: 10%;
-		background-color: #eaeaea;
-		width: 46%;
-		left: 27%;
-		text-align: right;
-		padding: 1%;
-		border: 1px solid black;
-		border-radius: .5em;
-		box-shadow: 10px 10px 5px black;
-		p {
-			text-align: center;
-			font-size: 3em;
-			margin: 1%;
-		}
-		.allThree {
-			display: flex;
-			justify-content: space-between;
-			.nameDescription {
-				display: flex;
-				flex-direction: column;
-				width: 65%;
-				input, textarea {
-					padding: 2%;
-					margin: 1%;
-				}
-				textarea {
-					height: 200px;
-				}
-			}
-		}
-	}
+    .topicForm { 
+        position: fixed;
+        top: 10%;
+        background-color: #eaeaea;
+        width: 46%;
+        left: 27%;
+        text-align: right;
+        padding: 1%;
+        border: 1px solid black;
+        border-radius: .5em;
+        box-shadow: 3px 3px 3px black;
+        p {
+            text-align: center;
+            font-size: 3em;
+            margin: 1%;
+        }
+        .allThree {
+            display: flex;
+            justify-content: space-between;
+            .nameDescription {
+                display: flex;
+                flex-direction: column;
+                width: 65%;
+                input, textarea {
+                    padding: 2%;
+                    margin: 1%;
+                }
+                textarea {
+                    height: 200px;
+                }
+            }
+        }
+    }
+
 
 
     ///////////////////////////////////////////////////
