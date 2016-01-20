@@ -195,8 +195,8 @@ div.navbar-wrapper{
 		}
 
 		div.menu-item{
-			height: 45px;
-			@include transition(.5s ease);
+			height: 35px;
+			@include transition(.4s ease);
 			// background: orange;
 			padding: 5px 0;
 			&:hover{
@@ -229,8 +229,8 @@ div.navbar-wrapper{
 		}
 		// logout, user profile icons
 		i.fa{
-			top: 7px;
-			font-size: 1.3em;
+			top: 4px;
+			font-size: 1.1em;
 			color: black;
 			float: right;
 			margin-right: 8px;
