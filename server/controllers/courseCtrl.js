@@ -8,9 +8,12 @@ module.exports = {
 
 	getCourses: function(req, res) {
 		Course.find()
-
-		.then(function (response) {
-			res.send(response);
+        .populate('topics')
+        .exec(function(err, response) {
+            if (err) res.status(500).send(err);
+            else {
+			     res.send(response);
+            }
 		});
 	},
 	
@@ -53,9 +56,12 @@ module.exports = {
 					// need to add courseId to courseadmin for on user
 					User.findById(userId)
 					.exec(function(err, user){
+						// since user has created course, need to put course Id in user's
+						// coursesAdminFor and coursesEnrolledIn
 						user.coursesAdminFor.push(course._id);
-
 						user.coursesEnrolledIn.push(course._id);
+						user.save();
+						
 						// just send course number, now the front end goes to new course page
 						res.send({courseNumber: newCourseNumber});
 					})

@@ -1,4 +1,5 @@
 div.create-course-page-wrapper{
+	padding-bottom: 300px;
 	div.container-wrapper{
 		border-bottom: 3px solid #ddd;
 		// @include jadeGradient();
@@ -191,6 +192,23 @@ button{
 	text-align: center;
 }
 
+///////////////////////////////////////////////////
+//  Dropzone preview when image added
+///////////////////////////////////////////////////
+
+div.dz-preview{
+	div.dz-success-mark, div.dz-error-mark{
+		display: none;
+	}
+	div.dz-image{
+		img{
+			max-width: 200px;
+			position: relative;
+			top: 180px;
+			right: 27px;
+		}
+	}
+}
 
 
 

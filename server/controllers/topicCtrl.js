@@ -15,7 +15,10 @@ module.exports = {
     var newTopic = req.body;
     var courseNumber = newTopic.courseNumber;
 
-    newTopic.picture = req.imageUrl;
+    console.log('new topic is', newTopic);
+
+
+    // req.imageUrl ? newTopic.picture = req.imageUrl : newTopic.picture = null;
 
 
 

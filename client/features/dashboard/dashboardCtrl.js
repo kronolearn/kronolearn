@@ -34,28 +34,26 @@ app.controller('dashboardCtrl', function ($scope, user, $state, dashboardService
                     }
                 }
             }
-        
+
             $scope.adminCoursesShowing = true;
             $scope.coursesEnrolledInShowing = true;
             $scope.dashCoursesToShow = [];
-            
-            $scope.changeCoursesToShow = function() {
-                
+
+            $scope.changeCoursesToShow = function () {
+
                 if ($scope.adminCoursesShowing && $scope.coursesEnrolledInShowing) {
                     $scope.dashCoursesToShow = $scope.allCourses;
-                }
-                else if ($scope.adminCoursesShowing && !$scope.coursesEnrolledInShowing) {
+                } else if ($scope.adminCoursesShowing && !$scope.coursesEnrolledInShowing) {
                     $scope.dashCoursesToShow = $scope.adminCourses;
-                }
-                else if ($scope.coursesEnrolledInShowing && !$scope.adminCoursesShowing) {
+                } else if ($scope.coursesEnrolledInShowing && !$scope.adminCoursesShowing) {
                     $scope.dashCoursesToShow = $scope.courses;
-                }
-                else {
+                } else {
                     $scope.dashCoursesToShow = $scope.allCourses;
                 }
             }
-            
 
+            $scope.changeCoursesToShow();
+            
             $scope.getCardsToReview = function () {
 
                 dashboardService.getCardsToReview().then(function (response) {
@@ -140,49 +138,52 @@ app.controller('dashboardCtrl', function ($scope, user, $state, dashboardService
 
 
 
-    $scope.goToTopic = function(topicId, courseId){
-        console.log(topicId, courseId);
-        $state.go('topic', {courseId: courseId, topicId: topicId});
-    }
-    
-
-    $scope.enrollBtn = function () {
-        $state.go('allCourses');
-    };
-
-    $scope.addCourse = function () {
-        $state.go('createCourse');
-    };
-        
-        
-        
-        
-        
-        
-        
-        
-    $scope.cardsToPass = [];
-        
-    $scope.passCardsToQuizCourse = function(courseNumber) {
-        for (var i = 0; i < $scope.cardsToReview.length; i++) {
-            if ($scope.cardsToReview[i].card.courseNumber === courseNumber) {
-                $scope.cardsToPass.push($scope.cardsToReview[i].card);
+            $scope.goToTopic = function (topicId, courseId) {
+                console.log(topicId, courseId);
+                $state.go('topic', {
+                    courseId: courseId,
+                    topicId: topicId
+                });
             }
-        }
-        userService.addCards($scope.cardsToPass);
-        $state.go('quiz');
-    };
-        
-    $scope.passCardsToQuizTopic = function(topicId) {
-        for (var i = 0; i < $scope.cardsToReview.length; i++) {
-            if ($scope.cardsToReview[i].card.topic === topicId) {
-                $scope.cardsToPass.push($scope.cardsToReview[i].card);
-            }
-        }
-        userService.addCards($scope.cardsToPass);
-        $state.go('quiz');
-    };
-        
-        
-    });
+
+
+            $scope.enrollBtn = function () {
+                $state.go('allCourses');
+            };
+
+            $scope.addCourse = function () {
+                $state.go('createCourse');
+            };
+
+
+
+
+
+
+
+
+            $scope.cardsToPass = [];
+
+            $scope.passCardsToQuizCourse = function (courseNumber) {
+                for (var i = 0; i < $scope.cardsToReview.length; i++) {
+                    if ($scope.cardsToReview[i].card.courseNumber === courseNumber) {
+                        $scope.cardsToPass.push($scope.cardsToReview[i].card);
+                    }
+                }
+                userService.addCards($scope.cardsToPass);
+                $state.go('quiz');
+            };
+
+            $scope.passCardsToQuizTopic = function (topicId) {
+                for (var i = 0; i < $scope.cardsToReview.length; i++) {
+                    if ($scope.cardsToReview[i].card.topic === topicId) {
+                        $scope.cardsToPass.push($scope.cardsToReview[i].card);
+                    }
+                }
+                userService.addCards($scope.cardsToPass);
+                $state.go('quiz');
+            };
+
+
+        });
 });
