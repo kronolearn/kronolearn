@@ -54,6 +54,8 @@ app.controller('dashboardCtrl', function ($scope, user, $state, dashboardService
                     $scope.dashCoursesToShow = $scope.allCourses;
                 }
             }
+
+            $scope.changeCoursesToShow();
             
 
             $scope.getCardsToReview = function () {
