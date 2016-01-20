@@ -7,9 +7,10 @@
         <div class="sidebar col-lg-3 col-md-3 col-sm-5">
           <h2>Courses To Review</h2>
             <p ng-repeat="course in coursesToReview" ng-click="passCardsToQuizCourse(course.courseNumber)">{{course.name}}</p>
+            <p class="nothing-to-review" ng-show="coursesToReview.length===0">Congrats, You have nothing to review! Check back later to see your status.</p>
         </div>
         <div class="main-wrapper col-lg-9 col-md-9 col-sm-7">
-          <h5 class="intro">Welcome back, {{user.name}}.  You have 63 cards to review in 3 different courses.</h5>
+          <h5 class="intro">Welcome back, {{user.name}}.  You have <strong>{{cardsToReview.length}}</strong> cards to review in <strong>{{coursesToReview.length}}</strong> different courses.</h5>
 
           <div class="courses">
             <!-- Form controlling whether to show enrolled courses or courses admin of -->
@@ -29,12 +30,12 @@
 
             <div class="course" ng-repeat="course in allCourses" expand-course>
               <span class="plus">+</span>
-              <img ng-src="{{course.picture}}" alt="" class="course-picture">
-              <h3>{{course.name}}</h3>
+              <img ui-sref="course({courseId: {{course.courseNumber}}})" ng-src="{{course.picture}}" alt="" class="course-picture">
+              <h3 class="course-name" ><a ui-sref="course({courseId: {{course.courseNumber}}})">{{course.name}}</a></h3>
 
               <div class="topics">
                 <div class="topic" ng-repeat="topic in course.topics">
-                  {{topic.name}}
+                  <li ng-click="goToTopic(topic._id, $parent.course.courseNumber)">Topic {{$index+1}}:<span>{{topic.name}}</span></li>
                 </div>
                 <div class="no-topics" ng-show="course.topics.length===0">
                   No Topics Created Yet!
