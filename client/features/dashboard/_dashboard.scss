@@ -1,134 +1,157 @@
-div.dashboard {
+div.dashboard{
+  min-height: 100%;
+  font-size: 1.5rem;
+  div.container-wrapper{
+    // background-color: #eeeeee;
+    // background-image: url("../img/handmade-paper.png");
+    background: #eee;
     min-height: 100%;
-    font-size: 1.5rem;
-    div.container-wrapper {
-        // background-color: #eeeeee;
-        // background-image: url("../img/handmade-paper.png");
-        background: #eee;
-        min-height: 100%;
+  }
+  div.main-wrapper{
+
+  }
+  div.container{
+    width: 100%;
+    min-height: 100%;
+    @include largeDesktop {
+      width: 100%;
+      max-width: 1500px;
     }
-    div.main-wrapper {}
-    div.container {
-        width: 100%;
-        min-height: 100%;
-        @include largeDesktop {
-            width: 100%;
-            max-width: 1500px;
-        }
-        max-width: 1500px;
-        // background: lightblue;
+    max-width: 1500px;
+    // background: lightblue;
+  }
+  div.row{
+    min-height: 500px;
+  }
+  div.sidebar{
+    border-right: 2px solid #aaa;
+    padding-top: 20px;
+    // @include tabletOrLess {
+    //   max-width: 200px;
+    // }
+    // background: $jade;
+    height: 500px;
+    @include phoneOrLess {
+      display: none;
     }
-    div.row {
-        min-height: 500px;
+    h2{
+      margin-bottom: 20px;
     }
-    div.sidebar {
-        border-right: 2px solid #aaa;
-        padding-top: 20px;
-        // @include tabletOrLess {
-        //   max-width: 200px;
-        // }
-        // background: $jade;
-        height: 500px;
-        @include phoneOrLess {
-            display: none;
-        }
-        h2 {
-            margin-bottom: 20px;
-        }
-        p.nothing-to-review {
-            font-size: .6em;
-        }
+    p.nothing-to-review{
+      font-size: .6em;
     }
-    h5.intro {
-        font-size: .7em;
-        text-align: center;
-        margin-top: 20px;
-        margin-bottom: 40px;
+  }
+
+  h5.intro{
+    font-size: .7em;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+
+  form.checkboxes{
+    // display: inline-block;
+    text-align: center;
+    margin: auto;
+    // background: red;
+    margin-bottom: 20px;
+    div.checkbox{
+      margin-left: 30px;
+      display: inline-block;
+      // background: blue;
+      h6{
+        font-size: .6em;
+      }
     }
-    form.checkboxes {
-        // display: inline-block;
-        text-align: center;
-        margin: auto;
-        // background: red;
-        margin-bottom: 20px;
-        div.checkbox {
-            margin-left: 30px;
-            display: inline-block;
-            // background: blue;
-            h6 {
-                font-size: .6em;
-            }
-        }
+  }
+
+
+
+
+
+  div.course{
+    padding-top: 10px;
+    position: relative;
+    max-width: 800px;
+    margin: auto;
+    background: #fafafa;
+    border: 1px solid black;
+    min-height: 120px;
+    border-radius: 10px;
+    &:not(:last-of-type){
+      margin-bottom: 50px;
     }
-    div.course {
-        padding-top: 10px;
+    div.topics{
+      // background: blue;
+      height: 50px;
+      max-width: 300px;
+      margin: auto;
+      font-size: .6em;
+      text-transform: capitalize;
+      span{
+        margin-left: 30px;
+      }
+      li{
         position: relative;
-        max-width: 800px;
-        margin: auto;
-        background: #fafafa;
-        border: 1px solid black;
-        min-height: 120px;
-        border-radius: 10px;
-        &:not(: last-of-type) {
-            margin-bottom: 50px;
+        left: 50px;
+        margin-bottom: 7px;
+        font-size: .9em;
+        @include tablet {
+          left: 100px;
         }
-        div.topics {
-            // background: blue;
-            height: 50px;
-            max-width: 300px;
-            margin: auto;
-            font-size: .6em;
-            text-transform: capitalize;
-            span {
-                margin-left: 30px;
-            }
-            li {
-                position: relative;
-                left: 50px;
-                margin-bottom: 7px;
-                font-size: .9em;
-                @include tablet {
-                    left: 100px;
-                }
-                @include phone {
-                    left: 50px;
-                }
-                @include smallPhone {
-                    left: 100px;
-                }
-            }
+        @include phone {
+          left: 50px;
         }
-        h3.course-name {
-            text-align: center;
-            text-transform: capitalize;
-            margin-bottom: 10px;
+        @include smallPhone {
+          left: 100px;
+
         }
-        span.plus {
-            position: absolute;
-            top: 0px;
-            right: 10px;
-            font-size: 40px;
-            @include transition(.4s ease);
-            cursor: pointer;
-            &.reveal {
-                @include transform(rotate(45deg));
-            }
-        }
-        img.course-picture {
-            position: absolute;
-            left: 10px;
-            background: orange;
-            max-width: 100px;
-            max-height: 100px;
-            top: 5px;
-            @include smallPhone {
-                width: 70px;
-                top: 20px;
-                left: 15px;
-            }
-        }
-    } // course
+      }
+    }
+    h3.course-name{
+      text-align: center;
+      text-transform: capitalize;
+      margin-bottom: 10px;
+    }
+    span.plus{
+      position: absolute;
+      top: 0px;
+      right: 10px;
+      font-size: 40px;
+      @include transition(.4s ease);
+      cursor: pointer;
+      &.reveal{
+        @include transform(rotate(45deg));
+      }
+    }
+    img.course-picture{
+      position: absolute;
+      left: 10px;
+      background:orange;
+      max-width: 100px;
+      max-height: 100px;
+      top: 5px;
+      @include smallPhone {
+        width: 70px;
+        top: 20px;
+        left: 15px;
+      }
+    }
+  }// course
+
     .create-course-btn-wrapper {
         text-align: center;
     }
+
+
+
+
+
+
+
+
+
 } // end of dashboard, nothing below this
+
+
+
