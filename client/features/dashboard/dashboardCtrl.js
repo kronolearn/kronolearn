@@ -6,7 +6,7 @@ app.controller('dashboardCtrl', function ($scope, user, $state, dashboardService
     $scope.user = user;
     // console.log($scope.user);
 
-    
+
     dashboardService.getUserAndCourses()
         .then(function (user) {
             console.log(user);
@@ -23,50 +23,120 @@ app.controller('dashboardCtrl', function ($scope, user, $state, dashboardService
             $scope.allCourses = _.flatten($scope.allCourses);
 
             // remove duplicates
-            for(var i=0; i<$scope.allCourses.length; i++){
+            for (var i = 0; i < $scope.allCourses.length; i++) {
                 var courseId = $scope.allCourses[i]._id;
-                for(var j=$scope.allCourses.length-1; j>i; j--){
+                for (var j = $scope.allCourses.length - 1; j > i; j--) {
                     var courseIdToCompare = $scope.allCourses[j]._id;
-                    if(courseId===courseIdToCompare){
+                    if (courseId === courseIdToCompare) {
                         console.log('match');
                         // remove duplicate from array
                         $scope.allCourses.splice(j, 1);
                     }
                 }
             }
-       
-    $scope.getCardsToReview = function() {
         
-        dashboardService.getCardsToReview().then(function(response){
-            console.log("Cards to review, dashboardCtrl data: ", response);
-            $scope.cardsToReview = response;
-            $scope.getCoursesToReview();
-            console.log("Course IDs to review", $scope.courseIDsToReview);
-            console.log("Courses to review", $scope.coursesToReview);
-        });
-    }
-    
-    $scope.getCardsToReview();
-    
-    $scope.courseIDsToReview = [];
-    
-    $scope.coursesToReview = [];
-    
-    $scope.getCoursesToReview = function() {
-        for (var i = 0; i < $scope.cardsToReview.length; i++) {
-            if ($scope.courseIDsToReview.indexOf($scope.cardsToReview[i].card.courseNumber) === -1) {
-                $scope.courseIDsToReview.push($scope.cardsToReview[i].card.courseNumber);
-            }
-        }
-        console.log("what is $scope.courses?: ", $scope.courses);
-        for (var j = 0; j < $scope.courseIDsToReview.length; j++) {
-            for (var k = 0; k < $scope.courses.length; k++) {
-                if (($scope.courses[k].courseNumber === $scope.courseIDsToReview[j]/* && ($scope.coursesToReview.indexOf($scope.courses[k]) === -1)*/) && ($scope.coursesToReview.length < $scope.courseIDsToReview.length)) {
-                    $scope.coursesToReview.push($scope.courses[k]);
+            $scope.adminCoursesShowing = true;
+            $scope.coursesEnrolledInShowing = true;
+            $scope.dashCoursesToShow = [];
+            
+            $scope.changeCoursesToShow = function() {
+                
+                if ($scope.adminCoursesShowing && $scope.coursesEnrolledInShowing) {
+                    $scope.dashCoursesToShow = $scope.allCourses;
+                }
+                else if ($scope.adminCoursesShowing && !$scope.coursesEnrolledInShowing) {
+                    $scope.dashCoursesToShow = $scope.adminCourses;
+                }
+                else if ($scope.coursesEnrolledInShowing && !$scope.adminCoursesShowing) {
+                    $scope.dashCoursesToShow = $scope.courses;
+                }
+                else {
+                    $scope.dashCoursesToShow = $scope.allCourses;
                 }
             }
-        }
-    };
+            
+
+            $scope.getCardsToReview = function () {
+
+                dashboardService.getCardsToReview().then(function (response) {
+                    console.log("Cards to review, dashboardCtrl data: ", response);
+                    $scope.cardsToReview = response;
+                    $scope.getCoursesToReview();
+                    console.log("Course IDs to review", $scope.courseIDsToReview);
+                    console.log("Courses to review", $scope.coursesToReview);
+                });
+            }
+
+            $scope.getCardsToReview();
+
+            $scope.courseIDsToReview = [];
+
+            $scope.coursesToReview = [];
+
+            $scope.getCoursesToReview = function () {
+                for (var i = 0; i < $scope.cardsToReview.length; i++) {
+                    if ($scope.courseIDsToReview.indexOf($scope.cardsToReview[i].card.courseNumber) === -1) {
+                        $scope.courseIDsToReview.push($scope.cardsToReview[i].card.courseNumber);
+                    }
+                }
+                console.log("what is $scope.courses?: ", $scope.courses);
+                for (var j = 0; j < $scope.courseIDsToReview.length; j++) {
+                    for (var k = 0; k < $scope.courses.length; k++) {
+                        if (($scope.courses[k].courseNumber === $scope.courseIDsToReview[j] /* && ($scope.coursesToReview.indexOf($scope.courses[k]) === -1)*/ ) && ($scope.coursesToReview.length < $scope.courseIDsToReview.length)) {
+                            $scope.coursesToReview.push($scope.courses[k]);
+                        }
+                    }
+                }
+            };
+
+            $scope.topicClick = function (id) {
+                $state.go('topic', {
+                    topicId: id
+                });
+            };
+
+            $scope.courseClick = function (id) {
+                $state.go('course', {
+                    courseId: id
+                });
+            };
+
+            $scope.enrollBtn = function () {
+                $state.go('allCourses');
+            };
+
+            $scope.addCourse = function () {
+                $state.go('createCourse');
+            };
+
+
+
+
+
+
+
+
+            $scope.cardsToPass = [];
+
+            $scope.passCardsToQuizCourse = function (courseNumber) {
+                for (var i = 0; i < $scope.cardsToReview.length; i++) {
+                    if ($scope.cardsToReview[i].card.courseNumber === courseNumber) {
+                        $scope.cardsToPass.push($scope.cardsToReview[i].card);
+                    }
+                }
+                userService.addCards($scope.cardsToPass);
+                $state.go('quiz');
+            };
+
+            $scope.passCardsToQuizTopic = function (topicId) {
+                for (var i = 0; i < $scope.cardsToReview.length; i++) {
+                    if ($scope.cardsToReview[i].card.topic === topicId) {
+                        $scope.cardsToPass.push($scope.cardsToReview[i].card);
+                    }
+                }
+                userService.addCards($scope.cardsToPass);
+                $state.go('quiz');
+            };
 
 
 
