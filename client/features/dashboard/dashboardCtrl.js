@@ -68,13 +68,13 @@ app.controller('dashboardCtrl', function ($scope, user, $state, dashboardService
         }
     };
 
-    $scope.topicClick = function (id) {
-        $state.go('topic', { topicId: id });
-    };
+
+
+    $scope.goToTopic = function(topicId, courseId){
+        console.log(topicId, courseId);
+        $state.go('topic', {courseId: courseId, topicId: topicId});
+    }
     
-    $scope.courseClick = function (id) {
-        $state.go('course', { courseId: id });
-    };
 
     $scope.enrollBtn = function () {
         $state.go('allCourses');
