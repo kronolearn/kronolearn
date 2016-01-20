@@ -118,5 +118,50 @@ app.controller('dashboardCtrl', function ($scope, user, $state, dashboardService
             };
 
 
-        });
+
+    $scope.goToTopic = function(topicId, courseId){
+        console.log(topicId, courseId);
+        $state.go('topic', {courseId: courseId, topicId: topicId});
+    }
+    
+
+    $scope.enrollBtn = function () {
+        $state.go('allCourses');
+    };
+
+    $scope.addCourse = function () {
+        $state.go('createCourse');
+    };
+        
+        
+        
+        
+        
+        
+        
+        
+    $scope.cardsToPass = [];
+        
+    $scope.passCardsToQuizCourse = function(courseNumber) {
+        for (var i = 0; i < $scope.cardsToReview.length; i++) {
+            if ($scope.cardsToReview[i].card.courseNumber === courseNumber) {
+                $scope.cardsToPass.push($scope.cardsToReview[i].card);
+            }
+        }
+        userService.addCards($scope.cardsToPass);
+        $state.go('quiz');
+    };
+        
+    $scope.passCardsToQuizTopic = function(topicId) {
+        for (var i = 0; i < $scope.cardsToReview.length; i++) {
+            if ($scope.cardsToReview[i].card.topic === topicId) {
+                $scope.cardsToPass.push($scope.cardsToReview[i].card);
+            }
+        }
+        userService.addCards($scope.cardsToPass);
+        $state.go('quiz');
+    };
+        
+        
+    });
 });
