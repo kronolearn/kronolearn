@@ -2,17 +2,18 @@
     height: 100%;
     min-height: 960px;
     width: 100%;
-    background: url(http://7-themes.com/data_images/out/67/7002557-clock-wood-focus.jpg) no-repeat center center fixed;
-    background-size: cover;
-    padding-bottom: 20px;
+    background-color: #eeeeee;
+    background: url("http://www.transparenttextures.com/patterns/white-texture.png");
 }
 
 .allCoursesFull .subject-filter-block {
     background-color: /*#00a865*/ rgba(203, 214, 242, .95);
+    border: 2px solid #000;
     border-radius: 1em;
     width: 200px;
     height: 700px;
     padding: 10px 10px 10px 20px;
+    font-size: 20px;
     position: absolute;
     left: 0;
     top: 15%;
@@ -22,7 +23,7 @@
 }
 
 .allCoursesFull .subject-filter-block p:hover {
-    background-color: #028e5b;
+    text-decoration: underline;
     cursor: pointer;
      @include transform(scale(1.05));
 }
@@ -41,6 +42,10 @@
     color: #00a86b;
     background-color: #fff;
     border-radius: 1em;
+}
+
+.allCoursesFull .search-bar:focus {
+    outline: none;
 }
 
 .allCoursesFull .course-block h2 {
