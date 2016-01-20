@@ -11,8 +11,8 @@
 					<h5 class="course-description">{{course.description}}</h5>
 
 					<!-- enroll or unenroll in course button -->
-					<button ng-if="!userIsEnrolled" ng-click="enrollInCourse()">Enroll In Course</button>
-					<button ng-if="userIsEnrolled" ng-click="leaveCourse()">Leave Course</button>
+					<button class="btn btn-primary"ng-if="!userIsEnrolled" ng-click="enrollInCourse()">Enroll In Course</button>
+					<button class="btn btn-primary" ng-if="userIsEnrolled" ng-click="leaveCourse()">Leave Course</button>
 
 
 				</div>
