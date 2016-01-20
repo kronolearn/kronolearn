@@ -41,6 +41,10 @@ app.controller('topicCtrl', function($scope, topicService, $stateParams, courseS
         $state.go('quiz', {topicId: topicId});
     };
     
+    $scope.toCourse = function(courseId) {
+        $state.go('course', {courseId: courseId});
+    };
+    
     $scope.createCards = function(topicId) {
         $state.go('createQuiz', {topicId: topicId, courseId: courseId});
     };
