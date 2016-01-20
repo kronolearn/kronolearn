@@ -8,9 +8,12 @@ module.exports = {
 
 	getCourses: function(req, res) {
 		Course.find()
-
-		.then(function (response) {
-			res.send(response);
+        .populate('topics')
+        .exec(function(err, response) {
+            if (err) res.status(500).send(err);
+            else {
+			     res.send(response);
+            }
 		});
 	},
 	
