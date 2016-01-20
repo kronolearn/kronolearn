@@ -129,28 +129,37 @@ exports.saveTopicImage = function (req, res, next) {
   var newTopic = req.body;
   var imageObj = newTopic.imageObj;
 
-  var buf = new Buffer(imageObj.imageValue.replace(/^data:image\/\w+;base64,/, ""), 'base64');
+  // if imageObj exists, then do amazon s3 stuff, otherwise go to next function
+  // (adding topic)
+  imageObj ? amazonS3() : next()
 
 
 
-  var bucketName = 'kronolearn/topicPics';
-  var params = {
-    Bucket: bucketName
-    , Key: imageObj.imageName
-    , Body: buf
-    , ContentType: 'image/' + imageObj.imageExtension
-    , ACL: 'public-read'
-  };
+  function amazonS3(){
+    var buf = new Buffer(imageObj.imageValue.replace(/^data:image\/\w+;base64,/, ""), 'base64');
 
-  s3.upload(params, function (err, data) {
-    console.log(err, data);
-    if (err) return res.status(500).send(err);
+
+
+    var bucketName = 'kronolearn/topicPics';
+    var params = {
+      Bucket: bucketName
+      , Key: imageObj.imageName
+      , Body: buf
+      , ContentType: 'image/' + imageObj.imageExtension
+      , ACL: 'public-read'
+    };
+
+    s3.upload(params, function (err, data) {
+      console.log(err, data);
+      if (err) return res.status(500).send(err);
     // console.log("Amazon S3 FINAL RESULT: ", data);
 
     req.imageUrl = data.Location;
     console.log(data.Location);
     next();
   });
+  }
+
 
 
 

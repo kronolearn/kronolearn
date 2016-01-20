@@ -52,7 +52,8 @@ app.controller('dashboardCtrl', function ($scope, user, $state, dashboardService
                 }
             }
 
-
+            $scope.changeCoursesToShow();
+            
             $scope.getCardsToReview = function () {
 
                 dashboardService.getCardsToReview().then(function (response) {
