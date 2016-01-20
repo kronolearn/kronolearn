@@ -25,14 +25,17 @@
     }
     
     .review {
-        padding-left: 19%;
+        margin-left: 19%;
     }
     
     .list {
         margin-top: 1%;
         display: flex;
         flex-wrap: wrap;
-        padding-right: 19%;
+        margin-right: 19%;
+        background-color: #dbdbdb;
+        padding: .5%;
+        box-shadow: inset 0 0 5px #000000;
         div {
             font-size: 1.4em;
             color: white;
