@@ -29,14 +29,18 @@ angular.module('kronolearn').controller('createQuizCtrl', function($scope, creat
         console.log($scope.newCard);
         createQuizService.postCard($scope.newCard).then(function(response) {
             $scope.newCard = "";
-            $scope.first.text = "";
-            $scope.second.text = "";
-            $scope.third.text = "";
-            $scope.fourth.text = "";
             $scope.first.correctAnswer = false;
             $scope.second.correctAnswer = false;
             $scope.third.correctAnswer = false;
             $scope.fourth.correctAnswer = false;
+            $scope.first.text = "";
+            $scope.second.text = "";
+            if ($scope.third.text) {
+                $scope.third.text = "";
+            }
+            if ($scope.fourth.text) {
+                $scope.fourth.text = "";
+            }
         });
     }
     

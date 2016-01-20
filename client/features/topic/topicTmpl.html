@@ -12,12 +12,13 @@
     
     <div class="review list">
         <div ng-repeat="reviewMaterial in reviewMaterials"><a href="http://{{reviewMaterial.materialUrl}}" target="_blank">{{reviewMaterial.material}}</a></div>
-        <div ng-click=displayMaterial()>Add Review Material</div>
+        <div ng-click=displayMaterial() class="plusButton">+</div>
     </div>
     
     <div class="learn">
         <button class="btn btn-lg btn-primary" ng-click="goToQuiz(topic._id)" ng-show="hasCards">Start Quiz!</button>
         <button class="btn btn-lg btn-primary" ng-click="createCards(topic._id)">Make Cards</button>
+        <button class="btn btn-lg btn-primary" ng-click="toCourse(courseId)">Return to Course</button>
     </div>
     
  <!--   <div progress-bar class="progressBar"><div></div></div>-->
