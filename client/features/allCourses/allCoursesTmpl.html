@@ -1,35 +1,33 @@
 <div navbar></div>
 
 <div class="allCoursesFull">
-  <div class="subject-filter-block">
-      <p ng-repeat="subject in allSubjects | orderBy: +subject" ng-click="changeFilterSubject(subject)">{{subject}}</p>
-  </div>
+    <div class="subject-filter-block">
+        <p ng-repeat="subject in allSubjects | orderBy: +subject" ng-click="changeFilterSubject(subject)">{{subject}}</p>
+    </div>
     <div class="container allCoursesContainer">
-    
-        
-        <input name="coursesInput" id="coursesInput" type="text" class="search-bar" placeholder="Search Courses..." ng-model="coursesearch"> <!-- typeahead="course.name for course in allCoursesArray | filter:{name: $viewValue} | limitTo:8" -->
-    <!-- I commented out the TYPEAHEAD...can be put back into <input> if desired-->
-    
-    
-     <div class="full-block" ng-repeat="course in allCoursesArray | filter: {name:coursesearch} | filter: {subjects:subjectFilter}">   
+
+
+        <input name="coursesInput" id="coursesInput" type="text" class="search-bar" placeholder="Search Courses..." ng-model="coursesearch">
+
+        <div class="full-block" ng-repeat="course in allCoursesArray | filter: {name:coursesearch} | filter: {subjects:subjectFilter}">
             <div class="course-block" ng-click="topicsShowing=!topicsShowing">
 
-              
-                 <img ng-src="{{course.picture}}" id="course-pic">
-              
-            <div class="info-contain">
-              <h2>{{course.name}}</h2>
-                </br>
-              <h5>{{course.description}}</h5>
+
+                <img ng-src="{{course.picture}}" id="course-pic">
+
+                <div class="info-contain">
+                    <h2>{{course.name}}</h2>
+                    </br>
+                    <h5>{{course.description}}</h5>
+                </div>
+
+                <button class="btn btn-primary go-course-button" ng-click="goToCoursePage(course)">Go To Course</button>
+            </div>
+            <div class="course-topic" ng-show="topicsShowing" ng-repeat="topic in course.topics">
+                <h3>{{topic}}</h3>
             </div>
 
-           <button class="btn btn-primary go-course-button" ng-click="goToCoursePage(course)">Go To Course</button>
-         </div>
-         <div class="course-topic" ng-show="topicsShowing" ng-repeat="topic in course.topics">
-               <h3>{{topic}}</h3>
-         </div>
-        
-       </div>
+        </div>
 
     </div>
 </div>
