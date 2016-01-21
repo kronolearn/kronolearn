@@ -1,6 +1,61 @@
-<div ng-controller="homeCtrl" class="home">
+<div class="home">
 
-    <!--  Log In modal  -->
+  <div class="login-item" ng-show="!loginShow">
+  <h1 class="logo"></h1>
+    <form class="login-form" method="post">
+      <div class="input-group">
+        <input placeholder="E-Mail" ng-model="user.email" name="email" type="email">
+      </div>
+      <div class="input-group">
+        <input type="password" placeholder="Password" ng-model="user.password" name="password">
+      </div>
+      <p class="errMessage">{{ loginMess }}</p>
+      <div class="button-group">
+        <a class="button button-transparent" ng-click="login()" type="submit">Login</a>
+      </div>
+      <div class="button-group">
+        <a ng-click="signupShow=!signupShow; loginShow=!loginShow" class="button button-transparent">Sign up</a>
+      </div>
+    </form>
+  </div>
+  
+  
+  <div class="sign-up-item" ng-show="signupShow">
+  <h1 class="logo"></h1>
+    <form class="sign-up-form" method="post">
+      <div class="input-group">
+        <input placeholder="Name" ng-model="user.name" name="name" type="text">
+      </div>
+      <div class="input-group">
+        <input placeholder="E-Mail" ng-model="user.email" name="email" type="email">
+      </div>
+      <div class="input-group">
+        <input type="password" placeholder="Password" ng-model="user.password" name="password">
+      </div>
+      <div class="input-group">
+        <input type="password" placeholder="Password" ng-model="passwordcheck" name="password">
+      </div>
+      <p class="errMessage">{{ loginMess }}</p>
+      <div class="button-group">
+        <a class="button button-transparent" ng-click="signup()">Sign up</a>
+      </div>
+      <div>
+        Already have an acount?
+        <a class="button button-transparent" ng-click="loginShow=!loginShow; signupShow=!signupShow" type="submit">Login</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+
+<!--<div ng-controller="homeCtrl" class="home">
+
+      Log In modal  
 
     <div id="login" class="modal bs-login-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
         <div class="modal-dialog modal-sm">
@@ -14,7 +69,7 @@
         </div>
     </div>
 
-    <!-- Sign up Modal -->
+     Sign up Modal 
     <div id="signup" class="modal bs-signup-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
@@ -43,4 +98,4 @@
         </div>
     </div>
 </div>
-</div>
+</div>-->

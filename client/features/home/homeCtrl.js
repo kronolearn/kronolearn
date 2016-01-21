@@ -5,7 +5,9 @@ app.controller('homeCtrl', function ($scope, $http, $state, homeService) {
 $scope.loginMess = "";
     // Auth signup
     $scope.signup = function () {
+      $scope.loginMess = "";
         if ($scope.user.password !== $scope.passwordcheck) {
+          $scope.loginMess = "The passwords do not match!";
 
             // some UI event to alert that passwords don't match, without another popup
             // (ie, border of red, or message, etc)
@@ -43,7 +45,7 @@ $scope.loginMess = "";
     $scope.openLoginModal = function(){
 
         
-    }
+    };
 
 
 });
